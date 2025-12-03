@@ -36,9 +36,28 @@
 
 ## 📋 Project Overview
 
-Modulyn ERP is a comprehensive **Web3-enabled Enterprise Resource Planning platform** specifically designed for the cleaning services industry. Built with Django REST Framework and React, it combines traditional ERP functionality with cutting-edge blockchain technology including smart contracts, decentralized identity, asset tokenization, and cross-chain interoperability.
+Modulyn ERP is a **Polkadot-native business management platform** that demonstrates how Web3 technology can transform traditional business operations. Built on Substrate framework with Django REST Framework and React, it combines traditional ERP functionality with cutting-edge blockchain technology including smart contracts, decentralized identity, asset tokenization, and cross-chain interoperability.
 
-The platform addresses critical industry challenges through trustless service verification, automated payment processing, and transparent audit trails, positioning itself as the first-of-its-kind Web3 ERP solution for the $400+ billion global cleaning services market.
+While initially focused on the cleaning services industry ($400+ billion market), Modulyn serves as a **reference implementation** for Web3-enabled business operations on Polkadot, showcasing how Substrate pallets, ink! smart contracts, and cross-parachain messaging can revolutionize enterprise resource planning.
+
+### 🌐 Why Polkadot/Substrate?
+
+Modulyn is built on **Polkadot/Substrate** because:
+
+- **Substrate Framework**: Modular architecture enables rapid development and customization with built-in governance, staking, and consensus mechanisms
+- **Polkadot Parachain Benefits**: Shared security from Polkadot relay chain, cross-parachain message passing (XCMP), scalable throughput, and lower transaction costs
+- **ink! Smart Contracts**: Rust-based contracts for safety and performance with native Substrate runtime integration
+- **Cross-Chain Interoperability**: Seamless interaction with other parachains and chains, enabling true multi-chain business operations
+- **Future-Proof**: Upgradeable runtime ensures long-term viability without hard forks
+
+**Modulyn strengthens the Polkadot ecosystem** by:
+- Bringing real-world enterprise use cases to Polkadot
+- Contributing reusable Substrate pallets (ledger, DID, DAO) to the ecosystem
+- Demonstrating practical Web3 business operations beyond DeFi
+- Onboarding millions of potential users to Polkadot
+- Creating network effects through high-frequency business transactions
+
+For detailed information on Polkadot ecosystem alignment, see [Polkadot Ecosystem Documentation](docs/POLKADOT_ECOSYSTEM.md).
 
 ### 🎯 Editions
 
@@ -169,10 +188,23 @@ Modulyn ERP is built with a modern, scalable architecture that seamlessly integr
 
 #### **Web3 & Blockchain**
 - **Substrate** - Custom blockchain pallets (ledger, DID, DAO)
+- **Polkadot/Substrate** - Native Polkadot parachain integration with DOT token support
 - **Ethereum/Polygon/BSC** - Multi-chain support
 - **Smart Contracts** - Solidity (Ethereum) and ink! (Substrate)
 - **IPFS** - Decentralized file storage
 - **DID** - Decentralized identity (6 DID methods supported)
+
+### **DOT Token Integration**
+
+Modulyn integrates with the **DOT token** (Polkadot's native token) for:
+
+- **Parachain Slot Bonding**: Secure a dedicated parachain slot for Modulyn's operations
+- **Governance Participation**: Enable community governance of Modulyn protocol
+- **Staking and Security**: Contribute to Polkadot network security and earn staking rewards
+- **Payment and Settlement**: Use DOT as a payment option within the Modulyn ecosystem
+- **Treasury and Funding**: Access Polkadot Treasury for ecosystem development
+
+For detailed information on DOT token integration and Polkadot ecosystem alignment, see [Polkadot Ecosystem Documentation](docs/POLKADOT_ECOSYSTEM.md).
 
 For detailed architecture information, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
@@ -362,10 +394,15 @@ Comprehensive documentation is available throughout the project:
 ### **Main Documentation**
 
 - **[📖 Architecture](docs/ARCHITECTURE.md)** - System architecture and design
+- **[🌐 Polkadot Ecosystem](docs/POLKADOT_ECOSYSTEM.md)** - Polkadot integration and DOT token alignment
 - **[🔗 Web3 Technical Implementation](docs/WEB3_TECHNICAL_IMPLEMENTATION.md)** - Blockchain and Web3 features
 - **[🔌 API Reference](docs/API_REFERENCE.md)** - Complete API reference
 - **[🚀 Roadmap](docs/ROADMAP.md)** - Development roadmap
+  - [Milestone 1: Core Platform Foundation](docs/MILESTONE_1.md) - Detailed milestone with acceptance criteria
+  - [Milestone 2: Web3 Integration & Smart Contracts](docs/MILESTONE_2.md) - Detailed milestone with acceptance criteria
 - **[📊 Use Cases](docs/USE_CASES.md)** - Business use cases
+- **[🆚 Competitive Analysis](docs/COMPETITIVE_ANALYSIS.md)** - Comparison with ERP and Web3 platforms
+- **[🛡️ Compliance](docs/COMPLIANCE.md)** - Regulatory compliance, KYC/KYB, and data protection
 - **[🔒 Security](SECURITY.md)** - Security best practices
 
 ### **Application Documentation**
@@ -400,14 +437,19 @@ Comprehensive documentation is available throughout the project:
 - **[Infrastructure Documentation](infra/README.md)** - CI/CD and infrastructure
 - **[Tests Documentation](tests/README.md)** - Testing guide
 
+### **Tutorials and Guides**
+
+- **[Getting Started for Developers](docs/TUTORIALS/GETTING_STARTED_FOR_DEVELOPERS.md)** - Complete developer setup guide
+- **[Integrating Modulyn Components](docs/TUTORIALS/INTEGRATING_MODULYN_COMPONENTS.md)** - How to reuse Modulyn components
+
 ### **Additional Resources**
 
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute
 - **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community guidelines
 - **[Developer Onboarding](DEVELOPER_ONBOARDING.md)** - Getting started guide
 - **[Testing Guide](TESTING_GUIDE.md)** - Testing documentation
-- **[Web3 Features](WEB3_FEATURES_DOCUMENTATION.md)** - Complete Web3 features list
-- **[Web3 Quick Reference](WEB3_QUICK_REFERENCE.md)** - Quick Web3 reference
+- **[Web3 Features](docs/WEB3_FEATURES_DOCUMENTATION.md)** - Complete Web3 features list
+- **[Web3 Quick Reference](docs/WEB3_QUICK_REFERENCE.md)** - Quick Web3 reference
 
 ---
 
