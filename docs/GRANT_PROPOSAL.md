@@ -1,8 +1,8 @@
-# TidyGen ERP - Web3 Foundation Grant Proposal
+# Modulyn ERP - Web3 Foundation Grant Proposal
 
 ## 📋 **Executive Summary**
 
-TidyGen ERP is a revolutionary **Web3-enabled Enterprise Resource Planning platform** designed to transform the $400+ billion global cleaning services industry through blockchain technology, smart contracts, and decentralized applications. Our platform addresses critical industry challenges including payment disputes, service verification, trust issues, and operational inefficiencies by leveraging the transparency, immutability, and automation capabilities of Web3 technology.
+Modulyn ERP is a revolutionary **Web3-enabled Enterprise Resource Planning platform** designed to transform the $400+ billion global cleaning services industry through blockchain technology, smart contracts, and decentralized applications. Our platform addresses critical industry challenges including payment disputes, service verification, trust issues, and operational inefficiencies by leveraging the transparency, immutability, and automation capabilities of Web3 technology.
 
 ### **Key Innovation**
 We are building the first comprehensive ERP system that integrates **Polkadot/Substrate parachain technology** with traditional business operations, creating a trustless ecosystem where service providers, clients, and stakeholders can interact with complete transparency and automated execution.
@@ -56,9 +56,9 @@ We are seeking **$500,000** in Web3 Foundation funding to accelerate development
 
 ## 💡 **Proposed Solution**
 
-### **TidyGen ERP: Web3-Enabled Business Management**
+### **Modulyn ERP: Web3-Enabled Business Management**
 
-TidyGen ERP revolutionizes the cleaning services industry by combining traditional ERP functionality with cutting-edge Web3 technology, creating a **decentralized, transparent, and trustless business ecosystem**.
+Modulyn ERP revolutionizes the cleaning services industry by combining traditional ERP functionality with cutting-edge Web3 technology, creating a **decentralized, transparent, and trustless business ecosystem**.
 
 #### **Core Innovation: Blockchain-Native Business Operations**
 
@@ -137,7 +137,7 @@ contract ServiceVerification {
 
 ### **System Architecture Overview**
 
-TidyGen ERP is built on a **modular, Web3-first architecture** that seamlessly integrates traditional business operations with blockchain technology.
+Modulyn ERP is built on a **modular, Web3-first architecture** that seamlessly integrates traditional business operations with blockchain technology.
 
 #### **Architecture Diagram**
 
@@ -232,7 +232,7 @@ graph TB
 
 ##### **Custom Parachain Development**
 ```rust
-// Substrate runtime for TidyGen business logic
+// Substrate runtime for Modulyn business logic
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
@@ -858,7 +858,7 @@ pub mod pallet {
 
 ## 🎯 **Conclusion**
 
-TidyGen ERP represents a **paradigm shift** in how business operations are conducted, leveraging the power of Web3 technology to create a more transparent, efficient, and trustworthy ecosystem for the cleaning services industry. Our integration with Polkadot/Substrate technology positions us as pioneers in the Web3 business application space, demonstrating the real-world utility and value of blockchain technology.
+Modulyn ERP represents a **paradigm shift** in how business operations are conducted, leveraging the power of Web3 technology to create a more transparent, efficient, and trustworthy ecosystem for the cleaning services industry. Our integration with Polkadot/Substrate technology positions us as pioneers in the Web3 business application space, demonstrating the real-world utility and value of blockchain technology.
 
 ### **Why Web3 Foundation Should Support This Project**
 
@@ -881,11 +881,11 @@ We are excited about the opportunity to work with the Web3 Foundation to bring t
 ---
 
 **Contact Information:**
-- **Email**: grants@tidygen.io
-- **Website**: https://tidygen.io
-- **GitHub**: https://github.com/tidygen-community
-- **Discord**: https://discord.gg/tidygen
-- **Twitter**: @TidyGenERP
+- **Email**: grants@Modulyn.io
+- **Website**: https://Modulyn.io
+- **GitHub**: https://github.com/Modulyn-community
+- **Discord**: https://discord.gg/Modulyn
+- **Twitter**: @ModulynERP
 
 **Grant Application Date**: January 2024
 **Projected Start Date**: February 2024

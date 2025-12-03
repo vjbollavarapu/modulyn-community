@@ -1,7 +1,7 @@
 /**
  * BlockchainDemo Page
  * 
- * Demonstration page for TidyGen blockchain features
+ * Demonstration page for Modulyn blockchain features
  */
 
 import React, { useState, useEffect } from 'react';
@@ -76,7 +76,7 @@ export function BlockchainDemo() {
             Blockchain Integration Demo
           </h1>
           <p className="text-muted-foreground mt-1">
-            Interact with TidyGen Substrate node using Polkadot.js wallet
+            Interact with Modulyn Substrate node using Polkadot.js wallet
           </p>
         </div>
         <WalletConnectButton onAccountSelect={handleAccountSelect} />

@@ -1,6 +1,6 @@
 # Developer Onboarding Guide
 
-Welcome to the TidyGen ERP project! This guide will help you get up and running with the development environment.
+Welcome to the Modulyn ERP project! This guide will help you get up and running with the development environment.
 
 ## Prerequisites
 
@@ -42,8 +42,8 @@ Before you begin, ensure you have the following tools installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/tidygen-community/tidygen-community.git
-cd tidygen-community
+git clone https://github.com/Modulyn-community/Modulyn-community.git
+cd Modulyn-community
 ```
 
 ### 2. Environment Configuration
@@ -391,10 +391,10 @@ pre-commit run --all-files
 - **Smart Contracts**: [./contracts/](./contracts/)
 
 ### Community Support
-- **GitHub Issues**: [Report bugs and issues](https://github.com/tidygen-community/tidygen-community/issues)
-- **GitHub Discussions**: [Ask questions](https://github.com/tidygen-community/tidygen-community/discussions)
-- **Discord**: [Join our community](https://discord.gg/tidygen)
-- **Email**: [hello@tidygen.com](mailto:hello@tidygen.com)
+- **GitHub Issues**: [Report bugs and issues](https://github.com/Modulyn-community/Modulyn-community/issues)
+- **GitHub Discussions**: [Ask questions](https://github.com/Modulyn-community/Modulyn-community/discussions)
+- **Discord**: [Join our community](https://discord.gg/Modulyn)
+- **Email**: [hello@Modulyn.com](mailto:hello@Modulyn.com)
 
 ### Development Resources
 - **Backend API**: http://localhost:8000/api/docs
@@ -413,7 +413,7 @@ pre-commit run --all-files
 ## Project Structure
 
 ```
-tidygen-community/
+Modulyn-community/
 ├── apps/
 │   ├── backend/          # Django REST API
 │   └── frontend/         # React SPA
@@ -430,6 +430,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed contribution guidelines.
 
 ---
 
-**Welcome to the TidyGen ERP community!** 🚀
+**Welcome to the Modulyn ERP community!** 🚀
 
 We're excited to have you on board. If you have any questions or need help, don't hesitate to reach out to the community.

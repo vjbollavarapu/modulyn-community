@@ -26,8 +26,8 @@ export const mockAccounts: InjectedAccountWithMeta[] = [
 
 // Mock chain info
 export const mockChainInfo = {
-  chain: 'TidyGen Development',
-  nodeName: 'tidygen-node',
+  chain: 'Modulyn Development',
+  nodeName: 'Modulyn-node',
   nodeVersion: '1.0.0',
   tokenSymbol: ['UNIT'],
   tokenDecimals: [12],
@@ -67,7 +67,7 @@ export const mockDidDocument = {
   created_at: 50,
   updated_at: 50,
   status: 'Active',
-  did_identifier: 'did:substrate:tidygen:a1b2c3d4e5f6a7b8',
+  did_identifier: 'did:substrate:Modulyn:a1b2c3d4e5f6a7b8',
   nonce: 0,
 };
 

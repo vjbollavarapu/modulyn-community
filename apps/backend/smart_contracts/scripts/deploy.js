@@ -1,36 +1,36 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  console.log("🚀 Starting TidyGen Smart Contracts Deployment...\n");
+  console.log("🚀 Starting Modulyn Smart Contracts Deployment...\n");
 
   // Get the deployer account
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with account:", deployer.address);
   console.log("Account balance:", (await deployer.provider.getBalance(deployer.address)).toString());
 
-  // Deploy TidyGenToken
-  console.log("\n📝 Deploying TidyGenToken...");
-  const TidyGenToken = await ethers.getContractFactory("TidyGenToken");
-  const token = await TidyGenToken.deploy();
+  // Deploy ModulynToken
+  console.log("\n📝 Deploying ModulynToken...");
+  const ModulynToken = await ethers.getContractFactory("ModulynToken");
+  const token = await ModulynToken.deploy();
   await token.waitForDeployment();
   const tokenAddress = await token.getAddress();
-  console.log("✅ TidyGenToken deployed to:", tokenAddress);
+  console.log("✅ ModulynToken deployed to:", tokenAddress);
 
-  // Deploy TidyGenDAO
-  console.log("\n🏛️ Deploying TidyGenDAO...");
-  const TidyGenDAO = await ethers.getContractFactory("TidyGenDAO");
-  const dao = await TidyGenDAO.deploy(tokenAddress);
+  // Deploy ModulynDAO
+  console.log("\n🏛️ Deploying ModulynDAO...");
+  const ModulynDAO = await ethers.getContractFactory("ModulynDAO");
+  const dao = await ModulynDAO.deploy(tokenAddress);
   await dao.waitForDeployment();
   const daoAddress = await dao.getAddress();
-  console.log("✅ TidyGenDAO deployed to:", daoAddress);
+  console.log("✅ ModulynDAO deployed to:", daoAddress);
 
-  // Deploy TidyGenERP
-  console.log("\n🏢 Deploying TidyGenERP...");
-  const TidyGenERP = await ethers.getContractFactory("TidyGenERP");
-  const erp = await TidyGenERP.deploy();
+  // Deploy ModulynERP
+  console.log("\n🏢 Deploying ModulynERP...");
+  const ModulynERP = await ethers.getContractFactory("ModulynERP");
+  const erp = await ModulynERP.deploy();
   await erp.waitForDeployment();
   const erpAddress = await erp.getAddress();
-  console.log("✅ TidyGenERP deployed to:", erpAddress);
+  console.log("✅ ModulynERP deployed to:", erpAddress);
 
   // Set up initial token distribution
   console.log("\n💰 Setting up initial token distribution...");
@@ -65,16 +65,16 @@ async function main() {
     network: await ethers.provider.getNetwork(),
     deployer: deployer.address,
     contracts: {
-      TidyGenToken: {
+      ModulynToken: {
         address: tokenAddress,
         name: tokenName,
         symbol: tokenSymbol,
         totalSupply: ethers.formatEther(tokenTotalSupply)
       },
-      TidyGenDAO: {
+      ModulynDAO: {
         address: daoAddress
       },
-      TidyGenERP: {
+      ModulynERP: {
         address: erpAddress
       }
     },
@@ -85,9 +85,9 @@ async function main() {
   console.log("====================");
   console.log(`Network: ${deploymentInfo.network.name} (Chain ID: ${deploymentInfo.network.chainId})`);
   console.log(`Deployer: ${deploymentInfo.deployer}`);
-  console.log(`TidyGenToken: ${deploymentInfo.contracts.TidyGenToken.address}`);
-  console.log(`TidyGenDAO: ${deploymentInfo.contracts.TidyGenDAO.address}`);
-  console.log(`TidyGenERP: ${deploymentInfo.contracts.TidyGenERP.address}`);
+  console.log(`ModulynToken: ${deploymentInfo.contracts.ModulynToken.address}`);
+  console.log(`ModulynDAO: ${deploymentInfo.contracts.ModulynDAO.address}`);
+  console.log(`ModulynERP: ${deploymentInfo.contracts.ModulynERP.address}`);
   console.log(`Deployment Time: ${deploymentInfo.timestamp}`);
 
   // Write deployment info to file

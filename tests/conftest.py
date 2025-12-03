@@ -1,5 +1,5 @@
 """
-Pytest configuration and fixtures for TidyGen Community tests.
+Pytest configuration and fixtures for Modulyn Community tests.
 """
 
 import os

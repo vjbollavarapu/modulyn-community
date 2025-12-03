@@ -1,5 +1,5 @@
 """
-HR management models for TidyGen ERP platform.
+HR management models for Modulyn ERP platform.
 """
 from django.db import models
 from django.contrib.auth import get_user_model

@@ -1,4 +1,4 @@
-# TidyGen Substrate - Quick Start Guide
+# Modulyn Substrate - Quick Start Guide
 
 ## 🚀 Get Started in 3 Steps
 
@@ -24,12 +24,12 @@ make run
 Or manually:
 
 ```bash
-./target/release/tidygen-node --dev --tmp
+./target/release/Modulyn-node --dev --tmp
 ```
 
 You should see:
 ```
-🚀 TidyGen Substrate Node
+🚀 Modulyn Substrate Node
 WebSocket: ws://127.0.0.1:9944
 HTTP RPC: http://127.0.0.1:9933
 ```
@@ -46,13 +46,13 @@ You're connected! 🎉
 
 ## 🔧 Custom Pallets Overview
 
-### TidyGen Ledger
+### Modulyn Ledger
 
 Create a ledger entry:
 
 ```javascript
 // In Polkadot.js Apps → Developer → Extrinsics
-api.tx.tidygenLedger.createLedgerEntry(
+api.tx.ModulynLedger.createLedgerEntry(
   "invoice",           // transaction_type
   "0x1234...",        // data_hash (32 bytes)
   1000000             // amount (optional)
@@ -63,29 +63,29 @@ Query ledger entries:
 
 ```javascript
 // In Polkadot.js Apps → Developer → Chain State
-api.query.tidygenLedger.ledgerEntries(0)  // entry_id
-api.query.tidygenLedger.entryCount()
+api.query.ModulynLedger.ledgerEntries(0)  // entry_id
+api.query.ModulynLedger.entryCount()
 ```
 
-### TidyGen DID
+### Modulyn DID
 
 Create a DID:
 
 ```javascript
 // Coming soon - DID pallet implementation
-api.tx.tidygenDid.createDid(
+api.tx.ModulynDid.createDid(
   "did:substrate:5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
   didDocument
 )
 ```
 
-### TidyGen DAO
+### Modulyn DAO
 
 Create a proposal:
 
 ```javascript
 // Coming soon - DAO pallet implementation
-api.tx.tidygenDao.createProposal(
+api.tx.ModulynDao.createProposal(
   "Approve Q4 Budget",
   proposalDetails,
   votingPeriod
@@ -116,7 +116,7 @@ keypair = Keypair.create_from_uri('//Alice')
 
 # Create ledger entry
 call = substrate.compose_call(
-    call_module='TidygenLedger',
+    call_module='ModulynLedger',
     call_function='create_ledger_entry',
     call_params={
         'transaction_type': 'invoice',
@@ -151,7 +151,7 @@ make test-verbose
 
 ### 1. Make Changes to Pallet
 
-Edit `pallets/tidygen-ledger/src/lib.rs`
+Edit `pallets/Modulyn-ledger/src/lib.rs`
 
 ### 2. Check Compilation
 
@@ -162,7 +162,7 @@ make check
 ### 3. Run Tests
 
 ```bash
-cargo test -p pallet-tidygen-ledger
+cargo test -p pallet-Modulyn-ledger
 ```
 
 ### 4. Rebuild
@@ -221,7 +221,7 @@ make run
 
 ### Can't Connect from Polkadot.js
 
-- Check node is running: `ps aux | grep tidygen-node`
+- Check node is running: `ps aux | grep Modulyn-node`
 - Verify WebSocket: `ws://127.0.0.1:9944`
 - Check firewall settings
 - Try `make run-debug` for detailed logs

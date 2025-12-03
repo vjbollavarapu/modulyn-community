@@ -1,8 +1,8 @@
-# TidyGen Substrate Pallets - Complete Overview
+# Modulyn Substrate Pallets - Complete Overview
 
 ## 🎉 **ALL 3 PALLETS COMPLETE!**
 
-A comprehensive set of Substrate pallets for TidyGen ERP system with full blockchain integration.
+A comprehensive set of Substrate pallets for Modulyn ERP system with full blockchain integration.
 
 ---
 
@@ -630,5 +630,5 @@ apps/substrate/
 
 ---
 
-*This complete set of Substrate pallets represents a production-ready blockchain foundation for the TidyGen ERP system and demonstrates world-class Substrate development for the Web3 Foundation grant application.*
+*This complete set of Substrate pallets represents a production-ready blockchain foundation for the Modulyn ERP system and demonstrates world-class Substrate development for the Web3 Foundation grant application.*
 

@@ -1,5 +1,5 @@
 """
-Freelancers and individual contractor models for TidyGen ERP Community Edition.
+Freelancers and individual contractor models for Modulyn ERP Community Edition.
 Handles domestic individual cleaners and gig-based service providers.
 """
 from django.db import models

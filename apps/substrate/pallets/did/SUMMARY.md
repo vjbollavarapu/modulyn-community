@@ -145,7 +145,7 @@ is_valid = did_service.verify_user_did(
 
 ### **1. W3C DID Compliance** ✨
 - Follows W3C DID Core specification
-- DID identifier format: `did:substrate:tidygen:{hash}`
+- DID identifier format: `did:substrate:Modulyn:{hash}`
 - Verification methods (public keys)
 - Service endpoints via metadata
 
@@ -394,5 +394,5 @@ Will be committed as: `feat: add complete DID pallet with RPC and Django integra
 
 ---
 
-*This DID pallet is ready for immediate use in the TidyGen ERP system and demonstrates advanced Substrate development capabilities for the W3F grant application.*
+*This DID pallet is ready for immediate use in the Modulyn ERP system and demonstrates advanced Substrate development capabilities for the W3F grant application.*
 

@@ -1,8 +1,8 @@
 # Changelog, Rationale and How‑To Guide
-A clear, developer-friendly explanation of the modifications and recommendations made for the TidyGen repository, why they were made, and how to use / verify them.
+A clear, developer-friendly explanation of the modifications and recommendations made for the Modulyn repository, why they were made, and how to use / verify them.
 
 Last updated: 2025-10-26 by Vijay (assistant)
-Repo: vjbollavarapu/tidygen
+Repo: vjbollavarapu/Modulyn
 
 ---
 

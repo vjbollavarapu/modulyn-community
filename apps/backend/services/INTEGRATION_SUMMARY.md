@@ -38,9 +38,9 @@ pip install substrate-interface
 ```python
 class SubstrateClient:
     # ✅ Required methods
-    - record_invoice(user_id, hash) → TidygenLedger.create_invoice
+    - record_invoice(user_id, hash) → ModulynLedger.create_invoice
     - get_invoices(user_id) → query chain storage
-    - register_did(user_id, pub_key) → TidygenDid.register_did
+    - register_did(user_id, pub_key) → ModulynDid.register_did
     
     # ✅ BONUS methods
     - get_did() → RPC query for DID
@@ -347,5 +347,5 @@ Beyond requirements:
 
 ---
 
-*This Django-Substrate integration is complete and ready for production use in the TidyGen ERP system!*
+*This Django-Substrate integration is complete and ready for production use in the Modulyn ERP system!*
 

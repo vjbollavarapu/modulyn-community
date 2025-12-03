@@ -9,11 +9,11 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
 /**
- * @title TidyGenToken
- * @dev ERC20 token for TidyGen ERP ecosystem with governance capabilities
- * @notice This token is used for governance, rewards, and payments within the TidyGen ecosystem
+ * @title ModulynToken
+ * @dev ERC20 token for Modulyn ERP ecosystem with governance capabilities
+ * @notice This token is used for governance, rewards, and payments within the Modulyn ecosystem
  */
-contract TidyGenToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ReentrancyGuard, ERC20Votes {
+contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ReentrancyGuard, ERC20Votes {
     
     // ==================== STATE VARIABLES ====================
     
@@ -54,7 +54,7 @@ contract TidyGenToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
     
     // ==================== CONSTRUCTOR ====================
     
-    constructor() ERC20("TidyGen Token", "TGT") ERC20Permit("TidyGen Token") Ownable(msg.sender) {
+    constructor() ERC20("Modulyn Token", "TGT") ERC20Permit("Modulyn Token") Ownable(msg.sender) {
         // Mint initial supply
         _mint(msg.sender, INITIAL_SUPPLY);
         

@@ -1,4 +1,4 @@
-# Multi-stage build for TidyGen Frontend
+# Multi-stage build for Modulyn Frontend
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed

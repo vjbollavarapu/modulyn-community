@@ -2,11 +2,11 @@
 pragma solidity ^0.8.19;
 
 /**
- * @title TidyGenLedger
+ * @title ModulynLedger
  * @dev Smart contract for logging financial transactions to blockchain
- * @author TidyGen ERP Team
+ * @author Modulyn ERP Team
  * @notice This contract provides tamper-proof logging of financial transactions
- *         from the TidyGen ERP system to the blockchain for audit trails.
+ *         from the Modulyn ERP system to the blockchain for audit trails.
  */
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract TidyGenLedger is Ownable, ReentrancyGuard, Pausable {
+contract ModulynLedger is Ownable, ReentrancyGuard, Pausable {
     using Counters for Counters.Counter;
     
     // ============ STRUCTS ============

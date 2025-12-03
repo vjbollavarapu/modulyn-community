@@ -1,5 +1,5 @@
 """
-Custom filters for TidyGen ERP platform.
+Custom filters for Modulyn ERP platform.
 """
 
 import django_filters

@@ -1,9 +1,9 @@
 [project]
-name = "tidygen-py-sdk"
+name = "Modulyn-py-sdk"
 version = "0.1.0"
-description = "Minimal Python SDK for interacting with TidyGen ink! contract"
+description = "Minimal Python SDK for interacting with Modulyn ink! contract"
 authors = [
-  { name="TidyGen Community", email="team@tidygen-erp.com" }
+  { name="Modulyn Community", email="team@Modulyn-erp.com" }
 ]
 requires-python = ">=3.10"
 

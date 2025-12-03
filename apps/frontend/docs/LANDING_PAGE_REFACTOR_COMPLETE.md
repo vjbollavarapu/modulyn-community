@@ -2,7 +2,7 @@
 
 ## ✅ **Refactoring Summary**
 
-I have successfully refactored the landing page to focus exclusively on the **Commercial Edition** as a modern Multi-Tenant ERP SaaS platform. All Community Edition references have been removed and the site now positions TidyGen as an enterprise-grade solution.
+I have successfully refactored the landing page to focus exclusively on the **Commercial Edition** as a modern Multi-Tenant ERP SaaS platform. All Community Edition references have been removed and the site now positions Modulyn as an enterprise-grade solution.
 
 ---
 
@@ -158,7 +158,7 @@ I have successfully refactored the landing page to focus exclusively on the **Co
 
 ### **Footer Link Added**:
 ```html
-<a href="https://github.com/tidygen/tidygen-community">
+<a href="https://github.com/Modulyn/Modulyn-community">
   Prefer self-hosted open source? Visit our Community Edition
 </a>
 ```
@@ -172,7 +172,7 @@ I have successfully refactored the landing page to focus exclusively on the **Co
 
 ## 🎉 **Result**
 
-The landing page now presents TidyGen as a **professional, enterprise-grade Multi-Tenant ERP SaaS platform** that:
+The landing page now presents Modulyn as a **professional, enterprise-grade Multi-Tenant ERP SaaS platform** that:
 
 1. **Targets Enterprises**: Large businesses, dealers, and resellers
 2. **Emphasizes Scale**: Multi-tenant architecture and unlimited scalability

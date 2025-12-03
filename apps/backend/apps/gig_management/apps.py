@@ -1,5 +1,5 @@
 """
-Gig Management app configuration for TidyGen ERP Community Edition.
+Gig Management app configuration for Modulyn ERP Community Edition.
 Handles job posting, assignment, and tracking for freelancers.
 """
 from django.apps import AppConfig

@@ -1,7 +1,7 @@
 {
-  "name": "tidygen-smart-contracts",
+  "name": "Modulyn-smart-contracts",
   "version": "1.0.0",
-  "description": "Smart contracts for TidyGen ERP Web3 integration",
+  "description": "Smart contracts for Modulyn ERP Web3 integration",
   "main": "index.js",
   "scripts": {
     "compile": "hardhat compile",
@@ -28,7 +28,7 @@
     "dao",
     "governance"
   ],
-  "author": "TidyGen Team",
+  "author": "Modulyn Team",
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

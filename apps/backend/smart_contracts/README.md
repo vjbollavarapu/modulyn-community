@@ -1,19 +1,19 @@
-# TidyGen Smart Contracts
+# Modulyn Smart Contracts
 
-This directory contains the smart contracts for TidyGen ERP's Web3 integration, located within the backend monorepo structure.
+This directory contains the smart contracts for Modulyn ERP's Web3 integration, located within the backend monorepo structure.
 
 ## 📁 **Directory Structure**
 
 ```
 apps/backend/smart_contracts/
 ├── contracts/           # Solidity smart contracts
-│   ├── TidyGenERP.sol   # Main ERP contract
-│   ├── TidyGenToken.sol # Governance token
-│   └── TidyGenDAO.sol   # DAO governance
+│   ├── ModulynERP.sol   # Main ERP contract
+│   ├── ModulynToken.sol # Governance token
+│   └── ModulynDAO.sol   # DAO governance
 ├── scripts/             # Deployment scripts
 │   └── deploy.js        # Main deployment script
 ├── test/                # Test files
-│   └── TidyGenERP.test.js
+│   └── ModulynERP.test.js
 ├── hardhat.config.js    # Hardhat configuration
 ├── package.json         # Node.js dependencies
 └── README.md           # This file
@@ -70,18 +70,18 @@ The smart contracts are integrated with the Django backend through:
 After deployment, update the contract addresses in your backend environment:
 
 ```env
-TIDYGEN_ERP_CONTRACT_ADDRESS=0x...
-TIDYGEN_TOKEN_CONTRACT_ADDRESS=0x...
-TIDYGEN_DAO_CONTRACT_ADDRESS=0x...
+Modulyn_ERP_CONTRACT_ADDRESS=0x...
+Modulyn_TOKEN_CONTRACT_ADDRESS=0x...
+Modulyn_DAO_CONTRACT_ADDRESS=0x...
 ```
 
 ## 📊 **Contract Overview**
 
 | Contract | Purpose | Features |
 |----------|---------|----------|
-| **TidyGenERP** | Main ERP contract | Invoice management, payment processing, data anchoring |
-| **TidyGenToken** | Governance token | ERC20 with staking, vesting, rewards |
-| **TidyGenDAO** | Decentralized governance | Proposals, voting, treasury management |
+| **ModulynERP** | Main ERP contract | Invoice management, payment processing, data anchoring |
+| **ModulynToken** | Governance token | ERC20 with staking, vesting, rewards |
+| **ModulynDAO** | Decentralized governance | Proposals, voting, treasury management |
 
 ## 🌐 **Network Support**
 
@@ -115,4 +115,4 @@ TIDYGEN_DAO_CONTRACT_ADDRESS=0x...
 
 ---
 
-**Note**: This directory is part of the TidyGen ERP monorepo. The smart contracts are integrated with the Django backend for complete Web3 functionality.
+**Note**: This directory is part of the Modulyn ERP monorepo. The smart contracts are integrated with the Django backend for complete Web3 functionality.

@@ -1,12 +1,12 @@
 [package]
-name = "pallet-tidygen-ledger"
+name = "pallet-Modulyn-ledger"
 version = "1.0.0"
 authors.workspace = true
 edition.workspace = true
 license.workspace = true
 homepage.workspace = true
 repository.workspace = true
-description = "TidyGen Ledger Pallet - ERP invoice and transaction ledger on-chain"
+description = "Modulyn Ledger Pallet - ERP invoice and transaction ledger on-chain"
 
 [package.metadata.docs.rs]
 targets = ["x86_64-unknown-linux-gnu"]

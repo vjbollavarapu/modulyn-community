@@ -1,5 +1,5 @@
 """
-Signals for automated client management operations in TidyGen ERP platform.
+Signals for automated client management operations in Modulyn ERP platform.
 """
 from django.db.models.signals import post_save, pre_save, post_delete
 from django.dispatch import receiver

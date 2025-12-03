@@ -12,7 +12,7 @@ fi
 
 TAG="$1"
 OWNER="${2:-vcsmy}"
-REPO="${3:-tidygen}"
+REPO="${3:-Modulyn}"
 API="https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${TAG}"
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN:-}"
 

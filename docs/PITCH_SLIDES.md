@@ -1,7 +1,7 @@
-PITCH DECK (6 slides) — TidyGen Substrate POC
+PITCH DECK (6 slides) — Modulyn Substrate POC
 
 Slide 1 — Title
-- TidyGen: Web3-enabled Service Verification
+- Modulyn: Web3-enabled Service Verification
 - Vijay B. (solo maintainer) • GitHub: @vjbollavarapu
 - One-line pitch: On-chain service verification + escrow primitives for field services on Polkadot/Kusama.
 

@@ -31,14 +31,14 @@ bash scripts/quickstart.sh --headless
 
 ### 4. Show Contract Address [2:30]
 ```bash
-echo "Contract Address: $(cat /tmp/tidygen_contract_address.txt)"
+echo "Contract Address: $(cat /tmp/Modulyn_contract_address.txt)"
 # Copy address to clipboard
 ```
 
 ### 5. Submit Service Record [2:45]
 ```bash
 cd apps/backend
-CONTRACT_ADDR=$(cat /tmp/tidygen_contract_address.txt)
+CONTRACT_ADDR=$(cat /tmp/Modulyn_contract_address.txt)
 python manage.py demo_submit --contract $CONTRACT_ADDR --service-id 1 --payload "Cleaning service completed for Office Building A"
 # Copy transaction hash from output
 ```

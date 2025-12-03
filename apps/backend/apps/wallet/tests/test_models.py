@@ -119,7 +119,7 @@ class WalletModelTest(TestCase):
         
         message, nonce, timestamp = wallet.generate_verification_message()
         
-        self.assertIn('TidyGen ERP Wallet Verification', message)
+        self.assertIn('Modulyn ERP Wallet Verification', message)
         self.assertIn(wallet.address, message)
         self.assertIn(nonce, message)
         self.assertIn(str(timestamp), message)

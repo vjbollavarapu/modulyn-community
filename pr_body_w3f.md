@@ -1,4 +1,4 @@
-# TidyGen Substrate POC - Web3-Enabled Service Verification
+# Modulyn Substrate POC - Web3-Enabled Service Verification
 
 ## Overview
 
@@ -15,25 +15,25 @@ This application proposes a proof-of-concept implementation of Web3-enabled serv
 ## Quick Verification Checklist
 
 ### ✅ Code Review
-- [ ] **Quickstart Demo**: [Run quickstart script](https://github.com/tidygen-community/tidygen-community#quick-start) with `bash scripts/quickstart.sh --headless`
+- [ ] **Quickstart Demo**: [Run quickstart script](https://github.com/Modulyn-community/Modulyn-community#quick-start) with `bash scripts/quickstart.sh --headless`
 - [ ] **Demo Video**: [Watch 3-minute demo](https://youtu.be/[VIDEO_ID]) showing complete workflow
 - [ ] **Transaction Hash**: Expected pattern `0x[0-9a-f]{64}` (e.g., `0x1234567890abcdef...`)
-- [ ] **CI Status**: [GitHub Actions](https://github.com/tidygen-community/tidygen-community/actions) - Unit tests passing
+- [ ] **CI Status**: [GitHub Actions](https://github.com/Modulyn-community/Modulyn-community/actions) - Unit tests passing
 - [ ] **Open Source**: All code will be MIT licensed and open-sourced upon approval
 
 ### 🔧 Technical Verification
 
 **1. Build and Deploy (2 minutes)**
 ```bash
-git clone https://github.com/tidygen-community/tidygen-community.git
-cd tidygen-community
+git clone https://github.com/Modulyn-community/Modulyn-community.git
+cd Modulyn-community
 bash scripts/quickstart.sh --headless
 ```
 
 **2. Submit Service Record**
 ```bash
 cd apps/backend
-CONTRACT_ADDR=$(cat /tmp/tidygen_contract_address.txt)
+CONTRACT_ADDR=$(cat /tmp/Modulyn_contract_address.txt)
 python manage.py demo_submit --contract $CONTRACT_ADDR --service-id 1 --payload "demo"
 ```
 
@@ -65,11 +65,11 @@ Data hash: a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
 
 ## Project Artifacts
 
-- **Smart Contract**: [`contracts/substrate-poc/`](https://github.com/tidygen-community/tidygen-community/tree/main/contracts/substrate-poc)
-- **Python Integration**: [`apps/backend/substrate_poc/`](https://github.com/tidygen-community/tidygen-community/tree/main/apps/backend/substrate_poc)
-- **Deployment Scripts**: [`scripts/quickstart.sh`](https://github.com/tidygen-community/tidygen-community/blob/main/scripts/quickstart.sh)
-- **Integration Tests**: [`tests/integration/test_substrate_poc_quickstart.py`](https://github.com/tidygen-community/tidygen-community/blob/main/tests/integration/test_substrate_poc_quickstart.py)
-- **CI/CD Pipeline**: [`.github/workflows/ci.yml`](https://github.com/tidygen-community/tidygen-community/blob/main/.github/workflows/ci.yml)
+- **Smart Contract**: [`contracts/substrate-poc/`](https://github.com/Modulyn-community/Modulyn-community/tree/main/contracts/substrate-poc)
+- **Python Integration**: [`apps/backend/substrate_poc/`](https://github.com/Modulyn-community/Modulyn-community/tree/main/apps/backend/substrate_poc)
+- **Deployment Scripts**: [`scripts/quickstart.sh`](https://github.com/Modulyn-community/Modulyn-community/blob/main/scripts/quickstart.sh)
+- **Integration Tests**: [`tests/integration/test_substrate_poc_quickstart.py`](https://github.com/Modulyn-community/Modulyn-community/blob/main/tests/integration/test_substrate_poc_quickstart.py)
+- **CI/CD Pipeline**: [`.github/workflows/ci.yml`](https://github.com/Modulyn-community/Modulyn-community/blob/main/.github/workflows/ci.yml)
 
 ## Team
 
@@ -93,9 +93,9 @@ Data hash: a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
 
 ## Contact
 
-- **Email**: team@tidygen-erp.com
-- **GitHub**: [@tidygen-community](https://github.com/tidygen-community)
-- **Discord**: [TidyGen Community](https://discord.gg/tidygen)
+- **Email**: team@Modulyn-erp.com
+- **GitHub**: [@Modulyn-community](https://github.com/Modulyn-community)
+- **Discord**: [Modulyn Community](https://discord.gg/Modulyn)
 
 ---
 

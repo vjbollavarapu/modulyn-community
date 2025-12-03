@@ -1,10 +1,10 @@
-# TidyGen Frontend - Environment Variables Setup Guide
+# Modulyn Frontend - Environment Variables Setup Guide
 
 ## 🚀 **Updated Vercel Configuration**
 
 ### **Backend API URL Updated**
-- **Before**: `https://tidygen-backend-api.vercel.app/api/$1`
-- **After**: `https://api.tidygen.com/api/$1`
+- **Before**: `https://Modulyn-backend-api.vercel.app/api/$1`
+- **After**: `https://api.Modulyn.com/api/$1`
 - **Reason**: Matches the backend production configuration in `apps/backend/backend/settings/production.py`
 
 ### **Comprehensive Environment Variables Added**
@@ -14,8 +14,8 @@ The `vercel.json` now includes all necessary environment variables for productio
 ```json
 {
   "env": {
-    "VITE_API_BASE_URL": "https://api.tidygen.com/api/v1",
-    "VITE_APP_NAME": "TidyGen ERP",
+    "VITE_API_BASE_URL": "https://api.Modulyn.com/api/v1",
+    "VITE_APP_NAME": "Modulyn ERP",
     "VITE_APP_VERSION": "1.0.0",
     "VITE_APP_ENVIRONMENT": "production",
     "VITE_ENABLE_ANALYTICS": "true",
@@ -24,8 +24,8 @@ The `vercel.json` now includes all necessary environment variables for productio
     "VITE_DEBUG_API_CALLS": "false",
     "VITE_MOCK_API_RESPONSES": "false",
     "VITE_API_TIMEOUT": "10000",
-    "VITE_JWT_STORAGE_KEY": "tidygen_access_token",
-    "VITE_REFRESH_TOKEN_KEY": "tidygen_refresh_token",
+    "VITE_JWT_STORAGE_KEY": "Modulyn_access_token",
+    "VITE_REFRESH_TOKEN_KEY": "Modulyn_refresh_token",
     "VITE_WEB3_PROVIDER_URL": "https://mainnet.infura.io/v3/YOUR_INFURA_KEY",
     "VITE_WEB3_CHAIN_ID": "1",
     "VITE_STRIPE_PUBLISHABLE_KEY": "pk_live_YOUR_LIVE_STRIPE_KEY",
@@ -42,7 +42,7 @@ The `vercel.json` now includes all necessary environment variables for productio
 
 ### **1. API Configuration**
 ```bash
-VITE_API_BASE_URL=https://api.tidygen.com/api/v1
+VITE_API_BASE_URL=https://api.Modulyn.com/api/v1
 VITE_API_TIMEOUT=10000
 VITE_DEBUG_API_CALLS=false
 VITE_MOCK_API_RESPONSES=false
@@ -50,15 +50,15 @@ VITE_MOCK_API_RESPONSES=false
 
 ### **2. Application Configuration**
 ```bash
-VITE_APP_NAME=TidyGen ERP
+VITE_APP_NAME=Modulyn ERP
 VITE_APP_VERSION=1.0.0
 VITE_APP_ENVIRONMENT=production
 ```
 
 ### **3. Authentication**
 ```bash
-VITE_JWT_STORAGE_KEY=tidygen_access_token
-VITE_REFRESH_TOKEN_KEY=tidygen_refresh_token
+VITE_JWT_STORAGE_KEY=Modulyn_access_token
+VITE_REFRESH_TOKEN_KEY=Modulyn_refresh_token
 ```
 
 ### **4. Feature Flags**
@@ -99,7 +99,7 @@ VITE_POLKASCAN_API_KEY=YOUR_POLKASCAN_API_KEY
 ### **Production Environment**
 ```bash
 # API Configuration
-VITE_API_BASE_URL=https://api.tidygen.com/api/v1
+VITE_API_BASE_URL=https://api.Modulyn.com/api/v1
 VITE_APP_ENVIRONMENT=production
 VITE_ENABLE_ANALYTICS=true
 VITE_ENABLE_DEBUG_MODE=false
@@ -116,7 +116,7 @@ VITE_WEB3_CHAIN_ID=1
 ### **Staging Environment**
 ```bash
 # API Configuration
-VITE_API_BASE_URL=https://api-staging.tidygen.com/api/v1
+VITE_API_BASE_URL=https://api-staging.Modulyn.com/api/v1
 VITE_APP_ENVIRONMENT=staging
 VITE_ENABLE_ANALYTICS=false
 VITE_ENABLE_DEBUG_MODE=true
@@ -181,14 +181,14 @@ VITE_WEB3_CHAIN_ID=1337
 ### **1. Set Environment Variables in Vercel Dashboard**
 
 1. Go to your Vercel dashboard
-2. Select your TidyGen frontend project
+2. Select your Modulyn frontend project
 3. Go to **Settings** → **Environment Variables**
 4. Add each environment variable for the appropriate environments:
 
 #### **Production Environment Variables**
 ```
-VITE_API_BASE_URL=https://api.tidygen.com/api/v1
-VITE_APP_NAME=TidyGen ERP
+VITE_API_BASE_URL=https://api.Modulyn.com/api/v1
+VITE_APP_NAME=Modulyn ERP
 VITE_APP_VERSION=1.0.0
 VITE_APP_ENVIRONMENT=production
 VITE_ENABLE_ANALYTICS=true
@@ -197,8 +197,8 @@ VITE_ENABLE_DEBUG_MODE=false
 VITE_DEBUG_API_CALLS=false
 VITE_MOCK_API_RESPONSES=false
 VITE_API_TIMEOUT=10000
-VITE_JWT_STORAGE_KEY=tidygen_access_token
-VITE_REFRESH_TOKEN_KEY=tidygen_refresh_token
+VITE_JWT_STORAGE_KEY=Modulyn_access_token
+VITE_REFRESH_TOKEN_KEY=Modulyn_refresh_token
 VITE_WEB3_PROVIDER_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY
 VITE_WEB3_CHAIN_ID=1
 VITE_STRIPE_PUBLISHABLE_KEY=pk_live_YOUR_LIVE_STRIPE_KEY
@@ -211,8 +211,8 @@ VITE_POLKASCAN_API_KEY=YOUR_POLKASCAN_API_KEY
 
 #### **Preview Environment Variables**
 ```
-VITE_API_BASE_URL=https://api-staging.tidygen.com/api/v1
-VITE_APP_NAME=TidyGen ERP (Staging)
+VITE_API_BASE_URL=https://api-staging.Modulyn.com/api/v1
+VITE_APP_NAME=Modulyn ERP (Staging)
 VITE_APP_VERSION=1.0.0
 VITE_APP_ENVIRONMENT=staging
 VITE_ENABLE_ANALYTICS=false
@@ -221,8 +221,8 @@ VITE_ENABLE_DEBUG_MODE=true
 VITE_DEBUG_API_CALLS=true
 VITE_MOCK_API_RESPONSES=false
 VITE_API_TIMEOUT=10000
-VITE_JWT_STORAGE_KEY=tidygen_access_token
-VITE_REFRESH_TOKEN_KEY=tidygen_refresh_token
+VITE_JWT_STORAGE_KEY=Modulyn_access_token
+VITE_REFRESH_TOKEN_KEY=Modulyn_refresh_token
 VITE_WEB3_PROVIDER_URL=https://sepolia.infura.io/v3/YOUR_INFURA_KEY
 VITE_WEB3_CHAIN_ID=11155111
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_YOUR_TEST_STRIPE_KEY
@@ -256,7 +256,7 @@ npm run deploy
 ### **Common Issues**
 
 #### **API Calls Failing**
-- **Check**: Backend API URL is correct (`https://api.tidygen.com`)
+- **Check**: Backend API URL is correct (`https://api.Modulyn.com`)
 - **Verify**: Backend is deployed and accessible
 - **Ensure**: CORS is configured on backend for your frontend domain
 
@@ -317,7 +317,7 @@ This will provide additional logging and debugging information in the browser co
 
 1. **Set up API keys**: Get all required API keys and secrets
 2. **Configure Vercel**: Set environment variables in Vercel dashboard
-3. **Deploy backend**: Ensure backend is deployed to `api.tidygen.com`
+3. **Deploy backend**: Ensure backend is deployed to `api.Modulyn.com`
 4. **Test deployment**: Verify all functionality works
 5. **Monitor performance**: Set up monitoring and analytics
 6. **Update documentation**: Keep environment setup guide updated

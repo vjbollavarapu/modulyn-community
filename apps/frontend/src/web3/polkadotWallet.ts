@@ -9,7 +9,7 @@ import { web3Accounts, web3Enable, web3FromAddress } from '@polkadot/extension-d
 import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types';
 
 const WS_ENDPOINT = import.meta.env.VITE_WS_ENDPOINT || 'ws://127.0.0.1:9944';
-const APP_NAME = 'TidyGen ERP';
+const APP_NAME = 'Modulyn ERP';
 
 let apiInstance: ApiPromise | null = null;
 let connectedAccounts: InjectedAccountWithMeta[] = [];

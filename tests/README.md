@@ -1,6 +1,6 @@
-# TidyGen Community Tests
+# Modulyn Community Tests
 
-This directory contains all test files for the TidyGen Community project.
+This directory contains all test files for the Modulyn Community project.
 
 ## Directory Structure
 

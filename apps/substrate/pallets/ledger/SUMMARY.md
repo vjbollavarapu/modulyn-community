@@ -381,7 +381,7 @@ This pallet demonstrates:
 ## 🚀 **READY FOR**
 
 - ✅ Local development and testing
-- ✅ Integration with TidyGen Django backend
+- ✅ Integration with Modulyn Django backend
 - ✅ Runtime integration
 - ✅ Production deployment
 - ✅ W3F grant application inclusion
@@ -418,5 +418,5 @@ This pallet demonstrates:
 
 ---
 
-*This ERP Ledger pallet is ready for immediate use in the TidyGen ERP system and demonstrates advanced Substrate development capabilities for the W3F grant application.*
+*This ERP Ledger pallet is ready for immediate use in the Modulyn ERP system and demonstrates advanced Substrate development capabilities for the W3F grant application.*
 

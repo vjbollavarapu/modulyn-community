@@ -1,5 +1,5 @@
 """
-Custom permissions for TidyGen ERP platform.
+Custom permissions for Modulyn ERP platform.
 """
 
 from rest_framework import permissions

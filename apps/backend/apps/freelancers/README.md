@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Freelancers app is a **Community Edition exclusive** feature that enables individual domestic cleaners and contractors to register, manage their profiles, and receive gig assignments through the TidyGen ERP platform.
+The Freelancers app is a **Community Edition exclusive** feature that enables individual domestic cleaners and contractors to register, manage their profiles, and receive gig assignments through the Modulyn ERP platform.
 
 ## Features
 

@@ -1,5 +1,5 @@
 """
-Finance URL configuration for TidyGen ERP platform.
+Finance URL configuration for Modulyn ERP platform.
 """
 
 from django.urls import path, include

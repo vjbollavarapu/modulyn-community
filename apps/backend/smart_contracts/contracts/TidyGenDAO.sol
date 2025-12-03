@@ -5,14 +5,14 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "./TidyGenToken.sol";
+import "./ModulynToken.sol";
 
 /**
- * @title TidyGenDAO
- * @dev Decentralized Autonomous Organization for TidyGen ERP governance
+ * @title ModulynDAO
+ * @dev Decentralized Autonomous Organization for Modulyn ERP governance
  * @notice This contract handles community governance, treasury management, and proposal execution
  */
-contract TidyGenDAO is Ownable, ReentrancyGuard {
+contract ModulynDAO is Ownable, ReentrancyGuard {
     using ECDSA for bytes32;
 
     // ==================== STRUCTS ====================
@@ -72,7 +72,7 @@ contract TidyGenDAO is Ownable, ReentrancyGuard {
 
     // ==================== STATE VARIABLES ====================
     
-    TidyGenToken public immutable token;
+    ModulynToken public immutable token;
     
     uint256 public constant VOTING_DELAY = 1 days;        // 1 day delay before voting starts
     uint256 public constant VOTING_PERIOD = 3 days;       // 3 days voting period
@@ -140,7 +140,7 @@ contract TidyGenDAO is Ownable, ReentrancyGuard {
     // ==================== CONSTRUCTOR ====================
     
     constructor(address _token) Ownable(msg.sender) {
-        token = TidyGenToken(_token);
+        token = ModulynToken(_token);
     }
 
     // ==================== PROPOSAL FUNCTIONS ====================

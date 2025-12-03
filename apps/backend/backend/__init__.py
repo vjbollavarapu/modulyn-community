@@ -1,1 +1,1 @@
-# TidyGen ERP Platform
+# Modulyn ERP Platform

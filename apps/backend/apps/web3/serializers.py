@@ -427,7 +427,7 @@ class DIDCreateSerializer(serializers.ModelSerializer):
             did_identifier = f"did:key:{hashlib.sha256(f'{user.id}'.encode()).hexdigest()[:32]}"
         else:
             # Default to web DID
-            did_identifier = f"did:web:tidygen.com:{user.username}"
+            did_identifier = f"did:web:Modulyn.com:{user.username}"
         
         validated_data['user'] = user
         validated_data['did_identifier'] = did_identifier

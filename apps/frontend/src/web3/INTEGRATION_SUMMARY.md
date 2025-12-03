@@ -2,7 +2,7 @@
 
 ## ✅ **COMPLETE IMPLEMENTATION**
 
-A comprehensive React/TypeScript frontend integration with TidyGen Substrate blockchain using Polkadot.js.
+A comprehensive React/TypeScript frontend integration with Modulyn Substrate blockchain using Polkadot.js.
 
 ---
 

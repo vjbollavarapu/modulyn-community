@@ -1,7 +1,7 @@
 [package]
 name = "service-verification-escrow"
 version = "0.1.0"
-authors = ["TidyGen Community"]
+authors = ["Modulyn Community"]
 edition = "2021"
 
 [dependencies]

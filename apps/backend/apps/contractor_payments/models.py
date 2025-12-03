@@ -1,5 +1,5 @@
 """
-Contractor Payments models for TidyGen ERP Community Edition.
+Contractor Payments models for Modulyn ERP Community Edition.
 Handles payment processing, escrow, and Web3 payments for individual contractors.
 """
 from django.db import models

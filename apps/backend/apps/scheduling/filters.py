@@ -1,5 +1,5 @@
 """
-Comprehensive scheduling management filters for TidyGen ERP platform.
+Comprehensive scheduling management filters for Modulyn ERP platform.
 """
 import django_filters
 from django.db.models import Q

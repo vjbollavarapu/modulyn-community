@@ -1,6 +1,6 @@
 # Comprehensive Demo Data Seeding
 
-This document describes the `seed_comprehensive_demo.py` management command that creates extensive demo data for all portals and modules in the TidyGen ERP Community Edition.
+This document describes the `seed_comprehensive_demo.py` management command that creates extensive demo data for all portals and modules in the Modulyn ERP Community Edition.
 
 ## Overview
 
@@ -43,15 +43,15 @@ python manage.py seed_comprehensive_demo --organization "My Demo Company"
 ### Command Options
 
 - `--clear`: Remove existing data before seeding (keeps superusers)
-- `--organization`: Set custom organization name (default: "TidyGen Community Demo")
+- `--organization`: Set custom organization name (default: "Modulyn Community Demo")
 
 ## Demo Data Created
 
 ### Users & Authentication
-- **Admin User**: `admin@tidygen.com` / `admin123`
-- **Manager User**: `manager@tidygen.com` / `manager123`
-- **10 Freelancer Users**: `freelancer1-10@tidygen.com` / `freelancer123`
-- **5 Client Users**: `client1-5@tidygen.com` / `client123`
+- **Admin User**: `admin@Modulyn.com` / `admin123`
+- **Manager User**: `manager@Modulyn.com` / `manager123`
+- **10 Freelancer Users**: `freelancer1-10@Modulyn.com` / `freelancer123`
+- **5 Client Users**: `client1-5@Modulyn.com` / `client123`
 
 ### Business Data Quantities
 - **Freelancers**: 10 complete profiles with skills and availability

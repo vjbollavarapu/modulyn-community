@@ -1,5 +1,5 @@
 """
-Gig Management models for TidyGen ERP Community Edition.
+Gig Management models for Modulyn ERP Community Edition.
 Handles job posting, assignment, and tracking for individual contractors.
 """
 from django.db import models

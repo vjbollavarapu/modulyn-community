@@ -1,6 +1,6 @@
 # Apps Directory
 
-This directory contains all application code for the TidyGen ERP platform, organized by technology stack and responsibility.
+This directory contains all application code for the Modulyn ERP platform, organized by technology stack and responsibility.
 
 ## 📁 Structure
 

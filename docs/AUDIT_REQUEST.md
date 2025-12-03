@@ -1,11 +1,11 @@
 ```markdown
-# Audit Request: TidyGen — Service Verification & Escrow Contracts
+# Audit Request: Modulyn — Service Verification & Escrow Contracts
 
 Purpose
-- Request a focused security review of the escrow/dispute contract and build/deployment scripts used in the TidyGen Substrate POC.
+- Request a focused security review of the escrow/dispute contract and build/deployment scripts used in the Modulyn Substrate POC.
 
 Repository
-- https://github.com/vcsmy/tidygen (branch: dev)
+- https://github.com/vcsmy/Modulyn (branch: dev)
 
 Scope (high priority)
 1. contracts/escrow-sla/lib.rs
@@ -29,7 +29,7 @@ Deliverables requested
 - Confirmation of test vectors executed and result.
 
 Contact & access
-- Maintainer: Vijay B. (vijay@tidygen-erp.com)
+- Maintainer: Vijay B. (vijay@Modulyn-erp.com)
 - Quickstart: `bash scripts/quickstart.sh --no-build` (needs release artifacts in contracts/*/target/ink or run CI to build).
 - Note: All contracts are on test/dev network; do not use real funds.
 

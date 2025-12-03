@@ -244,7 +244,7 @@ const DIDAuth: React.FC<DIDAuthProps> = ({ onAuthSuccess, onAuthError }) => {
   const generateRandomMessage = () => {
     const timestamp = Date.now();
     const randomString = Math.random().toString(36).substring(7);
-    const message = `TidyGen DID Authentication\nTimestamp: ${timestamp}\nNonce: ${randomString}`;
+    const message = `Modulyn DID Authentication\nTimestamp: ${timestamp}\nNonce: ${randomString}`;
     setMessage(message);
   };
 

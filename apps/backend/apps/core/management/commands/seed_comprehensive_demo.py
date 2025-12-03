@@ -1,5 +1,5 @@
 """
-Comprehensive seed data management command for TidyGen ERP Community Demo.
+Comprehensive seed data management command for Modulyn ERP Community Demo.
 Creates extensive sample data for all portals and modules to showcase the application.
 """
 
@@ -86,7 +86,7 @@ class Command(BaseCommand):
         parser.add_argument(
             '--organization',
             type=str,
-            default='TidyGen Community Demo',
+            default='Modulyn Community Demo',
             help='Organization name for the demo',
         )
 
@@ -129,8 +129,8 @@ class Command(BaseCommand):
             self.style.SUCCESS('Successfully seeded database with comprehensive demo data!')
         )
         self.stdout.write(f'Admin user: admin / admin123')
-        self.stdout.write(f'Manager user: manager@tidygen.com / manager123')
-        self.stdout.write(f'Freelancer users: freelancer1-5@tidygen.com / freelancer123')
+        self.stdout.write(f'Manager user: manager@Modulyn.com / manager123')
+        self.stdout.write(f'Freelancer users: freelancer1-5@Modulyn.com / freelancer123')
         self.stdout.write(f'Organization: {organization.name}')
 
     def clear_data(self):
@@ -184,9 +184,9 @@ class Command(BaseCommand):
                 'description': f'{org_name} - Comprehensive ERP Demo Platform',
                 'industry': 'Cleaning Services',
                 'size': '1000+',
-                'website': 'https://tidygen.com',
+                'website': 'https://Modulyn.com',
                 'phone': '+1-555-0123',
-                'email': 'demo@tidygen.com',
+                'email': 'demo@Modulyn.com',
                 'address_line1': '456 Demo Street',
                 'city': 'San Francisco',
                 'state': 'CA',
@@ -252,7 +252,7 @@ class Command(BaseCommand):
         admin_user, created = User.objects.get_or_create(
             username='admin',
             defaults={
-                'email': 'admin@tidygen.com',
+                'email': 'admin@Modulyn.com',
                 'first_name': 'System',
                 'last_name': 'Administrator',
                 'is_staff': True,
@@ -269,7 +269,7 @@ class Command(BaseCommand):
         manager_user, created = User.objects.get_or_create(
             username='manager',
             defaults={
-                'email': 'manager@tidygen.com',
+                'email': 'manager@Modulyn.com',
                 'first_name': 'Demo',
                 'last_name': 'Manager',
                 'is_staff': True,
@@ -286,7 +286,7 @@ class Command(BaseCommand):
             freelancer_user, created = User.objects.get_or_create(
                 username=f'freelancer{i}',
                 defaults={
-                    'email': f'freelancer{i}@tidygen.com',
+                    'email': f'freelancer{i}@Modulyn.com',
                     'first_name': f'Freelancer{i}',
                     'last_name': 'Cleaner',
                     'is_active': True,
@@ -302,7 +302,7 @@ class Command(BaseCommand):
             client_user, created = User.objects.get_or_create(
                 username=f'client{i}',
                 defaults={
-                    'email': f'client{i}@tidygen.com',
+                    'email': f'client{i}@Modulyn.com',
                     'first_name': f'Client{i}',
                     'last_name': 'Customer',
                     'is_active': True,
@@ -456,10 +456,10 @@ class Command(BaseCommand):
 
         # Sample employees - create users first, then employee profiles
         employees_data = [
-            ('John', 'Smith', 'john.smith@tidygen.com', 'Operations', 'Operations Manager'),
-            ('Jane', 'Doe', 'jane.doe@tidygen.com', 'HR', 'HR Manager'),
-            ('Mike', 'Johnson', 'mike.johnson@tidygen.com', 'Finance', 'Finance Manager'),
-            ('Sarah', 'Wilson', 'sarah.wilson@tidygen.com', 'Sales', 'Sales Director'),
+            ('John', 'Smith', 'john.smith@Modulyn.com', 'Operations', 'Operations Manager'),
+            ('Jane', 'Doe', 'jane.doe@Modulyn.com', 'HR', 'HR Manager'),
+            ('Mike', 'Johnson', 'mike.johnson@Modulyn.com', 'Finance', 'Finance Manager'),
+            ('Sarah', 'Wilson', 'sarah.wilson@Modulyn.com', 'Sales', 'Sales Director'),
         ]
         
         for first_name, last_name, email, dept_name, position_name in employees_data:
@@ -566,7 +566,7 @@ class Command(BaseCommand):
                     'last_name': 'Cleaner',
                     'date_of_birth': date.today() - timedelta(days=random.randint(7000, 12000)),
                     'gender': random.choice(['male', 'female']),
-                    'personal_email': f'freelancer{i}@tidygen.com',
+                    'personal_email': f'freelancer{i}@Modulyn.com',
                     'personal_phone': f'+1-555-{random.randint(1000, 9999)}',
                     'address_line1': f'{random.randint(100, 999)} Demo Street',
                     'city': 'San Francisco',
@@ -893,7 +893,7 @@ class Command(BaseCommand):
     def create_did_auth_data(self, organization, users_data):
         """Create DID authentication data."""
         for i, user in enumerate(list(users_data.values())[:3]):
-            did = f'did:tidygen:{uuid.uuid4()}'
+            did = f'did:Modulyn:{uuid.uuid4()}'
             DIDDocument.objects.get_or_create(
                 did=did,
                 defaults={

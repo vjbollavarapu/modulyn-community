@@ -100,7 +100,7 @@ class HashService:
         Returns:
             Formatted authentication message
         """
-        message = f"""TidyGen ERP Authentication
+        message = f"""Modulyn ERP Authentication
 
 Please sign this message to authenticate with your wallet.
 
@@ -129,7 +129,7 @@ This request will not trigger a blockchain transaction or cost any gas fees."""
         Returns:
             Formatted transaction message
         """
-        message = f"""TidyGen ERP Transaction Signing
+        message = f"""Modulyn ERP Transaction Signing
 
 Please sign this message to authorize the following transaction:
 
@@ -157,7 +157,7 @@ This request will not trigger a blockchain transaction or cost any gas fees."""
             True if message format is valid, False otherwise
         """
         required_headers = [
-            'TidyGen ERP',
+            'Modulyn ERP',
             'Please sign this message',
             'Nonce:',
             'Timestamp:'

@@ -1,6 +1,6 @@
 # Infrastructure Directory
 
-This directory contains all infrastructure-related configurations, deployment scripts, and environment-specific settings for the TidyGen ERP platform.
+This directory contains all infrastructure-related configurations, deployment scripts, and environment-specific settings for the Modulyn ERP platform.
 
 ## 📁 Structure
 
@@ -48,7 +48,7 @@ kubectl apply -f infra/k8s/ingress/
 ### Helm Charts
 ```bash
 # Install main application
-helm install tidygen-erp infra/k8s/helm/tidygen-erp/
+helm install Modulyn-erp infra/k8s/helm/Modulyn-erp/
 
 # Install monitoring stack
 helm install monitoring infra/k8s/helm/monitoring/

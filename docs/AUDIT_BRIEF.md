@@ -1,4 +1,4 @@
-# Audit Brief — TidyGen Service Verification + Escrow
+# Audit Brief — Modulyn Service Verification + Escrow
 
 Purpose
 - Provide an audit scope and quick-entry guide for a security reviewer (contract & integration focus).
@@ -53,8 +53,8 @@ Deliverables expected from auditor
   - Any suggestions for on-chain governance / multisig designs.
 
 Contact & access
-- Maintainer: Vijay B. — vijay@tidygen-erp.com
-- Repo: https://github.com/vjbollavarapu/tidygen
+- Maintainer: Vijay B. — vijay@Modulyn-erp.com
+- Repo: https://github.com/vjbollavarapu/Modulyn
 - Provide a reproducible quickstart link and sample tx hashes so auditor can focus.
 
 Notes for auditor

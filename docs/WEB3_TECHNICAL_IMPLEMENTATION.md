@@ -1,8 +1,8 @@
-# TidyGen ERP - Web3 Technical Implementation
+# Modulyn ERP - Web3 Technical Implementation
 
 ## 🎯 **Technical Overview**
 
-TidyGen ERP implements a comprehensive Web3 architecture that seamlessly integrates blockchain technology with traditional enterprise resource planning. This document provides detailed technical specifications for the Web3 implementation, demonstrating the system's advanced blockchain capabilities and technical innovation.
+Modulyn ERP implements a comprehensive Web3 architecture that seamlessly integrates blockchain technology with traditional enterprise resource planning. This document provides detailed technical specifications for the Web3 implementation, demonstrating the system's advanced blockchain capabilities and technical innovation.
 
 ---
 
@@ -87,8 +87,8 @@ graph TB
 
 #### **Smart Contract Infrastructure**
 ```solidity
-// TidyGenERP.sol - Core business logic contract
-contract TidyGenERP {
+// ModulynERP.sol - Core business logic contract
+contract ModulynERP {
     struct ServiceRecord {
         uint256 serviceId;
         address client;
@@ -213,7 +213,7 @@ class IPFSService:
 
 #### **Polkadot Parachain Development**
 ```rust
-// Substrate-based TidyGen parachain (planned)
+// Substrate-based Modulyn parachain (planned)
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
@@ -538,7 +538,7 @@ class IntegrityVerifier:
 
 #### **Substrate Runtime Development**
 ```rust
-// TidyGen Parachain Runtime (planned)
+// Modulyn Parachain Runtime (planned)
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
@@ -1004,4 +1004,4 @@ class Web3RBAC:
 
 ---
 
-This comprehensive Web3 technical implementation provides a robust foundation for the TidyGen ERP platform, enabling seamless integration of traditional ERP functionality with cutting-edge blockchain technology while maintaining security, scalability, and interoperability.
+This comprehensive Web3 technical implementation provides a robust foundation for the Modulyn ERP platform, enabling seamless integration of traditional ERP functionality with cutting-edge blockchain technology while maintaining security, scalability, and interoperability.

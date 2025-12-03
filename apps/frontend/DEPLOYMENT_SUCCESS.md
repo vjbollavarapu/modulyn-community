@@ -1,16 +1,16 @@
-# TidyGen Frontend - Vercel Deployment Success! 🎉
+# Modulyn Frontend - Vercel Deployment Success! 🎉
 
 ## ✅ **Deployment Status: SUCCESSFUL**
 
 ### **Production Deployment**
-- **URL**: https://tidygen-community.vercel.app
+- **URL**: https://Modulyn-community.vercel.app
 - **Status**: ✅ Ready
 - **Environment**: Production
 - **Build Time**: 19 seconds
 - **Deployment ID**: `dpl_G5xPGDCb5E7cznLq93ErNSnajV9z`
 
 ### **Preview Deployment**
-- **URL**: https://tidygen-community-pokasow84-vjbollavarapu-8ded34df.vercel.app
+- **URL**: https://Modulyn-community-pokasow84-vjbollavarapu-8ded34df.vercel.app
 - **Status**: ✅ Ready
 - **Environment**: Preview
 - **Build Time**: 19 seconds
@@ -18,13 +18,13 @@
 ## 🔗 **Available URLs**
 
 ### **Primary URLs**
-- **Production**: https://tidygen-community.vercel.app
-- **Custom Domain**: https://tidygen-community-vjbollavarapu-8ded34df.vercel.app
-- **Preview**: https://tidygen-community-pokasow84-vjbollavarapu-8ded34df.vercel.app
+- **Production**: https://Modulyn-community.vercel.app
+- **Custom Domain**: https://Modulyn-community-vjbollavarapu-8ded34df.vercel.app
+- **Preview**: https://Modulyn-community-pokasow84-vjbollavarapu-8ded34df.vercel.app
 
 ### **Vercel Dashboard**
-- **Project Dashboard**: https://vercel.com/vjbollavarapu-8ded34df/tidygen-community
-- **Latest Deployment**: https://vercel.com/vjbollavarapu-8ded34df/tidygen-community/G5xPGDCb5E7cznLq93ErNSnajV9z
+- **Project Dashboard**: https://vercel.com/vjbollavarapu-8ded34df/Modulyn-community
+- **Latest Deployment**: https://vercel.com/vjbollavarapu-8ded34df/Modulyn-community/G5xPGDCb5E7cznLq93ErNSnajV9z
 
 ## 🚀 **Deployment Configuration**
 
@@ -71,7 +71,7 @@ All environment variables from `vercel.json` have been applied:
 ```json
 {
   "source": "/api/(.*)",
-  "destination": "https://api.tidygen.com/api/$1"
+  "destination": "https://api.Modulyn.com/api/$1"
 }
 ```
 
@@ -122,7 +122,7 @@ All environment variables from `vercel.json` have been applied:
 
 ### **1. Test the Application**
 Visit the production URL and test all functionality:
-- https://tidygen-community.vercel.app
+- https://Modulyn-community.vercel.app
 
 ### **2. Set Up Custom Domain (Optional)**
 - Add your custom domain in Vercel dashboard
@@ -142,7 +142,7 @@ Replace placeholder values with actual API keys:
 - Monitor performance metrics
 
 ### **5. Backend Integration**
-- Deploy backend to `api.tidygen.com`
+- Deploy backend to `api.Modulyn.com`
 - Configure CORS for frontend domain
 - Test API connectivity
 
@@ -203,7 +203,7 @@ export default defineConfig({
 - Set up different values for staging/production
 
 ### **Backend Integration**
-- Backend must be deployed to `api.tidygen.com`
+- Backend must be deployed to `api.Modulyn.com`
 - CORS must be configured for frontend domain
 - API endpoints must match the rewrite rules
 
@@ -221,7 +221,7 @@ export default defineConfig({
 ✅ **Environment variables configured**  
 ✅ **Build optimization completed**  
 
-The TidyGen ERP frontend is now live and ready for testing! 🚀
+The Modulyn ERP frontend is now live and ready for testing! 🚀
 
 ---
 

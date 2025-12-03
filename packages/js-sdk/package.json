@@ -1,5 +1,5 @@
 {
-    "name": "tidygen-js-sdk",
+    "name": "Modulyn-js-sdk",
     "version": "0.1.0",
     "private": true,
     "main": "dist/index.js",

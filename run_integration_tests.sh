@@ -1,9 +1,9 @@
 #!/bin/bash
-# Integration test runner for TidyGen Community
+# Integration test runner for Modulyn Community
 
 set -e
 
-echo "🧪 Running TidyGen Integration Tests"
+echo "🧪 Running Modulyn Integration Tests"
 echo "===================================="
 
 # Check if pytest is available

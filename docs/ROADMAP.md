@@ -1,8 +1,8 @@
-# TidyGen ERP - Development Roadmap
+# Modulyn ERP - Development Roadmap
 
 ## 🎯 **Overview**
 
-This roadmap outlines the development milestones for TidyGen ERP over the next 12-18 months. The roadmap is structured to deliver a fully functional Web3-enabled ERP system that transforms the cleaning services industry through blockchain technology, smart contracts, and decentralized applications.
+This roadmap outlines the development milestones for Modulyn ERP over the next 12-18 months. The roadmap is structured to deliver a fully functional Web3-enabled ERP system that transforms the cleaning services industry through blockchain technology, smart contracts, and decentralized applications.
 
 ### **Strategic Objectives**
 - **Q1-Q2 2024**: Core platform development and Web3 integration
@@ -561,4 +561,4 @@ This roadmap outlines the development milestones for TidyGen ERP over the next 1
 
 ---
 
-This roadmap provides a comprehensive plan for developing TidyGen ERP into a world-class Web3-enabled platform that transforms the cleaning services industry. The milestones are designed to deliver incremental value while building toward a complete ecosystem that serves all stakeholders in the industry.
+This roadmap provides a comprehensive plan for developing Modulyn ERP into a world-class Web3-enabled platform that transforms the cleaning services industry. The milestones are designed to deliver incremental value while building toward a complete ecosystem that serves all stakeholders in the industry.

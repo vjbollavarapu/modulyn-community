@@ -1,4 +1,4 @@
-// Node demo for tidygen-js-sdk
+// Node demo for Modulyn-js-sdk
 const fs = require('fs');
 const path = require('path');
 const { createApi, contractInstance } = require('../dist');

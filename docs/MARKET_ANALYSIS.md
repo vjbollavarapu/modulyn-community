@@ -1,4 +1,4 @@
-# TidyGen ERP - Market Analysis (TAM, SAM, SOM)
+# Modulyn ERP - Market Analysis (TAM, SAM, SOM)
 
 ## 1. Introduction
 
@@ -20,7 +20,7 @@ Market sizing is crucial for Web3 grant applications and investor presentations 
 - **Attracts Investment**: Provides concrete numbers that investors and grant committees can evaluate
 - **Shows Ecosystem Impact**: Demonstrates how the project contributes to Web3 adoption and ecosystem growth
 
-For TidyGen ERP, market sizing validates our position as the first comprehensive Web3-enabled ERP system in the cleaning services industry, showing both the massive opportunity and our realistic path to market capture.
+For Modulyn ERP, market sizing validates our position as the first comprehensive Web3-enabled ERP system in the cleaning services industry, showing both the massive opportunity and our realistic path to market capture.
 
 ---
 
@@ -52,7 +52,7 @@ The **global cleaning services market** represents our Total Addressable Market,
 - **DeFi Integration**: $200+ billion in total value locked, growing enterprise adoption
 - **NFT Business Applications**: $25+ billion market for business use cases
 
-#### **TAM Calculation for TidyGen ERP**
+#### **TAM Calculation for Modulyn ERP**
 ```
 Global Cleaning Services Market: $400+ billion
 + Web3 Business Solutions Market: $11.7+ billion
@@ -60,7 +60,7 @@ Global Cleaning Services Market: $400+ billion
 = Total Addressable Market: $461.7+ billion
 ```
 
-**TAM = $461.7+ billion** - The total global market for cleaning services and Web3 business solutions that TidyGen ERP could theoretically serve.
+**TAM = $461.7+ billion** - The total global market for cleaning services and Web3 business solutions that Modulyn ERP could theoretically serve.
 
 ---
 
@@ -110,7 +110,7 @@ Mid-to-Large Cleaning Companies: $120 billion
 = Serviceable Available Market: $180 billion
 ```
 
-**SAM = $180+ billion** - The realistic market segment that TidyGen ERP can serve, focusing on technology-ready cleaning service companies globally.
+**SAM = $180+ billion** - The realistic market segment that Modulyn ERP can serve, focusing on technology-ready cleaning service companies globally.
 
 ---
 
@@ -118,7 +118,7 @@ Mid-to-Large Cleaning Companies: $120 billion
 
 ### **Realistic Market Capture (3-5 Years)**
 
-Our Serviceable Obtainable Market represents the realistic market share TidyGen ERP can capture within the SAM over the next 3-5 years, considering competitive landscape, adoption rates, and resource constraints.
+Our Serviceable Obtainable Market represents the realistic market share Modulyn ERP can capture within the SAM over the next 3-5 years, considering competitive landscape, adoption rates, and resource constraints.
 
 #### **Target Customer Segments**
 
@@ -183,7 +183,7 @@ Conservative SOM (5 years): $100M ARR
 Optimistic SOM (5 years): $200M ARR
 ```
 
-**SOM = $100M - $200M ARR** - The realistic market share TidyGen ERP can capture within 5 years, representing 0.1-0.2% of the SAM.
+**SOM = $100M - $200M ARR** - The realistic market share Modulyn ERP can capture within 5 years, representing 0.1-0.2% of the SAM.
 
 ---
 
@@ -326,7 +326,7 @@ graph TB
 
 ### **Market Opportunity Summary**
 
-The market sizing analysis for TidyGen ERP demonstrates both **ambitious potential** and **practical feasibility**:
+The market sizing analysis for Modulyn ERP demonstrates both **ambitious potential** and **practical feasibility**:
 
 #### **Ambitious Potential (TAM)**
 - **$461.7+ billion** total addressable market shows massive opportunity
@@ -342,7 +342,7 @@ The market sizing analysis for TidyGen ERP demonstrates both **ambitious potenti
 
 ### **Web3 Foundation Ecosystem Fit**
 
-TidyGen ERP aligns perfectly with Web3 Foundation's mission and ecosystem:
+Modulyn ERP aligns perfectly with Web3 Foundation's mission and ecosystem:
 
 #### **Technical Innovation**
 - **First comprehensive Web3 ERP** for cleaning services industry
@@ -382,7 +382,7 @@ Based on this market analysis, the recommended next steps are:
 4. **Scale Operations**: Prepare for rapid growth based on market opportunity
 5. **Ecosystem Development**: Build developer community and partner network
 
-The market sizing demonstrates that TidyGen ERP has the potential to become a **market-leading Web3 business application** while contributing significantly to the **Polkadot ecosystem** and **Web3 adoption** globally.
+The market sizing demonstrates that Modulyn ERP has the potential to become a **market-leading Web3 business application** while contributing significantly to the **Polkadot ecosystem** and **Web3 adoption** globally.
 
 ---
 

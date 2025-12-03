@@ -2,7 +2,7 @@
 Reviewer Quick Verification Checklist (Level 2)
 
 1) Clone & checkout
-- git clone https://github.com/vjbollavarapu/tidygen.git
+- git clone https://github.com/vjbollavarapu/Modulyn.git
 - git checkout feat/substrate-poc
 
 2) Quickstart (preferred)

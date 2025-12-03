@@ -1,5 +1,5 @@
 """
-Core URL configuration for TidyGen ERP platform.
+Core URL configuration for Modulyn ERP platform.
 """
 
 from django.urls import path, include

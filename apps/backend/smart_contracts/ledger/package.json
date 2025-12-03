@@ -1,7 +1,7 @@
 {
-  "name": "tidygen-ledger-smart-contracts",
+  "name": "Modulyn-ledger-smart-contracts",
   "version": "1.0.0",
-  "description": "Smart contracts for TidyGen ERP blockchain ledger functionality",
+  "description": "Smart contracts for Modulyn ERP blockchain ledger functionality",
   "main": "index.js",
   "scripts": {
     "compile": "hardhat compile",
@@ -31,7 +31,7 @@
     "lint": "solhint 'contracts/**/*.sol'",
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",
     "slither": "slither .",
-    "mythril": "myth analyze contracts/TidyGenLedger.sol",
+    "mythril": "myth analyze contracts/ModulynLedger.sol",
     "security": "npm run lint && npm run slither && npm run mythril"
   },
   "keywords": [
@@ -40,12 +40,12 @@
     "ethereum",
     "solidity",
     "hardhat",
-    "tidygen",
+    "Modulyn",
     "erp",
     "ledger",
     "audit-trail"
   ],
-  "author": "TidyGen ERP Team",
+  "author": "Modulyn ERP Team",
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
@@ -75,11 +75,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vcsmy/tidygen.git",
+    "url": "https://github.com/vcsmy/Modulyn.git",
     "directory": "apps/backend/smart_contracts/ledger"
   },
   "bugs": {
-    "url": "https://github.com/vcsmy/tidygen/issues"
+    "url": "https://github.com/vcsmy/Modulyn/issues"
   },
-  "homepage": "https://github.com/vcsmy/tidygen#readme"
+  "homepage": "https://github.com/vcsmy/Modulyn#readme"
 }

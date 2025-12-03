@@ -1,4 +1,4 @@
-# TidyGen ERP Team - Solo Developer Project
+# Modulyn ERP Team - Solo Developer Project
 
 ## 👨‍💻 Core Developer
 
@@ -15,7 +15,7 @@
 - **LinkedIn**: [Vijay Babu Bollavarapu](https://linkedin.com/in/bollavarapu)
 - **Education**: Computer Science Engineering
 - **Location**: India
-- **Commitment**: Full-time dedication to TidyGen ERP project
+- **Commitment**: Full-time dedication to Modulyn ERP project
 - **AI Assistance**: Leveraging modern AI tools for development efficiency
 
 ## 🤖 AI Development Assistance
@@ -127,7 +127,7 @@
 ## 🎯 Commitment to W3F Grant
 
 ### Project Commitment
-- **Full-Time Focus**: 100% dedication to TidyGen ERP development
+- **Full-Time Focus**: 100% dedication to Modulyn ERP development
 - **Milestone Delivery**: Commitment to delivering all milestones on time
 - **Quality Standards**: Maintaining high quality standards throughout development
 - **Open Source**: Full commitment to open source development
@@ -137,7 +137,7 @@
 - **Sustainability**: Building a sustainable and profitable business model
 - **Community Building**: Growing a strong community of users and contributors
 - **Innovation**: Continuing to innovate in Web3 and ERP integration
-- **Global Impact**: Making TidyGen ERP accessible to businesses worldwide
+- **Global Impact**: Making Modulyn ERP accessible to businesses worldwide
 - **AI Integration**: Pioneering AI-assisted Web3 development
 
 ### Grant Utilization
@@ -150,22 +150,22 @@
 ## 📞 Contact Information
 
 ### Project Lead
-- **Email**: vijay@tidygen-erp.com
+- **Email**: vijay@Modulyn-erp.com
 - **GitHub**: [@vijayababubollavarapu](https://github.com/vijayababubollavarapu)
 - **LinkedIn**: [Vijay Babu Bollavarapu](https://linkedin.com/in/vijayababubollavarapu)
-- **Twitter**: [@tidygen_erp](https://twitter.com/tidygen_erp)
+- **Twitter**: [@Modulyn_erp](https://twitter.com/Modulyn_erp)
 
 ### General Inquiries
-- **Email**: team@tidygen-erp.com
-- **Website**: https://tidygen-erp.com
-- **GitHub**: https://github.com/tidygen-community
-- **Discord**: [TidyGen Community](https://discord.gg/tidygen)
+- **Email**: team@Modulyn-erp.com
+- **Website**: https://Modulyn-erp.com
+- **GitHub**: https://github.com/Modulyn-community
+- **Discord**: [Modulyn Community](https://discord.gg/Modulyn)
 
 ---
 
 ## 🏆 Solo Developer Success Factors
 
-### Why Solo Development Works for TidyGen ERP
+### Why Solo Development Works for Modulyn ERP
 1. **Proven Track Record**: 95% of project already completed
 2. **AI Assistance**: Modern development approach with AI tools
 3. **Web3 Expertise**: Deep knowledge of blockchain and Web3
@@ -189,4 +189,4 @@
 **Team Size**: 1 Core Developer + AI Assistance  
 **Total Experience**: 8+ years in full-stack development, 4+ years in Web3  
 **Location**: India (Remote)  
-**Commitment**: Full-time dedication to TidyGen ERP project
+**Commitment**: Full-time dedication to Modulyn ERP project

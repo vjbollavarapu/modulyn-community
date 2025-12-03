@@ -382,5 +382,5 @@ This DAO pallet demonstrates:
 
 ---
 
-*This DAO pallet is ready for immediate use in the TidyGen ERP system for on-chain governance and demonstrates advanced Substrate development for the W3F grant application.*
+*This DAO pallet is ready for immediate use in the Modulyn ERP system for on-chain governance and demonstrates advanced Substrate development for the W3F grant application.*
 

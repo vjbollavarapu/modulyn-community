@@ -1,6 +1,6 @@
-# Contributing to TidyGen ERP
+# Contributing to Modulyn ERP
 
-Thank you for your interest in contributing to TidyGen ERP! This document provides guidelines and instructions for contributing to our Web3-enabled ERP platform.
+Thank you for your interest in contributing to Modulyn ERP! This document provides guidelines and instructions for contributing to our Web3-enabled ERP platform.
 
 ## 📋 Table of Contents
 
@@ -34,30 +34,30 @@ Before contributing, ensure you have:
 ### Fork and Clone Repository
 
 1. **Fork the repository** on GitHub:
-   - Go to [TidyGen ERP Repository](https://github.com/vcsmy/tidygen)
+   - Go to [Modulyn ERP Repository](https://github.com/vcsmy/Modulyn)
    - Click the "Fork" button in the top-right corner
    - This creates a copy of the repository in your GitHub account
 
 2. **Clone your fork** locally:
    ```bash
    # Replace 'your-username' with your GitHub username
-   git clone https://github.com/vcsmy/tidygen.git
-   cd tidygen-community
+   git clone https://github.com/vcsmy/Modulyn.git
+   cd Modulyn-community
    ```
 
 3. **Add upstream remote**:
    ```bash
-   git remote add upstream https://github.com/vcsmy/tidygen.git
+   git remote add upstream https://github.com/vcsmy/Modulyn.git
    ```
 
 4. **Verify your setup**:
    ```bash
    git remote -v
    # Should show:
-   # origin    https://github.com/vcsmy/tidygen.git (fetch)
-   # origin    https://github.com/vcsmy/tidygen.git (push)
-   # upstream  https://github.com/vcsmy/tidygen.git (fetch)
-   # upstream  https://github.com/vcsmy/tidygen.git (push)
+   # origin    https://github.com/vcsmy/Modulyn.git (fetch)
+   # origin    https://github.com/vcsmy/Modulyn.git (push)
+   # upstream  https://github.com/vcsmy/Modulyn.git (fetch)
+   # upstream  https://github.com/vcsmy/Modulyn.git (push)
    ```
 
 ---
@@ -845,9 +845,9 @@ Contributors will be recognized in:
 
 - **GitHub Issues**: For bugs and feature requests
 - **GitHub Discussions**: For questions and general discussion
-- **Email**: [hello@tidygen.io](mailto:hello@tidygen.io)
-- **Discord**: [Join our community](https://discord.gg/tidygen)
+- **Email**: [hello@Modulyn.io](mailto:hello@Modulyn.io)
+- **Discord**: [Join our community](https://discord.gg/Modulyn)
 
 ---
 
-Thank you for contributing to TidyGen ERP! Together, we're building the future of Web3-enabled business management. 🚀
+Thank you for contributing to Modulyn ERP! Together, we're building the future of Web3-enabled business management. 🚀

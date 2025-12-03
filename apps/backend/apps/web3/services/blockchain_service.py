@@ -146,9 +146,9 @@ class BlockchainService:
     def create_invoice_on_chain(self, invoice_data: Dict[str, Any]) -> Optional[str]:
         """Create an invoice on the blockchain."""
         try:
-            contract = self.contracts.get('TidyGenERP')
+            contract = self.contracts.get('ModulynERP')
             if not contract:
-                logger.error("TidyGenERP contract not loaded")
+                logger.error("ModulynERP contract not loaded")
                 return None
             
             # Prepare transaction data
@@ -173,9 +173,9 @@ class BlockchainService:
     def pay_invoice_on_chain(self, invoice_id: int, payer_address: str, amount: Decimal, token_address: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """Pay an invoice on the blockchain."""
         try:
-            contract = self.contracts.get('TidyGenERP')
+            contract = self.contracts.get('ModulynERP')
             if not contract:
-                logger.error("TidyGenERP contract not loaded")
+                logger.error("ModulynERP contract not loaded")
                 return None
             
             if token_address:
@@ -202,9 +202,9 @@ class BlockchainService:
     def anchor_data_on_chain(self, data_hash: str, data_type: str, anchorer_address: str) -> Optional[str]:
         """Anchor data to the blockchain."""
         try:
-            contract = self.contracts.get('TidyGenERP')
+            contract = self.contracts.get('ModulynERP')
             if not contract:
-                logger.error("TidyGenERP contract not loaded")
+                logger.error("ModulynERP contract not loaded")
                 return None
             
             tx_data = contract.functions.anchorData(
@@ -225,9 +225,9 @@ class BlockchainService:
     def create_governance_proposal(self, proposal_data: Dict[str, Any]) -> Optional[str]:
         """Create a governance proposal on the blockchain."""
         try:
-            contract = self.contracts.get('TidyGenDAO')
+            contract = self.contracts.get('ModulynDAO')
             if not contract:
-                logger.error("TidyGenDAO contract not loaded")
+                logger.error("ModulynDAO contract not loaded")
                 return None
             
             tx_data = contract.functions.propose(
@@ -249,9 +249,9 @@ class BlockchainService:
     def cast_vote(self, proposal_id: int, voter_address: str, support: bool, reason: str = "") -> Optional[str]:
         """Cast a vote on a governance proposal."""
         try:
-            contract = self.contracts.get('TidyGenDAO')
+            contract = self.contracts.get('ModulynDAO')
             if not contract:
-                logger.error("TidyGenDAO contract not loaded")
+                logger.error("ModulynDAO contract not loaded")
                 return None
             
             tx_data = contract.functions.castVote(

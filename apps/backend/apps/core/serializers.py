@@ -1,5 +1,5 @@
 """
-Core serializers for TidyGen ERP platform.
+Core serializers for Modulyn ERP platform.
 """
 
 from rest_framework import serializers

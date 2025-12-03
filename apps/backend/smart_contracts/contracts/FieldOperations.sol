@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 /**
  * @title FieldOperations
  * @dev Smart contract for managing field service operations, job dispatch, and payments
- * @author TidyGen ERP
+ * @author Modulyn ERP
  */
 contract FieldOperations is ReentrancyGuard, Ownable {
     

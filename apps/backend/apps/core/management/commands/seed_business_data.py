@@ -273,14 +273,14 @@ class Command(BaseCommand):
 
         # Create employees
         employees_data = [
-            ('John', 'Doe', 'john.doe@tidygen-demo.com', 'IT', 'Software Engineer', Decimal('75000')),
-            ('Jane', 'Smith', 'jane.smith@tidygen-demo.com', 'Finance', 'Accountant', Decimal('65000')),
-            ('Mike', 'Johnson', 'mike.johnson@tidygen-demo.com', 'HR', 'HR Specialist', Decimal('60000')),
-            ('Sarah', 'Wilson', 'sarah.wilson@tidygen-demo.com', 'Sales', 'Sales Representative', Decimal('70000')),
-            ('David', 'Brown', 'david.brown@tidygen-demo.com', 'Operations', 'Operations Manager', Decimal('80000')),
-            ('Lisa', 'Davis', 'lisa.davis@tidygen-demo.com', 'Engineering', 'Senior Developer', Decimal('90000')),
-            ('Alex', 'Garcia', 'alex.garcia@tidygen-demo.com', 'IT', 'DevOps Engineer', Decimal('85000')),
-            ('Emma', 'Martinez', 'emma.martinez@tidygen-demo.com', 'Sales', 'Sales Manager', Decimal('75000')),
+            ('John', 'Doe', 'john.doe@Modulyn-demo.com', 'IT', 'Software Engineer', Decimal('75000')),
+            ('Jane', 'Smith', 'jane.smith@Modulyn-demo.com', 'Finance', 'Accountant', Decimal('65000')),
+            ('Mike', 'Johnson', 'mike.johnson@Modulyn-demo.com', 'HR', 'HR Specialist', Decimal('60000')),
+            ('Sarah', 'Wilson', 'sarah.wilson@Modulyn-demo.com', 'Sales', 'Sales Representative', Decimal('70000')),
+            ('David', 'Brown', 'david.brown@Modulyn-demo.com', 'Operations', 'Operations Manager', Decimal('80000')),
+            ('Lisa', 'Davis', 'lisa.davis@Modulyn-demo.com', 'Engineering', 'Senior Developer', Decimal('90000')),
+            ('Alex', 'Garcia', 'alex.garcia@Modulyn-demo.com', 'IT', 'DevOps Engineer', Decimal('85000')),
+            ('Emma', 'Martinez', 'emma.martinez@Modulyn-demo.com', 'Sales', 'Sales Manager', Decimal('75000')),
         ]
         
         for first_name, last_name, email, dept_name, position, salary in employees_data:

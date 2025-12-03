@@ -1,8 +1,8 @@
-# TidyGen Web3 Frontend Integration
+# Modulyn Web3 Frontend Integration
 
 ## Overview
 
-Complete React/TypeScript integration with TidyGen Substrate blockchain using Polkadot.js.
+Complete React/TypeScript integration with Modulyn Substrate blockchain using Polkadot.js.
 
 ## Features
 
@@ -31,7 +31,7 @@ Create `.env.local` or use `.env.example`:
 ```env
 # Substrate Blockchain Configuration
 VITE_WS_ENDPOINT=ws://127.0.0.1:9944
-VITE_APP_NAME=TidyGen ERP
+VITE_APP_NAME=Modulyn ERP
 ```
 
 ## Core Utilities

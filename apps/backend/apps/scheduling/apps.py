@@ -1,5 +1,5 @@
 """
-Scheduling app configuration for TidyGen ERP platform.
+Scheduling app configuration for Modulyn ERP platform.
 """
 from django.apps import AppConfig
 

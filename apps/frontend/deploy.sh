@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen Frontend Deployment Script for Vercel
+# Modulyn Frontend Deployment Script for Vercel
 # This script helps deploy the frontend application to Vercel
 
 set -e
 
-echo "🚀 Starting TidyGen Frontend Deployment to Vercel..."
+echo "🚀 Starting Modulyn Frontend Deployment to Vercel..."
 
 # Colors for output
 RED='\033[0;31m'

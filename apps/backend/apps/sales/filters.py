@@ -1,5 +1,5 @@
 """
-Sales and client management filters for TidyGen ERP platform.
+Sales and client management filters for Modulyn ERP platform.
 """
 import django_filters
 from django.db.models import Q

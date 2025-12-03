@@ -4,7 +4,7 @@ A comprehensive Substrate pallet for on-chain governance with proposals, voting,
 
 ## Overview
 
-This pallet provides decentralized governance functionality for the TidyGen ERP system, allowing community members to propose, vote on, and execute business decisions on-chain.
+This pallet provides decentralized governance functionality for the Modulyn ERP system, allowing community members to propose, vote on, and execute business decisions on-chain.
 
 ## Features
 
@@ -803,5 +803,5 @@ Apache-2.0
 
 - [Substrate Documentation](https://docs.substrate.io/)
 - [Django Integration](../../backend/apps/web3/README.md)
-- [TidyGen Documentation](../../../README.md)
+- [Modulyn Documentation](../../../README.md)
 

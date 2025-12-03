@@ -105,7 +105,7 @@ pub mod pallet {
             let hash = blake2_256(&account_bytes);
             let hex_hash = Self::to_hex(&hash[..8]); // Use first 8 bytes
             
-            let did_str = format!("did:substrate:tidygen:{}", hex_hash);
+            let did_str = format!("did:substrate:Modulyn:{}", hex_hash);
             did_str.as_bytes().to_vec()
                 .try_into()
                 .unwrap_or_default()

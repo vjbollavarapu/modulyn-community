@@ -1,8 +1,8 @@
-# TidyGen ERP - Governance Model
+# Modulyn ERP - Governance Model
 
 ## 🎯 **Overview**
 
-This document outlines the governance structure, decision-making processes, and contributor guidelines for the TidyGen ERP project. Our governance model is designed to be transparent, inclusive, and efficient while ensuring the project's long-term sustainability and growth.
+This document outlines the governance structure, decision-making processes, and contributor guidelines for the Modulyn ERP project. Our governance model is designed to be transparent, inclusive, and efficient while ensuring the project's long-term sustainability and growth.
 
 ### **Core Principles**
 - **Transparency**: All decisions and processes are open and documented
@@ -25,7 +25,7 @@ This document outlines the governance structure, decision-making processes, and 
   - Release management and version control
   - Community leadership and conflict resolution
   - External partnerships and stakeholder management
-- **Current**: TidyGen Core Team
+- **Current**: Modulyn Core Team
 - **Term**: Indefinite (with community review every 2 years)
 
 #### **Core Maintainers**
@@ -356,8 +356,8 @@ This document outlines the governance structure, decision-making processes, and 
    - Run tests to verify setup
 
 3. **Find Contribution Opportunities**
-   - Check [Good First Issues](https://github.com/tidygen-community/tidygen-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-   - Review [Help Wanted](https://github.com/tidygen-community/tidygen-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+   - Check [Good First Issues](https://github.com/Modulyn-community/Modulyn-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+   - Review [Help Wanted](https://github.com/Modulyn-community/Modulyn-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
    - Join community discussions
    - Ask questions in Discord/Slack
 
@@ -532,4 +532,4 @@ This document outlines the governance structure, decision-making processes, and 
 
 ---
 
-This governance model ensures that TidyGen ERP remains a healthy, sustainable, and inclusive project that can grow and evolve with its community while maintaining high standards of quality and transparency.
+This governance model ensures that Modulyn ERP remains a healthy, sustainable, and inclusive project that can grow and evolve with its community while maintaining high standards of quality and transparency.

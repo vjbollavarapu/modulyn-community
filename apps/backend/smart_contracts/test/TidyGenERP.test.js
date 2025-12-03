@@ -1,9 +1,9 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("TidyGenERP", function () {
-  let tidygenERP;
-  let tidygenToken;
+describe("ModulynERP", function () {
+  let ModulynERP;
+  let ModulynToken;
   let owner;
   let client;
   let vendor;
@@ -13,29 +13,29 @@ describe("TidyGenERP", function () {
   beforeEach(async function () {
     [owner, client, vendor, addr1, addr2] = await ethers.getSigners();
 
-    // Deploy TidyGenToken
-    const TidyGenToken = await ethers.getContractFactory("TidyGenToken");
-    tidygenToken = await TidyGenToken.deploy();
-    await tidygenToken.waitForDeployment();
+    // Deploy ModulynToken
+    const ModulynToken = await ethers.getContractFactory("ModulynToken");
+    ModulynToken = await ModulynToken.deploy();
+    await ModulynToken.waitForDeployment();
 
-    // Deploy TidyGenERP
-    const TidyGenERP = await ethers.getContractFactory("TidyGenERP");
-    tidygenERP = await TidyGenERP.deploy();
-    await tidygenERP.waitForDeployment();
+    // Deploy ModulynERP
+    const ModulynERP = await ethers.getContractFactory("ModulynERP");
+    ModulynERP = await ModulynERP.deploy();
+    await ModulynERP.waitForDeployment();
 
     // Set up voting power for testing
-    await tidygenERP.setVotingPower(owner.address, ethers.parseEther("1000000"));
+    await ModulynERP.setVotingPower(owner.address, ethers.parseEther("1000000"));
   });
 
   describe("Deployment", function () {
     it("Should set the right owner", async function () {
-      expect(await tidygenERP.owner()).to.equal(owner.address);
+      expect(await ModulynERP.owner()).to.equal(owner.address);
     });
 
     it("Should initialize with correct values", async function () {
-      expect(await tidygenERP.nextInvoiceId()).to.equal(1);
-      expect(await tidygenERP.nextPaymentId()).to.equal(1);
-      expect(await tidygenERP.nextProposalId()).to.equal(1);
+      expect(await ModulynERP.nextInvoiceId()).to.equal(1);
+      expect(await ModulynERP.nextPaymentId()).to.equal(1);
+      expect(await ModulynERP.nextProposalId()).to.equal(1);
     });
   });
 
@@ -46,7 +46,7 @@ describe("TidyGenERP", function () {
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
       await expect(
-        tidygenERP.createInvoice(
+        ModulynERP.createInvoice(
           client.address,
           amount,
           ethers.ZeroAddress, // ETH
@@ -55,10 +55,10 @@ describe("TidyGenERP", function () {
           dataHash
         )
       )
-        .to.emit(tidygenERP, "InvoiceCreated")
+        .to.emit(ModulynERP, "InvoiceCreated")
         .withArgs(1, client.address, vendor.address, amount);
 
-      const invoice = await tidygenERP.getInvoice(1);
+      const invoice = await ModulynERP.getInvoice(1);
       expect(invoice.client).to.equal(client.address);
       expect(invoice.vendor).to.equal(vendor.address);
       expect(invoice.amount).to.equal(amount);
@@ -70,7 +70,7 @@ describe("TidyGenERP", function () {
       const dueDate = Math.floor(Date.now() / 1000) + 86400;
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
-      await tidygenERP.createInvoice(
+      await ModulynERP.createInvoice(
         client.address,
         amount,
         ethers.ZeroAddress,
@@ -79,9 +79,9 @@ describe("TidyGenERP", function () {
         dataHash
       );
 
-      await tidygenERP.sendInvoice(1);
+      await ModulynERP.sendInvoice(1);
 
-      const invoice = await tidygenERP.getInvoice(1);
+      const invoice = await ModulynERP.getInvoice(1);
       expect(invoice.status).to.equal(1); // Sent
     });
 
@@ -90,7 +90,7 @@ describe("TidyGenERP", function () {
       const dueDate = Math.floor(Date.now() / 1000) + 86400;
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
-      await tidygenERP.createInvoice(
+      await ModulynERP.createInvoice(
         client.address,
         amount,
         ethers.ZeroAddress,
@@ -99,20 +99,20 @@ describe("TidyGenERP", function () {
         dataHash
       );
 
-      await tidygenERP.sendInvoice(1);
+      await ModulynERP.sendInvoice(1);
 
       const initialBalance = await ethers.provider.getBalance(vendor.address);
 
       await expect(
-        tidygenERP.connect(client).payInvoice(1, { value: amount })
+        ModulynERP.connect(client).payInvoice(1, { value: amount })
       )
-        .to.emit(tidygenERP, "InvoicePaid")
+        .to.emit(ModulynERP, "InvoicePaid")
         .withArgs(1, 1, amount);
 
       const finalBalance = await ethers.provider.getBalance(vendor.address);
       expect(finalBalance).to.be.closeTo(initialBalance + amount, ethers.parseEther("0.1"));
 
-      const invoice = await tidygenERP.getInvoice(1);
+      const invoice = await ModulynERP.getInvoice(1);
       expect(invoice.status).to.equal(2); // Paid
     });
 
@@ -122,28 +122,28 @@ describe("TidyGenERP", function () {
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
       // Transfer tokens to client
-      await tidygenToken.transfer(client.address, amount);
+      await ModulynToken.transfer(client.address, amount);
 
-      await tidygenERP.createInvoice(
+      await ModulynERP.createInvoice(
         client.address,
         amount,
-        await tidygenToken.getAddress(),
+        await ModulynToken.getAddress(),
         "Test Invoice",
         dueDate,
         dataHash
       );
 
-      await tidygenERP.sendInvoice(1);
+      await ModulynERP.sendInvoice(1);
 
-      await tidygenToken.connect(client).approve(await tidygenERP.getAddress(), amount);
+      await ModulynToken.connect(client).approve(await ModulynERP.getAddress(), amount);
 
       await expect(
-        tidygenERP.connect(client).payInvoice(1)
+        ModulynERP.connect(client).payInvoice(1)
       )
-        .to.emit(tidygenERP, "InvoicePaid")
+        .to.emit(ModulynERP, "InvoicePaid")
         .withArgs(1, 1, amount);
 
-      const invoice = await tidygenERP.getInvoice(1);
+      const invoice = await ModulynERP.getInvoice(1);
       expect(invoice.status).to.equal(2); // Paid
     });
   });
@@ -154,12 +154,12 @@ describe("TidyGenERP", function () {
       const dataType = "test";
 
       await expect(
-        tidygenERP.anchorData(dataHash, dataType, owner.address)
+        ModulynERP.anchorData(dataHash, dataType, owner.address)
       )
-        .to.emit(tidygenERP, "DataAnchored")
+        .to.emit(ModulynERP, "DataAnchored")
         .withArgs(dataHash, dataType, owner.address);
 
-      const anchor = await tidygenERP.dataAnchors(dataHash);
+      const anchor = await ModulynERP.dataAnchors(dataHash);
       expect(anchor.dataHash).to.equal(dataHash);
       expect(anchor.dataType).to.equal(dataType);
       expect(anchor.anchorer).to.equal(owner.address);
@@ -170,11 +170,11 @@ describe("TidyGenERP", function () {
       const data = "test data";
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes(data));
 
-      const isValid = await tidygenERP.verifyData(dataHash, data);
+      const isValid = await ModulynERP.verifyData(dataHash, data);
       expect(isValid).to.be.true;
 
       const invalidData = "different data";
-      const isInvalid = await tidygenERP.verifyData(dataHash, invalidData);
+      const isInvalid = await ModulynERP.verifyData(dataHash, invalidData);
       expect(isInvalid).to.be.false;
     });
   });
@@ -188,7 +188,7 @@ describe("TidyGenERP", function () {
       const executionHash = ethers.keccak256(ethers.toUtf8Bytes("execution data"));
 
       await expect(
-        tidygenERP.createProposal(
+        ModulynERP.createProposal(
           title,
           description,
           votingPowerRequired,
@@ -196,10 +196,10 @@ describe("TidyGenERP", function () {
           executionHash
         )
       )
-        .to.emit(tidygenERP, "ProposalCreated")
+        .to.emit(ModulynERP, "ProposalCreated")
         .withArgs(1, owner.address, title);
 
-      const proposal = await tidygenERP.getProposal(1);
+      const proposal = await ModulynERP.getProposal(1);
       expect(proposal.proposer).to.equal(owner.address);
       expect(proposal.title).to.equal(title);
       expect(proposal.description).to.equal(description);
@@ -213,7 +213,7 @@ describe("TidyGenERP", function () {
       const votingDuration = 86400;
       const executionHash = ethers.keccak256(ethers.toUtf8Bytes("execution data"));
 
-      await tidygenERP.createProposal(
+      await ModulynERP.createProposal(
         title,
         description,
         votingPowerRequired,
@@ -222,12 +222,12 @@ describe("TidyGenERP", function () {
       );
 
       await expect(
-        tidygenERP.vote(1, true)
+        ModulynERP.vote(1, true)
       )
-        .to.emit(tidygenERP, "VoteCast")
+        .to.emit(ModulynERP, "VoteCast")
         .withArgs(1, owner.address, true, ethers.parseEther("1000000"));
 
-      const proposal = await tidygenERP.getProposal(1);
+      const proposal = await ModulynERP.getProposal(1);
       expect(proposal.votesFor).to.equal(ethers.parseEther("1000000"));
     });
 
@@ -238,7 +238,7 @@ describe("TidyGenERP", function () {
       const votingDuration = 1; // 1 second for testing
       const executionHash = ethers.keccak256(ethers.toUtf8Bytes("execution data"));
 
-      await tidygenERP.createProposal(
+      await ModulynERP.createProposal(
         title,
         description,
         votingPowerRequired,
@@ -246,18 +246,18 @@ describe("TidyGenERP", function () {
         executionHash
       );
 
-      await tidygenERP.vote(1, true);
+      await ModulynERP.vote(1, true);
 
       // Wait for voting to end
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       await expect(
-        tidygenERP.executeProposal(1)
+        ModulynERP.executeProposal(1)
       )
-        .to.emit(tidygenERP, "ProposalExecuted")
+        .to.emit(ModulynERP, "ProposalExecuted")
         .withArgs(1, executionHash);
 
-      const proposal = await tidygenERP.getProposal(1);
+      const proposal = await ModulynERP.getProposal(1);
       expect(proposal.status).to.equal(3); // Executed
     });
   });
@@ -268,7 +268,7 @@ describe("TidyGenERP", function () {
       const dueDate = Math.floor(Date.now() / 1000) + 86400;
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
-      await tidygenERP.createInvoice(
+      await ModulynERP.createInvoice(
         client.address,
         amount,
         ethers.ZeroAddress,
@@ -278,24 +278,24 @@ describe("TidyGenERP", function () {
       );
 
       await expect(
-        tidygenERP.connect(addr1).sendInvoice(1)
+        ModulynERP.connect(addr1).sendInvoice(1)
       ).to.be.revertedWith("Not authorized for this invoice");
 
       await expect(
-        tidygenERP.connect(addr1).payInvoice(1, { value: amount })
+        ModulynERP.connect(addr1).payInvoice(1, { value: amount })
       ).to.be.revertedWith("Not authorized for this invoice");
     });
 
     it("Should only allow owner to set voting power", async function () {
       await expect(
-        tidygenERP.connect(addr1).setVotingPower(addr1.address, ethers.parseEther("1000"))
-      ).to.be.revertedWithCustomError(tidygenERP, "OwnableUnauthorizedAccount");
+        ModulynERP.connect(addr1).setVotingPower(addr1.address, ethers.parseEther("1000"))
+      ).to.be.revertedWithCustomError(ModulynERP, "OwnableUnauthorizedAccount");
     });
   });
 
   describe("Statistics", function () {
     it("Should return correct statistics", async function () {
-      const stats = await tidygenERP.getStats();
+      const stats = await ModulynERP.getStats();
       expect(stats[0]).to.equal(0); // totalInvoices
       expect(stats[1]).to.equal(0); // totalPayments
       expect(stats[2]).to.equal(0); // totalProposals
@@ -306,7 +306,7 @@ describe("TidyGenERP", function () {
       const dueDate = Math.floor(Date.now() / 1000) + 86400;
       const dataHash = ethers.keccak256(ethers.toUtf8Bytes("test invoice data"));
 
-      await tidygenERP.createInvoice(
+      await ModulynERP.createInvoice(
         client.address,
         amount,
         ethers.ZeroAddress,
@@ -315,7 +315,7 @@ describe("TidyGenERP", function () {
         dataHash
       );
 
-      const newStats = await tidygenERP.getStats();
+      const newStats = await ModulynERP.getStats();
       expect(newStats[0]).to.equal(1); // totalInvoices
     });
   });

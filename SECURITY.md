@@ -2,7 +2,7 @@
 
 ## 🔒 Security Disclosure Policy
 
-TidyGen ERP takes security seriously. We appreciate the security research community and value responsible disclosure of security vulnerabilities. This document outlines our security policy and how to report vulnerabilities.
+Modulyn ERP takes security seriously. We appreciate the security research community and value responsible disclosure of security vulnerabilities. This document outlines our security policy and how to report vulnerabilities.
 
 ## 🚨 Reporting a Vulnerability
 
@@ -13,12 +13,12 @@ TidyGen ERP takes security seriously. We appreciate the security research commun
 Instead, please report security vulnerabilities through one of the following channels:
 
 #### Primary Method: Email
-- **Email**: [security@tidygen.io](mailto:security@tidygen.io)
-- **Subject**: `[SECURITY] TidyGen ERP Vulnerability Report`
+- **Email**: [security@Modulyn.io](mailto:security@Modulyn.io)
+- **Subject**: `[SECURITY] Modulyn ERP Vulnerability Report`
 - **Encryption**: Use our PGP key for sensitive reports (see below)
 
 #### Alternative Method: GitHub Security Advisories
-- Go to [GitHub Security Advisories](https://github.com/tidygen-community/tidygen-community/security/advisories/new)
+- Go to [GitHub Security Advisories](https://github.com/Modulyn-community/Modulyn-community/security/advisories/new)
 - Click "Report a vulnerability"
 - Fill out the security advisory form
 
@@ -128,7 +128,7 @@ We recognize security researchers who responsibly disclose vulnerabilities:
 - **Hall of Fame**: Listed on our security page
 - **Bug Bounty**: Monetary rewards for qualifying vulnerabilities
 - **Credits**: Acknowledgment in security advisories
-- **Swag**: TidyGen ERP merchandise for significant contributions
+- **Swag**: Modulyn ERP merchandise for significant contributions
 
 ### Bug Bounty Program
 
@@ -165,9 +165,9 @@ We offer monetary rewards for qualifying security vulnerabilities:
 7. **Post-Incident**: Review and improve processes
 
 ### Emergency Contacts
-- **Security Team**: [security@tidygen.io](mailto:security@tidygen.io)
-- **Project Lead**: [vijay@tidygen.io](mailto:vijay@tidygen.io)
-- **Emergency**: [emergency@tidygen.io](mailto:emergency@tidygen.io)
+- **Security Team**: [security@Modulyn.io](mailto:security@Modulyn.io)
+- **Project Lead**: [vijay@Modulyn.io](mailto:vijay@Modulyn.io)
+- **Emergency**: [emergency@Modulyn.io](mailto:emergency@Modulyn.io)
 
 ## 🔄 Security Updates
 
@@ -185,9 +185,9 @@ We offer monetary rewards for qualifying security vulnerabilities:
 
 ## 📞 Contact Information
 
-- **Security Email**: [security@tidygen.io](mailto:security@tidygen.io)
-- **General Security**: [security@tidygen.io](mailto:security@tidygen.io)
-- **Emergency**: [emergency@tidygen.io](mailto:emergency@tidygen.io)
+- **Security Email**: [security@Modulyn.io](mailto:security@Modulyn.io)
+- **General Security**: [security@Modulyn.io](mailto:security@Modulyn.io)
+- **Emergency**: [emergency@Modulyn.io](mailto:emergency@Modulyn.io)
 - **PGP Key**: Available on request
 
 ## 📄 Legal
@@ -200,10 +200,10 @@ By reporting vulnerabilities, you agree to:
 - Comply with applicable laws and regulations
 
 ### Safe Harbor
-Security researchers acting in good faith and in accordance with this policy will not face legal action from TidyGen ERP.
+Security researchers acting in good faith and in accordance with this policy will not face legal action from Modulyn ERP.
 
 ---
 
-**Thank you for helping keep TidyGen ERP secure!** 🔒
+**Thank you for helping keep Modulyn ERP secure!** 🔒
 
 *Last updated: January 2024*

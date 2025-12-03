@@ -1,8 +1,8 @@
-# TidyGen Substrate Node - Implementation Status
+# Modulyn Substrate Node - Implementation Status
 
 ## Overview
 
-This directory contains a Substrate-based blockchain node for TidyGen ERP with custom pallets.
+This directory contains a Substrate-based blockchain node for Modulyn ERP with custom pallets.
 
 ## ✅ Completed Components
 
@@ -13,8 +13,8 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
 - ✅ Comprehensive README with instructions
 - ✅ Directory structure for all pallets
 
-### 2. Pallet: TidyGen Ledger
-- ✅ Full implementation (`pallets/tidygen-ledger/src/lib.rs`)
+### 2. Pallet: Modulyn Ledger
+- ✅ Full implementation (`pallets/Modulyn-ledger/src/lib.rs`)
 - ✅ Cargo.toml with dependencies
 - ✅ Features:
   - Create ledger entries for invoices/transactions
@@ -22,11 +22,11 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
   - Anchor transaction hashes on-chain
   - Query ledger history
 
-### 3. Pallet: TidyGen DID
+### 3. Pallet: Modulyn DID
 - ✅ Cargo.toml configuration
 - 🔧 Implementation in progress (requires full DID spec)
 
-### 4. Pallet: TidyGen DAO  
+### 4. Pallet: Modulyn DAO  
 - 🔧 To be implemented
 
 ### 5. Node Implementation
@@ -39,7 +39,7 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
 
 ### Phase 1: Complete Custom Pallets
 
-#### Pallet: TidyGen DID (Estimated: 2-3 days)
+#### Pallet: Modulyn DID (Estimated: 2-3 days)
 ```rust
 // Features to implement:
 - create_did(): Create DID documents
@@ -49,7 +49,7 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
 - Storage: DIDDocuments, VerificationMethods
 ```
 
-#### Pallet: TidyGen DAO (Estimated: 2-3 days)
+#### Pallet: Modulyn DAO (Estimated: 2-3 days)
 ```rust
 // Features to implement:
 - create_proposal(): Create governance proposals
@@ -73,20 +73,20 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
 2. **Configure Runtime** (`runtime/src/lib.rs`)
    ```rust
    // Add custom pallets to runtime
-   impl pallet_tidygen_ledger::Config for Runtime {
+   impl pallet_Modulyn_ledger::Config for Runtime {
        type RuntimeEvent = RuntimeEvent;
        type Currency = Balances;
        type MaxTransactionTypeLength = ConstU32<32>;
        type MaxMetadataLength = ConstU32<256>;
    }
 
-   impl pallet_tidygen_did::Config for Runtime {
+   impl pallet_Modulyn_did::Config for Runtime {
        type RuntimeEvent = RuntimeEvent;
        type MaxDIDLength = ConstU32<256>;
        type MaxVerificationMethods = ConstU32<10>;
    }
 
-   impl pallet_tidygen_dao::Config for Runtime {
+   impl pallet_Modulyn_dao::Config for Runtime {
        type RuntimeEvent = RuntimeEvent;
        type Currency = Balances;
        type ProposalBond = ConstU128<1000>;
@@ -100,9 +100,9 @@ This directory contains a Substrate-based blockchain node for TidyGen ERP with c
            UncheckedExtrinsic = UncheckedExtrinsic,
        {
            // ... existing pallets ...
-           TidygenLedger: pallet_tidygen_ledger,
-           TidygenDid: pallet_tidygen_did,
-           TidygenDao: pallet_tidygen_dao,
+           ModulynLedger: pallet_Modulyn_ledger,
+           ModulynDid: pallet_Modulyn_did,
+           ModulynDao: pallet_Modulyn_dao,
        }
    );
    ```
@@ -133,9 +133,9 @@ class SubstrateBlockchainService:
         )
     
     def create_ledger_entry(self, tx_type, data_hash, amount=None):
-        """Create ledger entry on TidyGen Substrate chain"""
+        """Create ledger entry on Modulyn Substrate chain"""
         call = self.substrate.compose_call(
-            call_module='TidygenLedger',
+            call_module='ModulynLedger',
             call_function='create_ledger_entry',
             call_params={
                 'transaction_type': tx_type,
@@ -150,8 +150,8 @@ class SubstrateBlockchainService:
 ## 📊 Implementation Roadmap
 
 ### Week 1-2: Pallet Development
-- [ ] Complete pallet-tidygen-did implementation
-- [ ] Complete pallet-tidygen-dao implementation
+- [ ] Complete pallet-Modulyn-did implementation
+- [ ] Complete pallet-Modulyn-dao implementation
 - [ ] Write comprehensive tests for all pallets
 - [ ] Add benchmarking support
 
@@ -202,7 +202,7 @@ make run
 
 1. Navigate to https://polkadot.js.org/apps/
 2. Connect to `ws://127.0.0.1:9944`
-3. Explore custom pallets: TidygenLedger, TidygenDid, TidygenDao
+3. Explore custom pallets: ModulynLedger, ModulynDid, ModulynDao
 
 ## 📝 Current File Structure
 
@@ -214,15 +214,15 @@ apps/substrate/
 ├── README.md                           ✅ Comprehensive guide
 ├── IMPLEMENTATION_STATUS.md            ✅ This file
 ├── pallets/
-│   ├── tidygen-ledger/
+│   ├── Modulyn-ledger/
 │   │   ├── Cargo.toml                  ✅ Dependencies
 │   │   └── src/
 │   │       └── lib.rs                  ✅ Full implementation
-│   ├── tidygen-did/
+│   ├── Modulyn-did/
 │   │   ├── Cargo.toml                  ✅ Dependencies
 │   │   └── src/
 │   │       └── lib.rs                  🔧 To be implemented
-│   └── tidygen-dao/
+│   └── Modulyn-dao/
 │       ├── Cargo.toml                  🔧 To be created
 │       └── src/
 │           └── lib.rs                  🔧 To be implemented
@@ -245,9 +245,9 @@ This Substrate implementation significantly strengthens the grant application:
 Include this as **Phase 1 deliverable** in your W3F grant application:
 
 **Milestone 1: Substrate Node with Custom Pallets (3 months)**
-- Deliverable 1.1: pallet-tidygen-ledger (complete)
-- Deliverable 1.2: pallet-tidygen-did (W3C DID compliant)
-- Deliverable 1.3: pallet-tidygen-dao (governance)
+- Deliverable 1.1: pallet-Modulyn-ledger (complete)
+- Deliverable 1.2: pallet-Modulyn-did (W3C DID compliant)
+- Deliverable 1.3: pallet-Modulyn-dao (governance)
 - Deliverable 1.4: Runtime integration
 - Deliverable 1.5: Python SDK for Django integration
 
@@ -287,7 +287,7 @@ make docs
 
 ## 🤝 Contributing
 
-This is part of the TidyGen Community Edition. Contributions welcome!
+This is part of the Modulyn Community Edition. Contributions welcome!
 
 1. Implement remaining pallets
 2. Add comprehensive tests

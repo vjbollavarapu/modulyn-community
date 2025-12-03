@@ -1,4 +1,4 @@
-# TidyGen Web3 Features - Quick Reference Guide
+# Modulyn Web3 Features - Quick Reference Guide
 
 ## 🚀 **AT A GLANCE**
 
@@ -309,4 +309,4 @@ did:ens      - ENS DID
 
 ---
 
-*Quick reference for TidyGen Community Edition Web3 features. For detailed documentation, see WEB3_FEATURES_DOCUMENTATION.md*
+*Quick reference for Modulyn Community Edition Web3 features. For detailed documentation, see WEB3_FEATURES_DOCUMENTATION.md*

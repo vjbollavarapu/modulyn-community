@@ -1,4 +1,4 @@
-# TidyGen: Intelligent Enterprise Resource Planning
+# Modulyn: Intelligent Enterprise Resource Planning
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -9,7 +9,7 @@ A comprehensive, self-hosted ERP solution with Web3 integration, designed for de
 
 ## 🚀 Overview
 
-TidyGen is a full-stack enterprise resource planning system that combines traditional business management with cutting-edge Web3 technologies. It offers both Community and Commercial editions to serve different market needs.
+Modulyn is a full-stack enterprise resource planning system that combines traditional business management with cutting-edge Web3 technologies. It offers both Community and Commercial editions to serve different market needs.
 
 ### Key Features
 
@@ -87,8 +87,8 @@ TidyGen is a full-stack enterprise resource planning system that combines tradit
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-org/tidygen.git
-   cd tidygen
+   git clone https://github.com/your-org/Modulyn.git
+   cd Modulyn
    ```
 
 2. **Run the installer**
@@ -124,7 +124,7 @@ TidyGen is a full-stack enterprise resource planning system that combines tradit
 ## 📁 Project Structure
 
 ```
-tidygen/
+Modulyn/
 ├── apps/
 │   ├── frontend/                 # React frontend
 │   │   ├── src/
@@ -137,7 +137,7 @@ tidygen/
 │   │   ├── public/              # Static assets
 │   │   └── package.json
 │   └── backend/                 # Django backend
-│       ├── tidygen/          # Main Django project
+│       ├── Modulyn/          # Main Django project
 │       ├── apps/               # Django applications
 │       │   ├── core/           # Core functionality
 │       │   ├── accounts/       # User management
@@ -330,12 +330,12 @@ See [LICENSE](LICENSE) for details.
 ## 🆘 Support
 
 ### Community Support
-- GitHub Issues: [Report bugs and request features](https://github.com/your-org/tidygen/issues)
+- GitHub Issues: [Report bugs and request features](https://github.com/your-org/Modulyn/issues)
 - Discord: [Join our community](https://discord.gg/your-discord)
-- Documentation: [Read the docs](https://docs.tidygen.io)
+- Documentation: [Read the docs](https://docs.Modulyn.io)
 
 ### Commercial Support
-- Email: support@tidygen.io
+- Email: support@Modulyn.io
 - Phone: +1 (555) 123-4567
 - Priority support for Enterprise customers
 
@@ -359,10 +359,10 @@ See our [Roadmap](docs/roadmap.md) for upcoming features and Web3 Foundation gra
 
 ## 📞 Contact
 
-- **Website**: https://tidygen.io
-- **Email**: info@tidygen.io
-- **Twitter**: [@tidygen_io](https://twitter.com/tidygen_io)
-- **LinkedIn**: [TidyGen](https://linkedin.com/company/tidygen)
+- **Website**: https://Modulyn.io
+- **Email**: info@Modulyn.io
+- **Twitter**: [@Modulyn_io](https://twitter.com/Modulyn_io)
+- **LinkedIn**: [Modulyn](https://linkedin.com/company/Modulyn)
 
 ---
 

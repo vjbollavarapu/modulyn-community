@@ -1,5 +1,5 @@
 """
-Sales and client management URL configuration for TidyGen ERP platform.
+Sales and client management URL configuration for Modulyn ERP platform.
 """
 
 from django.urls import path, include

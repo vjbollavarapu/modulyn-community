@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Comprehensive test runner for TidyGen Django backend.
+Comprehensive test runner for Modulyn Django backend.
 Supports running different types of tests: unit, integration, e2e, and static analysis.
 """
 
@@ -81,7 +81,7 @@ def run_all_tests():
 
 def main():
     """Main function to run tests based on arguments."""
-    parser = argparse.ArgumentParser(description="TidyGen Django Backend Test Runner")
+    parser = argparse.ArgumentParser(description="Modulyn Django Backend Test Runner")
     parser.add_argument(
         "test_type",
         choices=["static", "unit", "integration", "e2e", "all"],
@@ -94,7 +94,7 @@ def main():
     backend_dir = Path(__file__).parent
     os.chdir(backend_dir)
     
-    print(f"🧪 TidyGen Django Backend Test Suite")
+    print(f"🧪 Modulyn Django Backend Test Suite")
     print(f"📁 Working directory: {backend_dir}")
     
     success = False

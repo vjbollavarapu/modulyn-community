@@ -1,5 +1,5 @@
 /**
- * TidyGen Web3 Integration
+ * Modulyn Web3 Integration
  * 
  * Central export for all Web3 functionality
  */

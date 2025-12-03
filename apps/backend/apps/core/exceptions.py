@@ -1,5 +1,5 @@
 """
-Custom exceptions for TidyGen ERP platform.
+Custom exceptions for Modulyn ERP platform.
 """
 
 from rest_framework.views import exception_handler

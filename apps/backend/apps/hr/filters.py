@@ -1,5 +1,5 @@
 """
-HR management filters for TidyGen ERP platform.
+HR management filters for Modulyn ERP platform.
 """
 import django_filters
 from django.db.models import Q

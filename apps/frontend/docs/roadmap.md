@@ -1,6 +1,6 @@
-# TidyGen Roadmap
+# Modulyn Roadmap
 
-This roadmap outlines the development plan for TidyGen, with a focus on Web3 Foundation grant alignment and enterprise features.
+This roadmap outlines the development plan for Modulyn, with a focus on Web3 Foundation grant alignment and enterprise features.
 
 ## 🎯 Vision
 
@@ -334,8 +334,8 @@ To create the most comprehensive, Web3-native ERP solution that bridges traditio
 ### Roadmap Feedback
 - **GitHub Issues**: Submit feature requests and feedback
 - **Discord**: Join our community discussions
-- **Email**: roadmap@tidygen.io
-- **Twitter**: [@tidygen_io](https://twitter.com/tidygen_io)
+- **Email**: roadmap@Modulyn.io
+- **Twitter**: [@Modulyn_io](https://twitter.com/Modulyn_io)
 
 ### Stay Updated
 - **Newsletter**: Subscribe to our monthly updates

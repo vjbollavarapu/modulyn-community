@@ -1,8 +1,8 @@
-# TidyGen Substrate Node - Summary
+# Modulyn Substrate Node - Summary
 
 ## ✅ **SUCCESSFULLY CREATED**
 
-A complete Substrate blockchain node foundation for TidyGen ERP system has been initialized in `apps/substrate/`.
+A complete Substrate blockchain node foundation for Modulyn ERP system has been initialized in `apps/substrate/`.
 
 ---
 
@@ -20,10 +20,10 @@ apps/substrate/
 ├── IMPLEMENTATION_STATUS.md      ✅ Development roadmap
 ├── setup.sh                      ✅ Automated setup script
 └── pallets/
-    ├── tidygen-ledger/           ✅ COMPLETE IMPLEMENTATION
+    ├── Modulyn-ledger/           ✅ COMPLETE IMPLEMENTATION
     │   ├── Cargo.toml
     │   └── src/lib.rs            (450+ lines)
-    └── tidygen-did/              🔧 Structure ready
+    └── Modulyn-did/              🔧 Structure ready
         └── Cargo.toml
 ```
 
@@ -31,7 +31,7 @@ apps/substrate/
 
 ## 🎯 **Key Features Implemented**
 
-### **Pallet: TidyGen Ledger** (COMPLETE ✅)
+### **Pallet: Modulyn Ledger** (COMPLETE ✅)
 
 A fully functional pallet for managing ERP ledger entries on-chain:
 
@@ -126,7 +126,7 @@ Node will be available at:
 
 1. Open https://polkadot.js.org/apps/
 2. Connect to `ws://127.0.0.1:9944`
-3. Explore TidygenLedger pallet
+3. Explore ModulynLedger pallet
 
 ### **Python Integration (Django):**
 
@@ -137,7 +137,7 @@ substrate = SubstrateInterface(url="ws://127.0.0.1:9944")
 
 # Create ledger entry
 call = substrate.compose_call(
-    call_module='TidygenLedger',
+    call_module='ModulynLedger',
     call_function='create_ledger_entry',
     call_params={
         'transaction_type': 'invoice',
@@ -157,9 +157,9 @@ call = substrate.compose_call(
 | **Makefile** | ✅ Complete | 100% |
 | **Documentation** | ✅ Complete | 100% |
 | **Setup Script** | ✅ Complete | 100% |
-| **pallet-tidygen-ledger** | ✅ Complete | 100% |
-| **pallet-tidygen-did** | 🔧 Structure | 20% |
-| **pallet-tidygen-dao** | 🔧 Planned | 0% |
+| **pallet-Modulyn-ledger** | ✅ Complete | 100% |
+| **pallet-Modulyn-did** | 🔧 Structure | 20% |
+| **pallet-Modulyn-dao** | 🔧 Planned | 0% |
 | **Node Template** | 🔧 Needs Clone | 0% |
 | **Runtime Config** | 🔧 Pending | 0% |
 
@@ -175,8 +175,8 @@ call = substrate.compose_call(
 3. Explore with Polkadot.js Apps
 
 ### **Short-term (1-2 weeks):**
-1. Complete `pallet-tidygen-did` implementation
-2. Implement `pallet-tidygen-dao`
+1. Complete `pallet-Modulyn-did` implementation
+2. Implement `pallet-Modulyn-dao`
 3. Add comprehensive tests
 4. Write benchmarks
 
@@ -202,9 +202,9 @@ This Substrate implementation **significantly strengthens** your Web3 Foundation
 ### **Grant Proposal Enhancement:**
 
 **Milestone 1: Substrate Node with Custom Pallets**
-- Deliverable 1.1: ✅ pallet-tidygen-ledger (COMPLETE)
-- Deliverable 1.2: 🔧 pallet-tidygen-did (in progress)
-- Deliverable 1.3: 🔧 pallet-tidygen-dao (planned)
+- Deliverable 1.1: ✅ pallet-Modulyn-ledger (COMPLETE)
+- Deliverable 1.2: 🔧 pallet-Modulyn-did (in progress)
+- Deliverable 1.3: 🔧 pallet-Modulyn-dao (planned)
 - Deliverable 1.4: 🔧 Runtime integration
 - Deliverable 1.5: 🔧 Python SDK
 
@@ -265,7 +265,7 @@ All documentation is included:
 
 ✅ **10 files created**  
 ✅ **1,698+ lines of code**  
-✅ **450+ lines in pallet-tidygen-ledger**  
+✅ **450+ lines in pallet-Modulyn-ledger**  
 ✅ **100% Apache-2.0 licensed**  
 ✅ **Complete build system**  
 ✅ **Automated setup**  
@@ -300,5 +300,5 @@ For questions or issues:
 
 ---
 
-*This Substrate node is part of the TidyGen Community Edition and represents a significant step toward a fully decentralized ERP system on Polkadot.*
+*This Substrate node is part of the Modulyn Community Edition and represents a significant step toward a fully decentralized ERP system on Polkadot.*
 

@@ -6,7 +6,7 @@ This document provides instructions for running a sample job verification → pa
 
 - MetaMask wallet installed and configured
 - Testnet tokens (ETH, MATIC, or DOT) for gas fees
-- TidyGen ERP application running locally
+- Modulyn ERP application running locally
 - Smart contracts deployed to testnet
 
 ## Demo Flow
@@ -79,7 +79,7 @@ console.log("Payment events:", paymentEvent);
 - ✅ Client verification completed
 - ✅ Payment automatically released
 - ✅ Transaction recorded on blockchain
-- ✅ Audit trail created in TidyGen ERP
+- ✅ Audit trail created in Modulyn ERP
 
 ## Troubleshooting
 
@@ -91,15 +91,15 @@ console.log("Payment events:", paymentEvent);
 
 ### Support
 For issues with smart contract integration, please:
-1. Check the [TidyGen ERP Documentation](../docs/)
+1. Check the [Modulyn ERP Documentation](../docs/)
 2. Review [Web3 Technical Implementation](../docs/WEB3_TECHNICAL_IMPLEMENTATION.md)
-3. Open an issue on [GitHub](https://github.com/tidygen-community/tidygen-community/issues)
+3. Open an issue on [GitHub](https://github.com/Modulyn-community/Modulyn-community/issues)
 
 ## Next Steps
 
 Once the demo is working:
 1. Deploy to mainnet
-2. Integrate with production TidyGen ERP
+2. Integrate with production Modulyn ERP
 3. Add additional smart contract features
 4. Implement cross-chain functionality
 5. Add governance mechanisms

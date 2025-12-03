@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 /**
  * @title AssetTokenization
  * @dev NFT-based asset tokenization for equipment, vehicles, and facilities
- * @author TidyGen ERP
+ * @author Modulyn ERP
  */
 contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
@@ -65,7 +65,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         _;
     }
     
-    constructor() ERC721("TidyGen Assets", "TGA") {
+    constructor() ERC721("Modulyn Assets", "TGA") {
         // Initialize valid asset types
         validAssetTypes["vehicle"] = true;
         validAssetTypes["equipment"] = true;

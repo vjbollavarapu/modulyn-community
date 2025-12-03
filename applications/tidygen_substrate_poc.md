@@ -1,6 +1,6 @@
-# Grant Application: TidyGen Substrate POC — Service Verification (Level 2)
+# Grant Application: Modulyn Substrate POC — Service Verification (Level 2)
 
-Project name: TidyGen Substrate POC — Service Verification
+Project name: Modulyn Substrate POC — Service Verification
 Team / applicant: Vijay B. (solo maintainer, GitHub: https://github.com/vjbollavarapu)
 Level requested: 2
 Total request: $25,000 USD

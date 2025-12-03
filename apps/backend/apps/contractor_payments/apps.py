@@ -1,5 +1,5 @@
 """
-Contractor Payments app configuration for TidyGen ERP Community Edition.
+Contractor Payments app configuration for Modulyn ERP Community Edition.
 Handles payment processing, escrow, and Web3 payments for freelancers.
 """
 from django.apps import AppConfig

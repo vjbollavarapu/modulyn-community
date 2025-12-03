@@ -329,7 +329,7 @@ def test_comprehensive_workflow():
 def run_all_tests():
     """Run all test methods"""
     print("\n" + "="*70)
-    print(" TidyGen Substrate Client - Integration Tests")
+    print(" Modulyn Substrate Client - Integration Tests")
     print("="*70)
     print("\nThese tests verify Django-Substrate integration")
     print("Ensure Substrate node is running: make run")

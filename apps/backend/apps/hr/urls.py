@@ -1,5 +1,5 @@
 """
-HR management URL configuration for TidyGen ERP platform.
+HR management URL configuration for Modulyn ERP platform.
 """
 
 from django.urls import path, include

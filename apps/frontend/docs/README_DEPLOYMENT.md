@@ -1,6 +1,6 @@
-# 🚀 TidyGen Frontend - Vercel Deployment
+# 🚀 Modulyn Frontend - Vercel Deployment
 
-This document provides quick instructions for deploying the TidyGen frontend to Vercel.
+This document provides quick instructions for deploying the Modulyn frontend to Vercel.
 
 ## Quick Start
 
@@ -51,7 +51,7 @@ Set these in your Vercel project settings:
 | `VITE_API_BASE_URL` | Backend API URL | `https://your-api.vercel.app/api/v1` |
 | `VITE_STRIPE_PUBLISHABLE_KEY` | Stripe public key | `pk_live_...` |
 | `VITE_PAYPAL_CLIENT_ID` | PayPal client ID | `your_paypal_client_id` |
-| `VITE_APP_NAME` | Application name | `TidyGen` |
+| `VITE_APP_NAME` | Application name | `Modulyn` |
 
 ## Build Configuration
 

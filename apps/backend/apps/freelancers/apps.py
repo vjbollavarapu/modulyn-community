@@ -1,5 +1,5 @@
 """
-Freelancers app configuration for TidyGen ERP Community Edition.
+Freelancers app configuration for Modulyn ERP Community Edition.
 """
 from django.apps import AppConfig
 

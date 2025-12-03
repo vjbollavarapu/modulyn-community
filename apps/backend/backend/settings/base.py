@@ -1,5 +1,5 @@
 """
-Base settings for TidyGen ERP project.
+Base settings for Modulyn ERP project.
 """
 
 import os
@@ -254,16 +254,16 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Web3 Configuration
 WEB3_CONTRACTS = {
-    'TidyGenERP': {
-        'address': config('TIDYGEN_ERP_CONTRACT_ADDRESS', default=''),
+    'ModulynERP': {
+        'address': config('Modulyn_ERP_CONTRACT_ADDRESS', default=''),
         'abi': [],  # Will be loaded from contract artifacts
     },
-    'TidyGenToken': {
-        'address': config('TIDYGEN_TOKEN_CONTRACT_ADDRESS', default=''),
+    'ModulynToken': {
+        'address': config('Modulyn_TOKEN_CONTRACT_ADDRESS', default=''),
         'abi': [],  # Will be loaded from contract artifacts
     },
-    'TidyGenDAO': {
-        'address': config('TIDYGEN_DAO_CONTRACT_ADDRESS', default=''),
+    'ModulynDAO': {
+        'address': config('Modulyn_DAO_CONTRACT_ADDRESS', default=''),
         'abi': [],  # Will be loaded from contract artifacts
     },
     'ERC20': {
@@ -390,11 +390,11 @@ IPFS_URL = config('IPFS_URL', default='http://localhost:5001')
 IPFS_GATEWAY = config('IPFS_GATEWAY', default='https://ipfs.io/ipfs/')
 
 # Web3 Message Configuration
-WEB3_MESSAGE_PREFIX = config('WEB3_MESSAGE_PREFIX', default='TidyGen ERP Login')
+WEB3_MESSAGE_PREFIX = config('WEB3_MESSAGE_PREFIX', default='Modulyn ERP Login')
 
 # API Documentation
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'TidyGen ERP API',
+    'TITLE': 'Modulyn ERP API',
     'DESCRIPTION': 'Web3-enabled Enterprise Resource Planning API',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -402,7 +402,7 @@ SPECTACULAR_SETTINGS = {
     'SCHEMA_PATH_PREFIX': '/api/',
     'SERVERS': [
         {'url': 'http://localhost:8000', 'description': 'Development server'},
-        {'url': 'https://api.tidygen.com', 'description': 'Production server'},
+        {'url': 'https://api.Modulyn.com', 'description': 'Production server'},
     ],
     'TAGS': [
         {'name': 'Authentication', 'description': 'User authentication and authorization'},
@@ -510,7 +510,7 @@ EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@tidygen.com')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@Modulyn.com')
 
 # File Storage
 DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')

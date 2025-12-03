@@ -167,4 +167,4 @@ For production use, consider:
 - Implementing data validation
 - Adding more sophisticated error handling
 - Gas optimization
-- Integration with the main TidyGen application
+- Integration with the main Modulyn application

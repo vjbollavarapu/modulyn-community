@@ -48,7 +48,7 @@ class Command(BaseCommand):
         parser.add_argument(
             '--organization',
             type=str,
-            default='TidyGen Corp',
+            default='Modulyn Corp',
             help='Organization name for the seed data',
         )
 
@@ -113,9 +113,9 @@ class Command(BaseCommand):
                 'description': f'{org_name} - Enterprise Resource Planning System',
                 'industry': 'Technology',
                 'size': 'medium',
-                'website': 'https://tidygen.com',
+                'website': 'https://Modulyn.com',
                 'phone': '+1-555-0123',
-                'email': 'info@tidygen.com',
+                'email': 'info@Modulyn.com',
                 'address': '123 Business Street',
                 'city': 'San Francisco',
                 'state': 'CA',
@@ -177,7 +177,7 @@ class Command(BaseCommand):
         admin_user, created = User.objects.get_or_create(
             username='admin',
             defaults={
-                'email': 'admin@tidygen.com',
+                'email': 'admin@Modulyn.com',
                 'first_name': 'Admin',
                 'last_name': 'User',
                 'is_staff': True,
@@ -201,13 +201,13 @@ class Command(BaseCommand):
 
         # Create other sample users
         users_data = [
-            ('john.doe', 'john.doe@tidygen.com', 'John', 'Doe', 'finance', 'Finance Manager'),
-            ('jane.smith', 'jane.smith@tidygen.com', 'Jane', 'Smith', 'inventory', 'Inventory Manager'),
-            ('mike.johnson', 'mike.johnson@tidygen.com', 'Mike', 'Johnson', 'hr', 'HR Manager'),
-            ('sarah.wilson', 'sarah.wilson@tidygen.com', 'Sarah', 'Wilson', 'projects', 'Project Manager'),
-            ('david.brown', 'david.brown@tidygen.com', 'David', 'Brown', 'sales', 'Sales Manager'),
-            ('lisa.davis', 'lisa.davis@tidygen.com', 'Lisa', 'Davis', 'purchasing', 'Purchasing Manager'),
-            ('alex.garcia', 'alex.garcia@tidygen.com', 'Alex', 'Garcia', 'web3', 'Web3 Manager'),
+            ('john.doe', 'john.doe@Modulyn.com', 'John', 'Doe', 'finance', 'Finance Manager'),
+            ('jane.smith', 'jane.smith@Modulyn.com', 'Jane', 'Smith', 'inventory', 'Inventory Manager'),
+            ('mike.johnson', 'mike.johnson@Modulyn.com', 'Mike', 'Johnson', 'hr', 'HR Manager'),
+            ('sarah.wilson', 'sarah.wilson@Modulyn.com', 'Sarah', 'Wilson', 'projects', 'Project Manager'),
+            ('david.brown', 'david.brown@Modulyn.com', 'David', 'Brown', 'sales', 'Sales Manager'),
+            ('lisa.davis', 'lisa.davis@Modulyn.com', 'Lisa', 'Davis', 'purchasing', 'Purchasing Manager'),
+            ('alex.garcia', 'alex.garcia@Modulyn.com', 'Alex', 'Garcia', 'web3', 'Web3 Manager'),
         ]
         
         for username, email, first_name, last_name, role_name, position in users_data:
@@ -392,11 +392,11 @@ class Command(BaseCommand):
 
         # Create employees
         employees_data = [
-            ('John', 'Doe', 'john.doe@tidygen.com', 'IT', 'Software Engineer', Decimal('75000')),
-            ('Jane', 'Smith', 'jane.smith@tidygen.com', 'Finance', 'Accountant', Decimal('65000')),
-            ('Mike', 'Johnson', 'mike.johnson@tidygen.com', 'HR', 'HR Specialist', Decimal('60000')),
-            ('Sarah', 'Wilson', 'sarah.wilson@tidygen.com', 'Sales', 'Sales Representative', Decimal('70000')),
-            ('David', 'Brown', 'david.brown@tidygen.com', 'Operations', 'Operations Manager', Decimal('80000')),
+            ('John', 'Doe', 'john.doe@Modulyn.com', 'IT', 'Software Engineer', Decimal('75000')),
+            ('Jane', 'Smith', 'jane.smith@Modulyn.com', 'Finance', 'Accountant', Decimal('65000')),
+            ('Mike', 'Johnson', 'mike.johnson@Modulyn.com', 'HR', 'HR Specialist', Decimal('60000')),
+            ('Sarah', 'Wilson', 'sarah.wilson@Modulyn.com', 'Sales', 'Sales Representative', Decimal('70000')),
+            ('David', 'Brown', 'david.brown@Modulyn.com', 'Operations', 'Operations Manager', Decimal('80000')),
         ]
         
         for first_name, last_name, email, dept_name, position, salary in employees_data:

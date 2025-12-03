@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen ERP Community Edition - Render Deployment Script
+# Modulyn ERP Community Edition - Render Deployment Script
 # This script provides instructions and configuration for Render deployment
 
 set -e
 
-echo "🚀 TidyGen ERP Community Edition - Render Deployment"
+echo "🚀 Modulyn ERP Community Edition - Render Deployment"
 echo "=================================================="
 
 echo "📋 Render Deployment Instructions:"

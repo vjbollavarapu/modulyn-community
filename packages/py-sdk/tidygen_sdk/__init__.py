@@ -1,5 +1,5 @@
 """
-TidyGen Python SDK - minimal helpers to interact with the service verification contract.
+Modulyn Python SDK - minimal helpers to interact with the service verification contract.
 """
 
 from substrateinterface import SubstrateInterface, KeyPair

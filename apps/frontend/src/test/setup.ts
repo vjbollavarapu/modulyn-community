@@ -23,5 +23,5 @@ afterAll(() => server.close());
 // Mock environment variables
 process.env.VITE_API_BASE_URL = 'http://localhost:8002/api/v1';
 process.env.VITE_WS_ENDPOINT = 'ws://localhost:9944';
-process.env.VITE_APP_NAME = 'TidyGen ERP Test';
+process.env.VITE_APP_NAME = 'Modulyn ERP Test';
 

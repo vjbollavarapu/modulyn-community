@@ -1,5 +1,5 @@
 """
-Settings package for TidyGen ERP.
+Settings package for Modulyn ERP.
 Dynamically loads environment-specific settings.
 """
 

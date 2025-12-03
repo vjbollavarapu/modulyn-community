@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen ERP Community Edition - Quick Setup Script
+# Modulyn ERP Community Edition - Quick Setup Script
 # This script sets up the development environment quickly
 
 set -e
 
-echo "🚀 TidyGen ERP Community Edition - Quick Setup"
+echo "🚀 Modulyn ERP Community Edition - Quick Setup"
 echo "============================================"
 
 # Check if Docker is installed
@@ -48,7 +48,7 @@ docker-compose ps
 echo ""
 echo "🎉 Setup complete!"
 echo ""
-echo "📋 Your TidyGen ERP Community Edition is now running:"
+echo "📋 Your Modulyn ERP Community Edition is now running:"
 echo "   🌐 Backend API: http://localhost:8000"
 echo "   ⚙️ Admin Interface: http://localhost:8000/admin"
 echo "   📚 API Documentation: http://localhost:8000/api/docs"

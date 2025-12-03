@@ -1,8 +1,8 @@
-# TidyGen Backend Services - Substrate Integration
+# Modulyn Backend Services - Substrate Integration
 
 ## Overview
 
-This module provides Django integration with the TidyGen Substrate blockchain node through Python services.
+This module provides Django integration with the Modulyn Substrate blockchain node through Python services.
 
 ## SubstrateClient
 
@@ -486,11 +486,11 @@ test_comprehensive_workflow()
 
 ```
 ==================================================================
- TidyGen Substrate Client - Integration Tests
+ Modulyn Substrate Client - Integration Tests
 ==================================================================
 
 TEST 1: Connection Test
-✅ Connected to chain: tidygen-node
+✅ Connected to chain: Modulyn-node
 ✅ Block number: 42
 ✅ Version: 1.0.0
 
@@ -753,5 +753,5 @@ Apache-2.0
 
 - [substrate-interface Documentation](https://github.com/polkascan/py-substrate-interface)
 - [Substrate Documentation](https://docs.substrate.io/)
-- [TidyGen Substrate Pallets](../../substrate/README.md)
+- [Modulyn Substrate Pallets](../../substrate/README.md)
 

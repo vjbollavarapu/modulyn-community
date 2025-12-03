@@ -1,6 +1,6 @@
-# TidyGen Backend
+# Modulyn Backend
 
-Django backend application for the TidyGen Community ERP system.
+Django backend application for the Modulyn Community ERP system.
 
 ## Quick Start
 

@@ -167,4 +167,4 @@ This app is designed to integrate with:
 - Web3 transaction verification
 - Audit trail for all job activities
 
-This gig management system provides the foundation for a complete freelance cleaning and maintenance marketplace within the TidyGen ERP platform.
+This gig management system provides the foundation for a complete freelance cleaning and maintenance marketplace within the Modulyn ERP platform.

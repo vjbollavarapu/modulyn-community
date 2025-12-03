@@ -1,8 +1,8 @@
-# TidyGen Community Edition Setup Guide
+# Modulyn Community Edition Setup Guide
 
 ## Overview
 
-The TidyGen Community Edition is a free, open-source, self-hosted ERP solution optimized for Web3 Foundation grant requirements. This guide will help you set up and deploy your own instance.
+The Modulyn Community Edition is a free, open-source, self-hosted ERP solution optimized for Web3 Foundation grant requirements. This guide will help you set up and deploy your own instance.
 
 ## Features
 
@@ -31,8 +31,8 @@ The TidyGen Community Edition is a free, open-source, self-hosted ERP solution o
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/vcsmy/tidygen.git
-cd tidygen
+git clone https://github.com/vcsmy/Modulyn.git
+cd Modulyn
 ```
 
 ### 2. Environment Configuration
@@ -41,8 +41,8 @@ Create a `.env` file in the root directory:
 
 ```env
 # Database
-POSTGRES_DB=tidygen
-POSTGRES_USER=tidygen_user
+POSTGRES_DB=Modulyn
+POSTGRES_USER=Modulyn_user
 POSTGRES_PASSWORD=your_secure_password
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
@@ -246,8 +246,8 @@ GET /api/v1/audit/logs/?tenant_id=uuid&limit=100
 
 ```bash
 # Create dedicated database user
-CREATE USER tidygen_user WITH PASSWORD 'secure_password';
-GRANT ALL PRIVILEGES ON DATABASE tidygen TO tidygen_user;
+CREATE USER Modulyn_user WITH PASSWORD 'secure_password';
+GRANT ALL PRIVILEGES ON DATABASE Modulyn TO Modulyn_user;
 ```
 
 ### 3. Web3 Security
@@ -292,10 +292,10 @@ sudo certbot --nginx -d your-domain.com
 ```bash
 # Create backup script
 #!/bin/bash
-pg_dump -h localhost -U tidygen_user tidygen > backup_$(date +%Y%m%d_%H%M%S).sql
+pg_dump -h localhost -U Modulyn_user Modulyn > backup_$(date +%Y%m%d_%H%M%S).sql
 
 # Restore from backup
-psql -h localhost -U tidygen_user tidygen < backup_file.sql
+psql -h localhost -U Modulyn_user Modulyn < backup_file.sql
 ```
 
 ## Monitoring and Maintenance
@@ -318,7 +318,7 @@ docker-compose logs -f backend
 docker-compose logs -f frontend
 
 # Log rotation
-sudo logrotate /etc/logrotate.d/tidygen
+sudo logrotate /etc/logrotate.d/Modulyn
 ```
 
 ### 3. Performance Monitoring
@@ -357,10 +357,10 @@ sudo logrotate /etc/logrotate.d/tidygen
 
 ### Support
 
-- **Documentation**: [GitHub Wiki](https://github.com/vcsmy/tidygen/wiki)
-- **Issues**: [GitHub Issues](https://github.com/vcsmy/tidygen/issues)
-- **Community**: [Discord Server](https://discord.gg/tidygen-community)
-- **Email**: support@tidygen.io
+- **Documentation**: [GitHub Wiki](https://github.com/vcsmy/Modulyn/wiki)
+- **Issues**: [GitHub Issues](https://github.com/vcsmy/Modulyn/issues)
+- **Community**: [Discord Server](https://discord.gg/Modulyn-community)
+- **Email**: support@Modulyn.io
 
 ## Contributing
 

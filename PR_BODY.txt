@@ -1,5 +1,5 @@
 Summary:
-Adds a focused Substrate POC for TidyGen:
+Adds a focused Substrate POC for Modulyn:
 - ink! contract: contracts/substrate-poc (store/get/update/exists + tests)
 - backend integration: apps/backend/substrate_poc (deploy_contract.py, submit_service.py, management command)
 - one-command quickstart: scripts/quickstart.sh + docker-compose.quickstart.yml
@@ -9,7 +9,7 @@ Adds a focused Substrate POC for TidyGen:
 
 Quick verification (for reviewers):
 1) Clone and checkout:
-   git clone https://github.com/vjbollavarapu/tidygen.git
+   git clone https://github.com/vjbollavarapu/Modulyn.git
    git checkout feat/substrate-poc
 2) Run quickstart (Docker required):
    bash scripts/quickstart.sh --headless

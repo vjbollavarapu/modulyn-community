@@ -1,5 +1,5 @@
 """
-Test settings for TidyGen ERP.
+Test settings for Modulyn ERP.
 """
 from .base import *
 

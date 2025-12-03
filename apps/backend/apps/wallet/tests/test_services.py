@@ -54,7 +54,7 @@ class SignatureServiceTest(TestCase):
             timestamp=timestamp
         )
         
-        self.assertIn('TidyGen ERP Authentication', message)
+        self.assertIn('Modulyn ERP Authentication', message)
         self.assertIn(address, message)
         self.assertIn(nonce, message)
         self.assertIn(str(timestamp), message)
@@ -76,7 +76,7 @@ class SignatureServiceTest(TestCase):
             timestamp=timestamp
         )
         
-        self.assertIn('TidyGen ERP Transaction Signing', message)
+        self.assertIn('Modulyn ERP Transaction Signing', message)
         self.assertIn('payment', message)
         self.assertIn('100.0', message)
         self.assertIn('ETH', message)
@@ -85,7 +85,7 @@ class SignatureServiceTest(TestCase):
     
     def test_validate_message_format(self):
         """Test message format validation."""
-        valid_message = """TidyGen ERP Authentication
+        valid_message = """Modulyn ERP Authentication
 
 Please sign this message to authenticate with your wallet.
 
@@ -102,7 +102,7 @@ This request will not trigger a blockchain transaction or cost any gas fees."""
     
     def test_extract_message_components(self):
         """Test message component extraction."""
-        message = """TidyGen ERP Authentication
+        message = """Modulyn ERP Authentication
 
 Address: 0x1234567890123456789012345678901234567890
 Nonce: test_nonce

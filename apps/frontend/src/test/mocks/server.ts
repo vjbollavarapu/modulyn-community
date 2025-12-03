@@ -47,7 +47,7 @@ const handlers = [
       controller: '5GrwvaEF...',
       public_key: '0x04a1b2c3...',
       status: 'active',
-      did_identifier: 'did:substrate:tidygen:a1b2c3d4',
+      did_identifier: 'did:substrate:Modulyn:a1b2c3d4',
     });
   }),
 

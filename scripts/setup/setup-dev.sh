@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# TidyGen ERP Development Environment Setup Script
-# This script sets up the development environment for the TidyGen ERP platform
+# Modulyn ERP Development Environment Setup Script
+# This script sets up the development environment for the Modulyn ERP platform
 
 set -e  # Exit on any error
 
@@ -115,9 +115,9 @@ NODE_ENV=development
 DEBUG=true
 
 # Database Configuration
-POSTGRES_DB=tidygen_erp_dev
-POSTGRES_USER=tidygen_user
-POSTGRES_PASSWORD=tidygen_password
+POSTGRES_DB=Modulyn_erp_dev
+POSTGRES_USER=Modulyn_user
+POSTGRES_PASSWORD=Modulyn_password
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 
@@ -224,7 +224,7 @@ run_tests() {
 
 # Main setup function
 main() {
-    log_info "Starting TidyGen ERP development environment setup..."
+    log_info "Starting Modulyn ERP development environment setup..."
     
     check_prerequisites
     install_dependencies

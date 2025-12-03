@@ -1,13 +1,13 @@
 # Grant Applications
 
-This directory contains grant applications for the TidyGen Community project.
+This directory contains grant applications for the Modulyn Community project.
 
 ## Applications
 
 ### W3F Grants Program
 
-#### TidyGen Substrate POC - Web3-Enabled Service Verification
-- **File**: `tidygen_substrate_poc.md`
+#### Modulyn Substrate POC - Web3-Enabled Service Verification
+- **File**: `Modulyn_substrate_poc.md`
 - **Program**: Web3 Foundation Grants Program
 - **Level**: 2 (Up to $30,000)
 - **Requested Amount**: $25,000 USD
@@ -27,7 +27,7 @@ This directory contains grant applications for the TidyGen Community project.
 
 ### W3F Grants Program
 1. **Fork Repository**: Fork the [W3F Grants Program repository](https://github.com/w3f/Grants-Program)
-2. **Create Application**: Copy `tidygen_substrate_poc.md` to the applications directory
+2. **Create Application**: Copy `Modulyn_substrate_poc.md` to the applications directory
 3. **Submit PR**: Create a pull request with the application
 4. **Review Process**: Address feedback from W3F committee
 5. **Approval**: Upon approval, begin milestone development
@@ -66,12 +66,12 @@ This directory contains grant applications for the TidyGen Community project.
 
 ## Contact Information
 
-For questions about grant applications or the TidyGen Community project:
+For questions about grant applications or the Modulyn Community project:
 
-- **Email**: team@tidygen-erp.com
-- **GitHub**: [@tidygen-community](https://github.com/tidygen-community)
-- **Discord**: [TidyGen Community](https://discord.gg/tidygen)
-- **Twitter**: [@tidygen_erp](https://twitter.com/tidygen_erp)
+- **Email**: team@Modulyn-erp.com
+- **GitHub**: [@Modulyn-community](https://github.com/Modulyn-community)
+- **Discord**: [Modulyn Community](https://discord.gg/Modulyn)
+- **Twitter**: [@Modulyn_erp](https://twitter.com/Modulyn_erp)
 
 ## License
 

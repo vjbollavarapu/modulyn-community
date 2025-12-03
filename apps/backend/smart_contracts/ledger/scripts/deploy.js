@@ -3,10 +3,10 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
-  console.log("🚀 Starting TidyGenLedger deployment...");
+  console.log("🚀 Starting ModulynLedger deployment...");
   
   // Get the contract factory
-  const TidyGenLedger = await ethers.getContractFactory("TidyGenLedger");
+  const ModulynLedger = await ethers.getContractFactory("ModulynLedger");
   
   // Get the deployer account
   const [deployer] = await ethers.getSigners();
@@ -32,16 +32,16 @@ async function main() {
   });
   
   // Deploy the contract
-  console.log("⏳ Deploying TidyGenLedger contract...");
-  const tidygenLedger = await TidyGenLedger.deploy(deploymentParams);
+  console.log("⏳ Deploying ModulynLedger contract...");
+  const ModulynLedger = await ModulynLedger.deploy(deploymentParams);
   
   console.log("⏳ Waiting for deployment to be mined...");
-  await tidygenLedger.deployed();
+  await ModulynLedger.deployed();
   
-  console.log("✅ TidyGenLedger deployed to:", tidygenLedger.address);
+  console.log("✅ ModulynLedger deployed to:", ModulynLedger.address);
   
   // Get deployment transaction details
-  const deploymentTx = tidygenLedger.deployTransaction;
+  const deploymentTx = ModulynLedger.deployTransaction;
   console.log("📊 Deployment transaction hash:", deploymentTx.hash);
   console.log("⛽ Gas used for deployment:", deploymentTx.gasLimit.toString());
   
@@ -51,7 +51,7 @@ async function main() {
   
   // Get contract information
   const contractInfo = {
-    address: tidygenLedger.address,
+    address: ModulynLedger.address,
     transactionHash: deploymentTx.hash,
     gasUsed: deploymentTx.gasLimit.toString(),
     deployer: deployer.address,
@@ -73,7 +73,7 @@ async function main() {
     deployments = JSON.parse(fs.readFileSync(deploymentFile, "utf8"));
   }
   
-  deployments.TidyGenLedger = contractInfo;
+  deployments.ModulynLedger = contractInfo;
   
   fs.writeFileSync(deploymentFile, JSON.stringify(deployments, null, 2));
   console.log("💾 Deployment info saved to:", deploymentFile);
@@ -82,9 +82,9 @@ async function main() {
   if (networkName !== "localhost" && networkName !== "hardhat") {
     console.log("🔍 Verifying contract on Etherscan...");
     try {
-      await tidygenLedger.deployTransaction.wait(5); // Wait for more confirmations
+      await ModulynLedger.deployTransaction.wait(5); // Wait for more confirmations
       await hre.run("verify:verify", {
-        address: tidygenLedger.address,
+        address: ModulynLedger.address,
         constructorArguments: [],
       });
       console.log("✅ Contract verified on Etherscan");
@@ -98,19 +98,19 @@ async function main() {
   
   try {
     // Test owner
-    const owner = await tidygenLedger.owner();
+    const owner = await ModulynLedger.owner();
     console.log("👤 Contract owner:", owner);
     
     // Test gas limit
-    const gasLimit = await tidygenLedger.gasLimit();
+    const gasLimit = await ModulynLedger.gasLimit();
     console.log("⛽ Gas limit:", gasLimit.toString());
     
     // Test max batch size
-    const maxBatchSize = await tidygenLedger.maxBatchSize();
+    const maxBatchSize = await ModulynLedger.maxBatchSize();
     console.log("📦 Max batch size:", maxBatchSize.toString());
     
     // Test logging fee
-    const loggingFee = await tidygenLedger.loggingFee();
+    const loggingFee = await ModulynLedger.loggingFee();
     console.log("💰 Logging fee:", ethers.utils.formatEther(loggingFee), "ETH");
     
     console.log("✅ Basic functionality test passed");
@@ -121,7 +121,7 @@ async function main() {
   // Display deployment summary
   console.log("\n🎉 Deployment Summary:");
   console.log("====================");
-  console.log("Contract Address:", tidygenLedger.address);
+  console.log("Contract Address:", ModulynLedger.address);
   console.log("Transaction Hash:", deploymentTx.hash);
   console.log("Network:", networkName);
   console.log("Deployer:", deployer.address);
@@ -129,19 +129,19 @@ async function main() {
   console.log("Timestamp:", new Date().toISOString());
   
   // Save contract ABI for frontend integration
-  const contractArtifact = await ethers.getContractFactory("TidyGenLedger");
+  const contractArtifact = await ethers.getContractFactory("ModulynLedger");
   const abi = contractArtifact.interface.format(ethers.utils.FormatTypes.json);
   
-  const abiFile = path.join(deploymentDir, "TidyGenLedger.abi.json");
+  const abiFile = path.join(deploymentDir, "ModulynLedger.abi.json");
   fs.writeFileSync(abiFile, abi);
   console.log("📄 Contract ABI saved to:", abiFile);
   
   // Create environment file template
-  const envTemplate = `# TidyGenLedger Contract Configuration
-TIDYGEN_LEDGER_CONTRACT_ADDRESS=${tidygenLedger.address}
-TIDYGEN_LEDGER_DEPLOYMENT_HASH=${deploymentTx.hash}
-TIDYGEN_LEDGER_NETWORK=${networkName}
-TIDYGEN_LEDGER_DEPLOYER=${deployer.address}
+  const envTemplate = `# ModulynLedger Contract Configuration
+Modulyn_LEDGER_CONTRACT_ADDRESS=${ModulynLedger.address}
+Modulyn_LEDGER_DEPLOYMENT_HASH=${deploymentTx.hash}
+Modulyn_LEDGER_NETWORK=${networkName}
+Modulyn_LEDGER_DEPLOYER=${deployer.address}
 `;
   
   const envFile = path.join(deploymentDir, ".env.template");

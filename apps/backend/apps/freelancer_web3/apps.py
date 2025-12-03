@@ -1,5 +1,5 @@
 """
-Freelancer Web3 app configuration for TidyGen ERP Community Edition.
+Freelancer Web3 app configuration for Modulyn ERP Community Edition.
 Handles advanced Web3 features for freelancers including NFT badges, smart contracts, and decentralized reputation.
 """
 from django.apps import AppConfig

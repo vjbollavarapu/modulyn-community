@@ -1,13 +1,13 @@
-# TidyGen ERP - API Reference
+# Modulyn ERP - API Reference
 
 ## 🚀 **Overview**
 
-This document provides comprehensive API reference for TidyGen ERP, including all available REST API endpoints, CLI commands, and Web3 integration interfaces. The API follows RESTful principles and provides both traditional HTTP endpoints and Web3 blockchain interactions.
+This document provides comprehensive API reference for Modulyn ERP, including all available REST API endpoints, CLI commands, and Web3 integration interfaces. The API follows RESTful principles and provides both traditional HTTP endpoints and Web3 blockchain interactions.
 
 ### **Base URLs**
 - **Development**: `http://localhost:8000/api/v1/`
-- **Staging**: `https://staging-api.tidygen.io/api/v1/`
-- **Production**: `https://api.tidygen.io/api/v1/`
+- **Staging**: `https://staging-api.Modulyn.io/api/v1/`
+- **Production**: `https://api.Modulyn.io/api/v1/`
 
 ### **Authentication**
 All API endpoints require authentication using JWT tokens or Web3 wallet signatures.
@@ -157,7 +157,7 @@ GET /api/v1/users/
 ```json
 {
   "count": 100,
-  "next": "http://api.tidygen.io/api/v1/users/?page=2",
+  "next": "http://api.Modulyn.io/api/v1/users/?page=2",
   "previous": null,
   "results": [
     {
@@ -1187,86 +1187,86 @@ POST /api/v1/field-operations/routes/{id}/complete/
 ### **Installation**
 
 ```bash
-# Install TidyGen CLI
-npm install -g @tidygen/cli
+# Install Modulyn CLI
+npm install -g @Modulyn/cli
 
 # Or using pip
-pip install tidygen-cli
+pip install Modulyn-cli
 ```
 
 ### **Authentication**
 
 ```bash
 # Login with email/password
-tidygen auth login --email user@example.com --password securepassword
+Modulyn auth login --email user@example.com --password securepassword
 
 # Login with wallet
-tidygen auth login --wallet 0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6
+Modulyn auth login --wallet 0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6
 
 # Check authentication status
-tidygen auth status
+Modulyn auth status
 ```
 
 ### **Service Management**
 
 ```bash
 # List services
-tidygen services list
+Modulyn services list
 
 # Create service
-tidygen services create \
+Modulyn services create \
   --client 0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6 \
   --provider 0x8ba1f109551bD432803012645Hac136c \
   --type office_cleaning \
   --amount 100.00
 
 # Complete service
-tidygen services complete --id 1 --hash 0xCompletionHash123
+Modulyn services complete --id 1 --hash 0xCompletionHash123
 
 # Verify service
-tidygen services verify --id 1 --verified true --rating 5
+Modulyn services verify --id 1 --verified true --rating 5
 ```
 
 ### **Asset Management**
 
 ```bash
 # List assets
-tidygen assets list
+Modulyn assets list
 
 # Create asset
-tidygen assets create \
+Modulyn assets create \
   --name "Cleaning Equipment" \
   --description "Professional cleaning equipment" \
   --value 1000.00 \
   --category equipment
 
 # Tokenize asset
-tidygen assets tokenize --id 1 --metadata-uri ipfs://MetadataHash123
+Modulyn assets tokenize --id 1 --metadata-uri ipfs://MetadataHash123
 ```
 
 ### **Web3 Operations**
 
 ```bash
 # List wallets
-tidygen web3 wallets list
+Modulyn web3 wallets list
 
 # Add wallet
-tidygen web3 wallets add \
+Modulyn web3 wallets add \
   --name "Main Wallet" \
   --address 0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6 \
   --blockchain ethereum
 
 # Get wallet balance
-tidygen web3 wallets balance --id 1
+Modulyn web3 wallets balance --id 1
 
 # Deploy contract
-tidygen web3 contracts deploy \
+Modulyn web3 contracts deploy \
   --name "ServiceContract" \
   --type service \
   --parameters '{"client":"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6","provider":"0x8ba1f109551bD432803012645Hac136c","amount":"100"}'
 
 # Call contract method
-tidygen web3 contracts call \
+Modulyn web3 contracts call \
   --address 0xContractAddress123 \
   --method completeService \
   --parameters '[1,"0xCompletionHash123"]'
@@ -1276,44 +1276,44 @@ tidygen web3 contracts call \
 
 ```bash
 # List teams
-tidygen field-operations teams list
+Modulyn field-operations teams list
 
 # Create team
-tidygen field-operations teams create \
+Modulyn field-operations teams create \
   --name "Team Alpha" \
   --leader-id 1 \
   --specialization office_cleaning
 
 # List routes
-tidygen field-operations routes list
+Modulyn field-operations routes list
 
 # Create route
-tidygen field-operations routes create \
+Modulyn field-operations routes create \
   --stops '[{"address":"123 Main St","service_type":"office_cleaning","duration":60}]' \
   --team-id 1 \
   --date 2024-01-16
 
 # Start route
-tidygen field-operations routes start --id 1
+Modulyn field-operations routes start --id 1
 
 # Complete route
-tidygen field-operations routes complete --id 1 --duration 175
+Modulyn field-operations routes complete --id 1 --duration 175
 ```
 
 ### **Configuration**
 
 ```bash
 # Set API endpoint
-tidygen config set api-endpoint https://api.tidygen.io
+Modulyn config set api-endpoint https://api.Modulyn.io
 
 # Set default organization
-tidygen config set organization 1
+Modulyn config set organization 1
 
 # View configuration
-tidygen config list
+Modulyn config list
 
 # Reset configuration
-tidygen config reset
+Modulyn config reset
 ```
 
 ---
@@ -1368,10 +1368,10 @@ All API endpoints return errors in the following format:
 ### **JavaScript/TypeScript SDK**
 
 ```typescript
-import { TidyGenClient } from '@tidygen/sdk';
+import { ModulynClient } from '@Modulyn/sdk';
 
-const client = new TidyGenClient({
-  apiEndpoint: 'https://api.tidygen.io',
+const client = new ModulynClient({
+  apiEndpoint: 'https://api.Modulyn.io',
   apiKey: 'your-api-key'
 });
 
@@ -1392,10 +1392,10 @@ await client.services.complete(service.id, {
 ### **Python SDK**
 
 ```python
-from tidygen import TidyGenClient
+from Modulyn import ModulynClient
 
-client = TidyGenClient(
-    api_endpoint='https://api.tidygen.io',
+client = ModulynClient(
+    api_endpoint='https://api.Modulyn.io',
     api_key='your-api-key'
 )
 
@@ -1415,4 +1415,4 @@ client.services.complete(service['id'], {
 
 ---
 
-This comprehensive API reference provides complete documentation for all TidyGen ERP endpoints, CLI commands, and integration examples. For additional support, please refer to the [Documentation Index](INDEX.md) or contact our support team.
+This comprehensive API reference provides complete documentation for all Modulyn ERP endpoints, CLI commands, and integration examples. For additional support, please refer to the [Documentation Index](INDEX.md) or contact our support team.

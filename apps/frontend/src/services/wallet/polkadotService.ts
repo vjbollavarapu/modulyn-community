@@ -95,7 +95,7 @@ class PolkadotService {
         throw new WalletError('NO_EXTENSION', 'No Polkadot.js extension found');
       }
 
-      this.provider = await window.injectedWeb3![extension].enable('TidyGen ERP');
+      this.provider = await window.injectedWeb3![extension].enable('Modulyn ERP');
       
       // Get accounts
       this.accounts = await this.provider.accounts.get();

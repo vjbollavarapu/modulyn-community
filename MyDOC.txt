@@ -27,21 +27,21 @@ The Web3 Foundation expects projects to meet these criteria:
 4. **Grant Proposal Fit**
 
    * Problem statement (what you’re solving).
-   * Solution overview (how TidyGen solves it).
+   * Solution overview (how Modulyn solves it).
    * Relevance to Polkadot/Substrate ecosystem.
    * Roadmap with milestones & deliverables.
 
 5. **Community Value**
 
-   * How others can use or extend TidyGen.
+   * How others can use or extend Modulyn.
    * Real-world use cases.
    * Impact on Web3 ecosystem.
 
 ---
 
-## 🔹 Step 2: Current Gaps in TidyGen
+## 🔹 Step 2: Current Gaps in Modulyn
 
-Looking at your repo (`vcsmy/tidygen`):
+Looking at your repo (`vcsmy/Modulyn`):
 
 * README is minimal → needs restructuring.
 * No license file → must add (MIT recommended).
@@ -58,7 +58,7 @@ Looking at your repo (`vcsmy/tidygen`):
 Here’s a **prompt set you can paste into Cursor.AI** to amend the repo step by step:
 
 ```
-# Cursor.AI Prompt Set for TidyGen – Web3 Grant Benchmarking
+# Cursor.AI Prompt Set for Modulyn – Web3 Grant Benchmarking
 
 ## 1. Documentation
 - Rewrite README.md with sections:
@@ -80,7 +80,7 @@ Here’s a **prompt set you can paste into Cursor.AI** to amend the repo step by
   - Add system architecture diagram (Mermaid or PlantUML).
   - Add module explanations.
   - Add API documentation.
-  - Add "How TidyGen fits Web3" section, showing:
+  - Add "How Modulyn fits Web3" section, showing:
     - Decentralized storage (IPFS/Arweave integration plan).
     - Smart contract or blockchain-based registry.
     - Trustless verification mechanism.
@@ -89,7 +89,7 @@ Here’s a **prompt set you can paste into Cursor.AI** to amend the repo step by
 - Create GRANT_PROPOSAL.md with:
   - Executive Summary
   - Problem
-  - Solution (TidyGen)
+  - Solution (Modulyn)
   - Technical Architecture
   - Ecosystem Fit (why Polkadot/Substrate/Web3)
   - Roadmap (3–4 milestones with deliverables, timelines)
@@ -120,4 +120,4 @@ Once Cursor applies these:
 
 ---
 
-👉 Vijay, do you want me to **write the first draft of README.md and GRANT\_PROPOSAL.md** for TidyGen so you can directly drop them into your repo and let Cursor.AI refine?
+👉 Vijay, do you want me to **write the first draft of README.md and GRANT\_PROPOSAL.md** for Modulyn so you can directly drop them into your repo and let Cursor.AI refine?

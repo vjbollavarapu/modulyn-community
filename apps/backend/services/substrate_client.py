@@ -1,7 +1,7 @@
 """
-Substrate RPC Client for TidyGen ERP
+Substrate RPC Client for Modulyn ERP
 
-This module provides a comprehensive interface to interact with the TidyGen Substrate node,
+This module provides a comprehensive interface to interact with the Modulyn Substrate node,
 including invoice ledger, DID management, and DAO governance.
 """
 
@@ -30,7 +30,7 @@ class SubstrateTransactionError(Exception):
 
 class SubstrateClient:
     """
-    Substrate RPC client for TidyGen ERP blockchain integration.
+    Substrate RPC client for Modulyn ERP blockchain integration.
     
     Provides methods to interact with custom pallets:
     - pallet-ledger: Invoice management

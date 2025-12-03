@@ -1,6 +1,6 @@
 # Scripts Directory
 
-This directory contains automation scripts for common development, deployment, and maintenance tasks for the TidyGen ERP platform.
+This directory contains automation scripts for common development, deployment, and maintenance tasks for the Modulyn ERP platform.
 
 ## 📁 Structure
 
@@ -149,8 +149,8 @@ This will:
 ```bash
 # Required environment variables
 export DB_HOST=localhost
-export DB_NAME=tidygen_erp
-export DB_USER=tidygen_user
+export DB_NAME=Modulyn_erp
+export DB_USER=Modulyn_user
 export DB_PASSWORD=secure_password
 export SECRET_KEY=your_secret_key
 ```
@@ -158,9 +158,9 @@ export SECRET_KEY=your_secret_key
 ## 📊 Logging and Monitoring
 
 ### Log Files
-- **Setup Logs**: `/var/log/tidygen/setup.log`
-- **Deployment Logs**: `/var/log/tidygen/deployment.log`
-- **Maintenance Logs**: `/var/log/tidygen/maintenance.log`
+- **Setup Logs**: `/var/log/Modulyn/setup.log`
+- **Deployment Logs**: `/var/log/Modulyn/deployment.log`
+- **Maintenance Logs**: `/var/log/Modulyn/maintenance.log`
 
 ### Monitoring Integration
 - Scripts integrate with monitoring systems

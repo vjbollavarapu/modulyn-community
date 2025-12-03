@@ -2,8 +2,8 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { time } = require("@nomicfoundation/hardhat-network-helpers");
 
-describe("TidyGenLedger", function () {
-  let tidygenLedger;
+describe("ModulynLedger", function () {
+  let ModulynLedger;
   let owner;
   let organization1;
   let organization2;
@@ -19,42 +19,42 @@ describe("TidyGenLedger", function () {
     [owner, organization1, organization2, unauthorizedUser] = await ethers.getSigners();
     
     // Deploy contract
-    const TidyGenLedger = await ethers.getContractFactory("TidyGenLedger");
-    tidygenLedger = await TidyGenLedger.deploy();
-    await tidygenLedger.deployed();
+    const ModulynLedger = await ethers.getContractFactory("ModulynLedger");
+    ModulynLedger = await ModulynLedger.deploy();
+    await ModulynLedger.deployed();
   });
   
   describe("Deployment", function () {
     it("Should set the right owner", async function () {
-      expect(await tidygenLedger.owner()).to.equal(owner.address);
+      expect(await ModulynLedger.owner()).to.equal(owner.address);
     });
     
     it("Should have correct initial values", async function () {
-      expect(await tidygenLedger.gasLimit()).to.equal(1000000);
-      expect(await tidygenLedger.maxBatchSize()).to.equal(100);
-      expect(await tidygenLedger.loggingFee()).to.equal(0);
+      expect(await ModulynLedger.gasLimit()).to.equal(1000000);
+      expect(await ModulynLedger.maxBatchSize()).to.equal(100);
+      expect(await ModulynLedger.loggingFee()).to.equal(0);
     });
     
     it("Should have zero initial transaction count", async function () {
-      expect(await tidygenLedger.getTotalTransactionCount()).to.equal(0);
+      expect(await ModulynLedger.getTotalTransactionCount()).to.equal(0);
     });
   });
   
   describe("Transaction Logging", function () {
     it("Should log a single transaction", async function () {
-      const tx = await tidygenLedger.logTransaction(
+      const tx = await ModulynLedger.logTransaction(
         TRANSACTION_TYPE,
         SOURCE_MODULE,
         SOURCE_ID,
         TRANSACTION_HASH,
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
       await expect(tx)
-        .to.emit(tidygenLedger, "TransactionLogged")
+        .to.emit(ModulynLedger, "TransactionLogged")
         .withArgs(
-          await tidygenLedger.transactions(0), // First transaction ID
+          await ModulynLedger.transactions(0), // First transaction ID
           TRANSACTION_TYPE,
           organization1.address,
           SOURCE_MODULE,
@@ -63,38 +63,38 @@ describe("TidyGenLedger", function () {
           await time.latest()
         );
       
-      expect(await tidygenLedger.getTotalTransactionCount()).to.equal(1);
+      expect(await ModulynLedger.getTotalTransactionCount()).to.equal(1);
     });
     
     it("Should not allow duplicate transactions", async function () {
       // Log first transaction
-      await tidygenLedger.logTransaction(
+      await ModulynLedger.logTransaction(
         TRANSACTION_TYPE,
         SOURCE_MODULE,
         SOURCE_ID,
         TRANSACTION_HASH,
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
       // Try to log duplicate transaction
       await expect(
-        tidygenLedger.logTransaction(
+        ModulynLedger.logTransaction(
           TRANSACTION_TYPE,
           SOURCE_MODULE,
           SOURCE_ID,
           TRANSACTION_HASH,
           organization1.address,
-          { value: await tidygenLedger.loggingFee() }
+          { value: await ModulynLedger.loggingFee() }
         )
       ).to.be.revertedWith("Transaction already exists");
     });
     
     it("Should require sufficient fee payment", async function () {
-      await tidygenLedger.updateLoggingFee(ethers.utils.parseEther("0.001"));
+      await ModulynLedger.updateLoggingFee(ethers.utils.parseEther("0.001"));
       
       await expect(
-        tidygenLedger.logTransaction(
+        ModulynLedger.logTransaction(
           TRANSACTION_TYPE,
           SOURCE_MODULE,
           SOURCE_ID,
@@ -107,13 +107,13 @@ describe("TidyGenLedger", function () {
     
     it("Should only allow authorized callers", async function () {
       await expect(
-        tidygenLedger.connect(unauthorizedUser).logTransaction(
+        ModulynLedger.connect(unauthorizedUser).logTransaction(
           TRANSACTION_TYPE,
           SOURCE_MODULE,
           SOURCE_ID,
           TRANSACTION_HASH,
           organization1.address,
-          { value: await tidygenLedger.loggingFee() }
+          { value: await ModulynLedger.loggingFee() }
         )
       ).to.be.revertedWith("Not authorized for this organization");
     });
@@ -130,31 +130,31 @@ describe("TidyGenLedger", function () {
         "hash3"
       ];
       
-      const tx = await tidygenLedger.logBatch(
+      const tx = await ModulynLedger.logBatch(
         transactionTypes,
         sourceModules,
         sourceIds,
         hashes,
         organization1.address,
-        { value: (await tidygenLedger.loggingFee()).mul(3) }
+        { value: (await ModulynLedger.loggingFee()).mul(3) }
       );
       
       await expect(tx)
-        .to.emit(tidygenLedger, "BatchLogged")
+        .to.emit(ModulynLedger, "BatchLogged")
         .withArgs(
-          await tidygenLedger.batches(0), // First batch ID
+          await ModulynLedger.batches(0), // First batch ID
           organization1.address,
-          await tidygenLedger.getOrganizationTransactions(organization1.address),
+          await ModulynLedger.getOrganizationTransactions(organization1.address),
           await time.latest()
         );
       
-      expect(await tidygenLedger.getTotalTransactionCount()).to.equal(3);
-      expect(await tidygenLedger.getTotalBatchCount()).to.equal(1);
+      expect(await ModulynLedger.getTotalTransactionCount()).to.equal(3);
+      expect(await ModulynLedger.getTotalBatchCount()).to.equal(1);
     });
     
     it("Should not allow empty batch", async function () {
       await expect(
-        tidygenLedger.logBatch(
+        ModulynLedger.logBatch(
           [],
           [],
           [],
@@ -169,26 +169,26 @@ describe("TidyGenLedger", function () {
       const largeArray = new Array(101).fill("test");
       
       await expect(
-        tidygenLedger.logBatch(
+        ModulynLedger.logBatch(
           largeArray,
           largeArray,
           largeArray,
           largeArray,
           organization1.address,
-          { value: (await tidygenLedger.loggingFee()).mul(101) }
+          { value: (await ModulynLedger.loggingFee()).mul(101) }
         )
       ).to.be.revertedWith("Batch size exceeds limit");
     });
     
     it("Should require array length consistency", async function () {
       await expect(
-        tidygenLedger.logBatch(
+        ModulynLedger.logBatch(
           ["invoice", "payment"],
           ["finance"],
           ["INV-001", "PAY-001"],
           ["hash1", "hash2"],
           organization1.address,
-          { value: (await tidygenLedger.loggingFee()).mul(2) }
+          { value: (await ModulynLedger.loggingFee()).mul(2) }
         )
       ).to.be.revertedWith("Array length mismatch");
     });
@@ -198,13 +198,13 @@ describe("TidyGenLedger", function () {
     let transactionId;
     
     beforeEach(async function () {
-      const tx = await tidygenLedger.logTransaction(
+      const tx = await ModulynLedger.logTransaction(
         TRANSACTION_TYPE,
         SOURCE_MODULE,
         SOURCE_ID,
         TRANSACTION_HASH,
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
       const receipt = await tx.wait();
@@ -213,29 +213,29 @@ describe("TidyGenLedger", function () {
     });
     
     it("Should verify correct transaction hash", async function () {
-      const isValid = await tidygenLedger.verifyTransaction(transactionId, TRANSACTION_HASH);
+      const isValid = await ModulynLedger.verifyTransaction(transactionId, TRANSACTION_HASH);
       expect(isValid).to.be.true;
     });
     
     it("Should reject incorrect transaction hash", async function () {
-      const isValid = await tidygenLedger.verifyTransaction(transactionId, "wrong_hash");
+      const isValid = await ModulynLedger.verifyTransaction(transactionId, "wrong_hash");
       expect(isValid).to.be.false;
     });
     
     it("Should mark transaction as verified", async function () {
-      const tx = await tidygenLedger.markTransactionVerified(transactionId);
+      const tx = await ModulynLedger.markTransactionVerified(transactionId);
       
       await expect(tx)
-        .to.emit(tidygenLedger, "TransactionVerified")
+        .to.emit(ModulynLedger, "TransactionVerified")
         .withArgs(transactionId, true, await time.latest());
       
-      const transaction = await tidygenLedger.getTransaction(transactionId);
+      const transaction = await ModulynLedger.getTransaction(transactionId);
       expect(transaction.verified).to.be.true;
     });
     
     it("Should only allow owner to mark as verified", async function () {
       await expect(
-        tidygenLedger.connect(organization1).markTransactionVerified(transactionId)
+        ModulynLedger.connect(organization1).markTransactionVerified(transactionId)
       ).to.be.revertedWith("Ownable: caller is not the owner");
     });
   });
@@ -249,13 +249,13 @@ describe("TidyGenLedger", function () {
       const sourceIds = ["INV-001", "PAY-001"];
       const hashes = ["hash1", "hash2"];
       
-      const tx = await tidygenLedger.logBatch(
+      const tx = await ModulynLedger.logBatch(
         transactionTypes,
         sourceModules,
         sourceIds,
         hashes,
         organization1.address,
-        { value: (await tidygenLedger.loggingFee()).mul(2) }
+        { value: (await ModulynLedger.loggingFee()).mul(2) }
       );
       
       const receipt = await tx.wait();
@@ -264,22 +264,22 @@ describe("TidyGenLedger", function () {
     });
     
     it("Should mark batch as verified", async function () {
-      const tx = await tidygenLedger.markBatchVerified(batchId);
+      const tx = await ModulynLedger.markBatchVerified(batchId);
       
       await expect(tx)
-        .to.emit(tidygenLedger, "BatchVerified")
+        .to.emit(ModulynLedger, "BatchVerified")
         .withArgs(batchId, true, await time.latest());
       
-      const batch = await tidygenLedger.getBatch(batchId);
+      const batch = await ModulynLedger.getBatch(batchId);
       expect(batch.verified).to.be.true;
     });
     
     it("Should mark all transactions in batch as verified", async function () {
-      await tidygenLedger.markBatchVerified(batchId);
+      await ModulynLedger.markBatchVerified(batchId);
       
-      const batch = await tidygenLedger.getBatch(batchId);
+      const batch = await ModulynLedger.getBatch(batchId);
       for (let i = 0; i < batch.transactionIds.length; i++) {
-        const transaction = await tidygenLedger.getTransaction(batch.transactionIds[i]);
+        const transaction = await ModulynLedger.getTransaction(batch.transactionIds[i]);
         expect(transaction.verified).to.be.true;
       }
     });
@@ -288,28 +288,28 @@ describe("TidyGenLedger", function () {
   describe("View Functions", function () {
     beforeEach(async function () {
       // Log some test transactions
-      await tidygenLedger.logTransaction(
+      await ModulynLedger.logTransaction(
         "invoice",
         "finance",
         "INV-001",
         "hash1",
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
-      await tidygenLedger.logTransaction(
+      await ModulynLedger.logTransaction(
         "payment",
         "finance", 
         "PAY-001",
         "hash2",
         organization2.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
     });
     
     it("Should return correct transaction details", async function () {
-      const transactionId = await tidygenLedger.allTransactionIds(0);
-      const transaction = await tidygenLedger.getTransaction(transactionId);
+      const transactionId = await ModulynLedger.allTransactionIds(0);
+      const transaction = await ModulynLedger.getTransaction(transactionId);
       
       expect(transaction.transactionType).to.equal("invoice");
       expect(transaction.sourceModule).to.equal("finance");
@@ -319,23 +319,23 @@ describe("TidyGenLedger", function () {
     });
     
     it("Should return organization transactions", async function () {
-      const org1Transactions = await tidygenLedger.getOrganizationTransactions(organization1.address);
-      const org2Transactions = await tidygenLedger.getOrganizationTransactions(organization2.address);
+      const org1Transactions = await ModulynLedger.getOrganizationTransactions(organization1.address);
+      const org2Transactions = await ModulynLedger.getOrganizationTransactions(organization2.address);
       
       expect(org1Transactions.length).to.equal(1);
       expect(org2Transactions.length).to.equal(1);
     });
     
     it("Should check transaction existence", async function () {
-      const transactionId = await tidygenLedger.allTransactionIds(0);
-      const exists = await tidygenLedger.transactionExists(transactionId);
+      const transactionId = await ModulynLedger.allTransactionIds(0);
+      const exists = await ModulynLedger.transactionExists(transactionId);
       
       expect(exists).to.be.true;
     });
     
     it("Should return false for non-existent transaction", async function () {
       const fakeId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("fake"));
-      const exists = await tidygenLedger.transactionExists(fakeId);
+      const exists = await ModulynLedger.transactionExists(fakeId);
       
       expect(exists).to.be.false;
     });
@@ -345,95 +345,95 @@ describe("TidyGenLedger", function () {
     it("Should update gas limit", async function () {
       const newGasLimit = 2000000;
       
-      await expect(tidygenLedger.updateGasLimit(newGasLimit))
-        .to.emit(tidygenLedger, "GasLimitUpdated")
+      await expect(ModulynLedger.updateGasLimit(newGasLimit))
+        .to.emit(ModulynLedger, "GasLimitUpdated")
         .withArgs(1000000, newGasLimit);
       
-      expect(await tidygenLedger.gasLimit()).to.equal(newGasLimit);
+      expect(await ModulynLedger.gasLimit()).to.equal(newGasLimit);
     });
     
     it("Should update max batch size", async function () {
       const newMaxBatchSize = 200;
       
-      await expect(tidygenLedger.updateMaxBatchSize(newMaxBatchSize))
-        .to.emit(tidygenLedger, "MaxBatchSizeUpdated")
+      await expect(ModulynLedger.updateMaxBatchSize(newMaxBatchSize))
+        .to.emit(ModulynLedger, "MaxBatchSizeUpdated")
         .withArgs(100, newMaxBatchSize);
       
-      expect(await tidygenLedger.maxBatchSize()).to.equal(newMaxBatchSize);
+      expect(await ModulynLedger.maxBatchSize()).to.equal(newMaxBatchSize);
     });
     
     it("Should update logging fee", async function () {
       const newFee = ethers.utils.parseEther("0.001");
       
-      await expect(tidygenLedger.updateLoggingFee(newFee))
-        .to.emit(tidygenLedger, "LoggingFeeUpdated")
+      await expect(ModulynLedger.updateLoggingFee(newFee))
+        .to.emit(ModulynLedger, "LoggingFeeUpdated")
         .withArgs(0, newFee);
       
-      expect(await tidygenLedger.loggingFee()).to.equal(newFee);
+      expect(await ModulynLedger.loggingFee()).to.equal(newFee);
     });
     
     it("Should pause and unpause contract", async function () {
-      await tidygenLedger.pause();
-      expect(await tidygenLedger.paused()).to.be.true;
+      await ModulynLedger.pause();
+      expect(await ModulynLedger.paused()).to.be.true;
       
       await expect(
-        tidygenLedger.logTransaction(
+        ModulynLedger.logTransaction(
           TRANSACTION_TYPE,
           SOURCE_MODULE,
           SOURCE_ID,
           TRANSACTION_HASH,
           organization1.address,
-          { value: await tidygenLedger.loggingFee() }
+          { value: await ModulynLedger.loggingFee() }
         )
       ).to.be.revertedWith("Pausable: paused");
       
-      await tidygenLedger.unpause();
-      expect(await tidygenLedger.paused()).to.be.false;
+      await ModulynLedger.unpause();
+      expect(await ModulynLedger.paused()).to.be.false;
     });
     
     it("Should only allow owner to call admin functions", async function () {
       await expect(
-        tidygenLedger.connect(organization1).updateGasLimit(2000000)
+        ModulynLedger.connect(organization1).updateGasLimit(2000000)
       ).to.be.revertedWith("Ownable: caller is not the owner");
       
       await expect(
-        tidygenLedger.connect(organization1).pause()
+        ModulynLedger.connect(organization1).pause()
       ).to.be.revertedWith("Ownable: caller is not the owner");
     });
   });
   
   describe("Audit Events", function () {
     it("Should create audit events for transactions", async function () {
-      const tx = await tidygenLedger.logTransaction(
+      const tx = await ModulynLedger.logTransaction(
         TRANSACTION_TYPE,
         SOURCE_MODULE,
         SOURCE_ID,
         TRANSACTION_HASH,
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
       await expect(tx)
-        .to.emit(tidygenLedger, "AuditEventCreated");
+        .to.emit(ModulynLedger, "AuditEventCreated");
       
-      expect(await tidygenLedger.getTotalEventCount()).to.equal(1);
+      expect(await ModulynLedger.getTotalEventCount()).to.equal(1);
     });
     
     it("Should return transaction events", async function () {
-      const tx = await tidygenLedger.logTransaction(
+      const tx = await ModulynLedger.logTransaction(
         TRANSACTION_TYPE,
         SOURCE_MODULE,
         SOURCE_ID,
         TRANSACTION_HASH,
         organization1.address,
-        { value: await tidygenLedger.loggingFee() }
+        { value: await ModulynLedger.loggingFee() }
       );
       
       const receipt = await tx.wait();
       const event = receipt.events.find(e => e.event === "TransactionLogged");
       const transactionId = event.args.transactionId;
       
-      const events = await tidygenLedger.getTransactionEvents(transactionId);
+      const events = await ModulynLedger.getTransactionEvents(transactionId);
       expect(events.length).to.be.greaterThan(0);
     });
   });
@@ -442,12 +442,12 @@ describe("TidyGenLedger", function () {
     it("Should allow owner to withdraw contract balance", async function () {
       // Send some ETH to contract
       await organization1.sendTransaction({
-        to: tidygenLedger.address,
+        to: ModulynLedger.address,
         value: ethers.utils.parseEther("1.0")
       });
       
       const initialBalance = await owner.getBalance();
-      await tidygenLedger.withdraw();
+      await ModulynLedger.withdraw();
       const finalBalance = await owner.getBalance();
       
       expect(finalBalance).to.be.gt(initialBalance);
@@ -455,17 +455,17 @@ describe("TidyGenLedger", function () {
     
     it("Should not allow non-owner to withdraw", async function () {
       await expect(
-        tidygenLedger.connect(organization1).withdraw()
+        ModulynLedger.connect(organization1).withdraw()
       ).to.be.revertedWith("Ownable: caller is not the owner");
     });
   });
   
   describe("Edge Cases", function () {
     it("Should handle zero fee correctly", async function () {
-      await tidygenLedger.updateLoggingFee(0);
+      await ModulynLedger.updateLoggingFee(0);
       
       await expect(
-        tidygenLedger.logTransaction(
+        ModulynLedger.logTransaction(
           TRANSACTION_TYPE,
           SOURCE_MODULE,
           SOURCE_ID,
@@ -477,17 +477,17 @@ describe("TidyGenLedger", function () {
     });
     
     it("Should handle maximum batch size", async function () {
-      const maxSize = await tidygenLedger.maxBatchSize();
+      const maxSize = await ModulynLedger.maxBatchSize();
       const largeArray = new Array(maxSize.toNumber()).fill("test");
       
       await expect(
-        tidygenLedger.logBatch(
+        ModulynLedger.logBatch(
           largeArray,
           largeArray,
           largeArray,
           largeArray,
           organization1.address,
-          { value: (await tidygenLedger.loggingFee()).mul(maxSize) }
+          { value: (await ModulynLedger.loggingFee()).mul(maxSize) }
         )
       ).to.not.be.reverted;
     });

@@ -1,8 +1,8 @@
-# TidyGen ERP - Real-World Use Cases
+# Modulyn ERP - Real-World Use Cases
 
 ## 🎯 **Overview**
 
-This document presents real-world scenarios where TidyGen ERP provides significant value to cleaning service companies. Each use case demonstrates how Web3 technology solves critical industry problems while providing transparency, trust, and efficiency.
+This document presents real-world scenarios where Modulyn ERP provides significant value to cleaning service companies. Each use case demonstrates how Web3 technology solves critical industry problems while providing transparency, trust, and efficiency.
 
 ---
 
@@ -30,7 +30,7 @@ This document presents real-world scenarios where TidyGen ERP provides significa
 - **Cash flow problems** due to delayed payments
 - **No automated invoicing** or payment processing
 
-### **How TidyGen Solves It**
+### **How Modulyn Solves It**
 
 #### **Smart Contract Service Verification**
 ```solidity
@@ -146,7 +146,7 @@ contract PaymentEscrow {
 ```mermaid
 sequenceDiagram
     participant C as Client (Building Manager)
-    participant T as TidyGen Platform
+    participant T as Modulyn Platform
     participant SC as Smart Contract
     participant P as Provider (Acme Office Services)
     participant BC as Blockchain
@@ -207,7 +207,7 @@ sequenceDiagram
 - **No reputation system** - difficult to build trust
 - **Geographic limitations** - only local payment methods
 
-### **How TidyGen Solves It**
+### **How Modulyn Solves It**
 
 #### **Decentralized Identity Verification**
 ```typescript
@@ -357,7 +357,7 @@ contract CleanerReputation {
 ```mermaid
 sequenceDiagram
     participant H as Homeowner
-    participant T as TidyGen Platform
+    participant T as Modulyn Platform
     participant C as Cleaner
     participant SC as Smart Contract
     participant DID as DID System
@@ -419,7 +419,7 @@ sequenceDiagram
 - **Workflow bottlenecks** - approvals take 2-3 days on average
 - **Quality control** - inconsistent standards across different facilities
 
-### **How TidyGen Solves It**
+### **How Modulyn Solves It**
 
 #### **Compliance Documentation on Blockchain**
 ```solidity
@@ -600,7 +600,7 @@ class WorkflowAutomation {
 ```mermaid
 sequenceDiagram
     participant F as Facility Manager
-    participant T as TidyGen Platform
+    participant T as Modulyn Platform
     participant SC as Smart Contract
     participant A as Asset NFT
     participant I as Inspector
@@ -709,4 +709,4 @@ sequenceDiagram
 
 ---
 
-These real-world use cases demonstrate how TidyGen ERP transforms the cleaning services industry through Web3 technology, providing unprecedented transparency, efficiency, and trust while delivering significant cost savings and operational improvements.
+These real-world use cases demonstrate how Modulyn ERP transforms the cleaning services industry through Web3 technology, providing unprecedented transparency, efficiency, and trust while delivering significant cost savings and operational improvements.

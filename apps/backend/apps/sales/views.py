@@ -1,5 +1,5 @@
 """
-Sales and client management views for TidyGen ERP platform.
+Sales and client management views for Modulyn ERP platform.
 """
 from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action

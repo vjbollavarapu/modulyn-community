@@ -595,6 +595,6 @@ class LedgerConfigurationAdmin(admin.ModelAdmin):
 
 
 # Customize admin site
-admin.site.site_header = "TidyGen ERP - Smart Contract Ledger"
+admin.site.site_header = "Modulyn ERP - Smart Contract Ledger"
 admin.site.site_title = "Ledger Admin"
 admin.site.index_title = "Smart Contract Ledger Administration"

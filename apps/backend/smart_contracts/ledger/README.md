@@ -1,19 +1,19 @@
-# TidyGen Ledger Smart Contracts
+# Modulyn Ledger Smart Contracts
 
 ## 🎯 **Overview**
 
-This directory contains the smart contracts for the TidyGen ERP blockchain ledger functionality. The contracts enable tamper-proof logging of financial transactions to blockchain networks, providing enhanced transparency and audit capabilities.
+This directory contains the smart contracts for the Modulyn ERP blockchain ledger functionality. The contracts enable tamper-proof logging of financial transactions to blockchain networks, providing enhanced transparency and audit capabilities.
 
 ## 📁 **Project Structure**
 
 ```
 smart_contracts/ledger/
 ├── contracts/
-│   └── TidyGenLedger.sol          # Main ledger contract
+│   └── ModulynLedger.sol          # Main ledger contract
 ├── scripts/
 │   └── deploy.js                  # Deployment script
 ├── test/
-│   └── TidyGenLedger.test.js      # Comprehensive test suite
+│   └── ModulynLedger.test.js      # Comprehensive test suite
 ├── hardhat.config.js              # Hardhat configuration
 ├── package.json                   # Dependencies and scripts
 └── README.md                      # This file
@@ -123,7 +123,7 @@ Network configurations are defined in `hardhat.config.js`.
 
 ## 📖 **Contract Documentation**
 
-### **TidyGenLedger Contract**
+### **ModulynLedger Contract**
 
 The main contract that provides blockchain ledger functionality.
 
@@ -210,7 +210,7 @@ npm run test:coverage
 npm run gas-report
 
 # Run specific test file
-npx hardhat test test/TidyGenLedger.test.js
+npx hardhat test test/ModulynLedger.test.js
 ```
 
 ### **Test Coverage**
@@ -231,7 +231,7 @@ The test suite covers:
 
 ```
 test/
-└── TidyGenLedger.test.js
+└── ModulynLedger.test.js
     ├── Deployment tests
     ├── Transaction logging tests
     ├── Batch logging tests
@@ -394,7 +394,7 @@ const result = await contract.methods.logTransaction(
 ### **Contract ABI**
 
 The contract ABI is generated during compilation and available at:
-- `artifacts/contracts/TidyGenLedger.sol/TidyGenLedger.json`
+- `artifacts/contracts/ModulynLedger.sol/ModulynLedger.json`
 
 ## 🤝 **Contributing**
 
@@ -430,4 +430,4 @@ For support and questions:
 
 ---
 
-**This smart contract implementation provides a robust, secure, and efficient blockchain ledger for TidyGen ERP, enabling tamper-proof financial transaction logging with comprehensive audit capabilities.**
+**This smart contract implementation provides a robust, secure, and efficient blockchain ledger for Modulyn ERP, enabling tamper-proof financial transaction logging with comprehensive audit capabilities.**

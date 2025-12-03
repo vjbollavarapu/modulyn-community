@@ -116,7 +116,7 @@ pub mod pallet {
         pub fn account_id() -> T::AccountId {
             // For example purposes: use a deterministic account id derivation
             // In production use PalletId or similar
-            let entropy = b"tidygen_escrow";
+            let entropy = b"Modulyn_escrow";
             T::AccountId::decode(&mut &sp_io::hashing::blake2_256(entropy)[..]).unwrap_or_default()
         }
     }

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen ERP Community Edition - DigitalOcean App Platform Deployment Script
+# Modulyn ERP Community Edition - DigitalOcean App Platform Deployment Script
 # This script provides instructions and configuration for DigitalOcean App Platform deployment
 
 set -e
 
-echo "🚀 TidyGen ERP Community Edition - DigitalOcean App Platform Deployment"
+echo "🚀 Modulyn ERP Community Edition - DigitalOcean App Platform Deployment"
 echo "===================================================================="
 
 echo "📋 DigitalOcean App Platform Deployment Instructions:"

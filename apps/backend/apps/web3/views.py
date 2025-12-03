@@ -312,7 +312,7 @@ class MessageSigningView(APIView):
             timestamp = int(timezone.now().timestamp())
             
             # Create authentication message
-            message_prefix = getattr(settings, 'WEB3_MESSAGE_PREFIX', 'TidyGen ERP Login')
+            message_prefix = getattr(settings, 'WEB3_MESSAGE_PREFIX', 'Modulyn ERP Login')
             message = f"{message_prefix}\n\nAddress: {address}\nTimestamp: {timestamp}"
             
             # Create a unique nonce for this request

@@ -2,7 +2,7 @@
 import os
 import sys
 from pathlib import Path
-from tidygen_sdk import connect, submit_service
+from Modulyn_sdk import connect, submit_service
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:

@@ -1,6 +1,6 @@
-# Testing Guide - TidyGen Community Edition Freelancer Modules
+# Testing Guide - Modulyn Community Edition Freelancer Modules
 
-This guide covers comprehensive testing for the freelancer ecosystem modules added to the TidyGen Community Edition.
+This guide covers comprehensive testing for the freelancer ecosystem modules added to the Modulyn Community Edition.
 
 ## 📋 Test Coverage Overview
 

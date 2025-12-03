@@ -193,7 +193,7 @@ class Wallet(models.Model):
         nonce = secrets.token_hex(16)
         timestamp = int(timezone.now().timestamp())
         
-        message = f"TidyGen ERP Wallet Verification\n\nAddress: {self.address}\nNonce: {nonce}\nTimestamp: {timestamp}"
+        message = f"Modulyn ERP Wallet Verification\n\nAddress: {self.address}\nNonce: {nonce}\nTimestamp: {timestamp}"
         
         return message, nonce, timestamp
     

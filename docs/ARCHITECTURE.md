@@ -1,4 +1,4 @@
-# TidyGen Community Edition - System Architecture
+# Modulyn Community Edition - System Architecture
 
 ## 📋 **Table of Contents**
 
@@ -17,7 +17,7 @@
 
 ### **Hybrid Web2 + Web3 Design**
 
-TidyGen Community Edition implements a **hybrid architecture** that combines traditional Web2 technologies (Django REST API, PostgreSQL database) with cutting-edge Web3 blockchain capabilities (Substrate pallets, Polkadot.js). This approach provides:
+Modulyn Community Edition implements a **hybrid architecture** that combines traditional Web2 technologies (Django REST API, PostgreSQL database) with cutting-edge Web3 blockchain capabilities (Substrate pallets, Polkadot.js). This approach provides:
 
 - ✅ **Best of Both Worlds**: Fast, familiar Web2 UX with Web3 transparency and immutability
 - ✅ **Gradual Adoption**: Users can leverage blockchain features without abandoning existing workflows
@@ -216,7 +216,7 @@ graph TB
 
 ### **4.1 Dual Data Flow Architecture**
 
-TidyGen implements two distinct data flow patterns:
+Modulyn implements two distinct data flow patterns:
 
 #### **Flow 1: React → Django → Substrate (Backend-Initiated)**
 
@@ -983,7 +983,7 @@ graph TB
         R[Relay Chain Validators]
     end
     
-    subgraph "TidyGen Parachain"
+    subgraph "Modulyn Parachain"
         P1[Collator 1]
         P2[Collator 2]
         P3[Collator 3]
@@ -1210,4 +1210,4 @@ DAO Pallet:
 **Last Updated**: October 2025  
 **Status**: Production Architecture
 
-*This architecture powers TidyGen Community Edition - a next-generation ERP system combining traditional enterprise software with blockchain innovation.*
+*This architecture powers Modulyn Community Edition - a next-generation ERP system combining traditional enterprise software with blockchain innovation.*

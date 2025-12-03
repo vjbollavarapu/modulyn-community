@@ -1,8 +1,8 @@
-# TidyGen Community Edition - Complete Web3 & Blockchain Features Documentation
+# Modulyn Community Edition - Complete Web3 & Blockchain Features Documentation
 
 ## 🌐 **OVERVIEW**
 
-TidyGen Community Edition is a **Web3-first ERP system** that integrates decentralized technologies to provide transparency, immutability, and community governance. This document provides a comprehensive overview of all Web3 and blockchain features available across all modules.
+Modulyn Community Edition is a **Web3-first ERP system** that integrates decentralized technologies to provide transparency, immutability, and community governance. This document provides a comprehensive overview of all Web3 and blockchain features available across all modules.
 
 ---
 
@@ -697,4 +697,4 @@ TidyGen Community Edition is a **Web3-first ERP system** that integrates decentr
 
 ---
 
-*This documentation provides a complete overview of all Web3 and blockchain features in TidyGen Community Edition. For implementation details and API references, please refer to the technical documentation and API reference guides.*
+*This documentation provides a complete overview of all Web3 and blockchain features in Modulyn Community Edition. For implementation details and API references, please refer to the technical documentation and API reference guides.*

@@ -1,7 +1,7 @@
 /**
  * Substrate Transaction Utilities
  * 
- * Functions for submitting transactions to TidyGen Substrate pallets.
+ * Functions for submitting transactions to Modulyn Substrate pallets.
  */
 
 import { ApiPromise } from '@polkadot/api';

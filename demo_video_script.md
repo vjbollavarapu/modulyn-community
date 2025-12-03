@@ -1,4 +1,4 @@
-# TidyGen Substrate POC Demo Video Script
+# Modulyn Substrate POC Demo Video Script
 
 **Duration:** ~3-4 minutes  
 **Target:** W3F Grant Application Demo  
@@ -21,7 +21,7 @@
 ## Demo Script
 
 ### [0:00] Introduction
-**Script:** "Welcome to the TidyGen Substrate POC demo. I'll show you how we've built a Web3-enabled service verification system using ink! smart contracts on Substrate. This addresses trust issues in the $400+ billion cleaning services industry."
+**Script:** "Welcome to the Modulyn Substrate POC demo. I'll show you how we've built a Web3-enabled service verification system using ink! smart contracts on Substrate. This addresses trust issues in the $400+ billion cleaning services industry."
 
 **Visual:** Show project structure briefly
 ```bash
@@ -69,7 +69,7 @@ bash scripts/quickstart.sh --headless
 
 **Commands:**
 ```bash
-echo "Contract Address: $(cat /tmp/tidygen_contract_address.txt)"
+echo "Contract Address: $(cat /tmp/Modulyn_contract_address.txt)"
 ```
 
 **Visual:** Copy the contract address to clipboard and show it clearly
@@ -80,7 +80,7 @@ echo "Contract Address: $(cat /tmp/tidygen_contract_address.txt)"
 **Commands:**
 ```bash
 cd apps/backend
-CONTRACT_ADDR=$(cat /tmp/tidygen_contract_address.txt)
+CONTRACT_ADDR=$(cat /tmp/Modulyn_contract_address.txt)
 python manage.py demo_submit --contract $CONTRACT_ADDR --service-id 1 --payload "Cleaning service completed for Office Building A"
 ```
 
@@ -138,11 +138,11 @@ cd ../..
 bash scripts/quickstart.sh --headless
 
 # Show contract address
-echo "Contract Address: $(cat /tmp/tidygen_contract_address.txt)"
+echo "Contract Address: $(cat /tmp/Modulyn_contract_address.txt)"
 
 # Run demo
 cd apps/backend
-CONTRACT_ADDR=$(cat /tmp/tidygen_contract_address.txt)
+CONTRACT_ADDR=$(cat /tmp/Modulyn_contract_address.txt)
 python manage.py demo_submit --contract $CONTRACT_ADDR --service-id 1 --payload "Cleaning service completed for Office Building A"
 
 # Show transaction hash
@@ -153,7 +153,7 @@ echo "Transaction completed! Check the output above for the hash."
 ```bash
 # Monitor Docker containers
 docker ps
-docker logs tidygen-substrate-node --tail 20
+docker logs Modulyn-substrate-node --tail 20
 ```
 
 ### Terminal 3 (Browser Commands)

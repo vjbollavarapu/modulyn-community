@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen Substrate Node Setup Script
+# Modulyn Substrate Node Setup Script
 # This script sets up the complete Substrate development environment
 
 set -e
 
-echo "🚀 TidyGen Substrate Node Setup"
+echo "🚀 Modulyn Substrate Node Setup"
 echo "================================"
 echo ""
 
@@ -65,17 +65,17 @@ fi
 # Update Cargo.toml if needed
 echo ""
 echo "📝 Configuring workspace..."
-if ! grep -q "tidygen-node" node/Cargo.toml 2>/dev/null; then
+if ! grep -q "Modulyn-node" node/Cargo.toml 2>/dev/null; then
     echo -e "${YELLOW}Updating node package name...${NC}"
-    sed -i.bak 's/name = "node-template"/name = "tidygen-node"/' node/Cargo.toml 2>/dev/null || \
-    sed -i '' 's/name = "node-template"/name = "tidygen-node"/' node/Cargo.toml
+    sed -i.bak 's/name = "node-template"/name = "Modulyn-node"/' node/Cargo.toml 2>/dev/null || \
+    sed -i '' 's/name = "node-template"/name = "Modulyn-node"/' node/Cargo.toml
     echo -e "${GREEN}✓ Node package name updated${NC}"
 fi
 
-if ! grep -q "tidygen-runtime" runtime/Cargo.toml 2>/dev/null; then
+if ! grep -q "Modulyn-runtime" runtime/Cargo.toml 2>/dev/null; then
     echo -e "${YELLOW}Updating runtime package name...${NC}"
-    sed -i.bak 's/name = "node-template-runtime"/name = "tidygen-runtime"/' runtime/Cargo.toml 2>/dev/null || \
-    sed -i '' 's/name = "node-template-runtime"/name = "tidygen-runtime"/' runtime/Cargo.toml
+    sed -i.bak 's/name = "node-template-runtime"/name = "Modulyn-runtime"/' runtime/Cargo.toml 2>/dev/null || \
+    sed -i '' 's/name = "node-template-runtime"/name = "Modulyn-runtime"/' runtime/Cargo.toml
     echo -e "${GREEN}✓ Runtime package name updated${NC}"
 fi
 
@@ -95,7 +95,7 @@ if [ $? -eq 0 ]; then
     echo "  2. Connect via Polkadot.js: https://polkadot.js.org/apps/"
     echo "  3. WebSocket endpoint: ws://127.0.0.1:9944"
     echo ""
-    echo "Node binary location: ./target/release/tidygen-node"
+    echo "Node binary location: ./target/release/Modulyn-node"
 else
     echo -e "${RED}✗ Build failed${NC}"
     echo "Please check the error messages above"

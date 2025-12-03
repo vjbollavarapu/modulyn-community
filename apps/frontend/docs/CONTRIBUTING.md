@@ -1,6 +1,6 @@
-# Contributing to TidyGen
+# Contributing to Modulyn
 
-Thank you for your interest in contributing to TidyGen! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to Modulyn! This document provides guidelines and information for contributors.
 
 ## 🤝 How to Contribute
 
@@ -30,8 +30,8 @@ We welcome several types of contributions:
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/your-username/tidygen.git
-   cd tidygen
+   git clone https://github.com/your-username/Modulyn.git
+   cd Modulyn
    ```
 
 2. **Install Dependencies**
@@ -380,15 +380,15 @@ We use [Semantic Versioning](https://semver.org/):
 ## 📞 Getting Help
 
 ### Resources
-- [Documentation](https://docs.tidygen.io)
-- [GitHub Issues](https://github.com/your-org/tidygen/issues)
+- [Documentation](https://docs.Modulyn.io)
+- [GitHub Issues](https://github.com/your-org/Modulyn/issues)
 - [Discord Community](https://discord.gg/your-discord)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/tidygen)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/Modulyn)
 
 ### Contact
-- **Email**: contributors@tidygen.io
+- **Email**: contributors@Modulyn.io
 - **Discord**: Join our community server
-- **Twitter**: [@tidygen_io](https://twitter.com/tidygen_io)
+- **Twitter**: [@Modulyn_io](https://twitter.com/Modulyn_io)
 
 ## 🎉 Recognition
 
@@ -408,14 +408,14 @@ We recognize contributors in several ways:
 
 ## 📄 License
 
-By contributing to TidyGen, you agree that your contributions will be licensed under the same license as the project.
+By contributing to Modulyn, you agree that your contributions will be licensed under the same license as the project.
 
 - **Community Edition**: MIT License
 - **Commercial Edition**: Commercial License
 
 ## 🙏 Thank You
 
-Thank you for contributing to TidyGen! Your contributions help make this project better for everyone in the Web3 and enterprise communities.
+Thank you for contributing to Modulyn! Your contributions help make this project better for everyone in the Web3 and enterprise communities.
 
 ---
 

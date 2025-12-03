@@ -1,8 +1,8 @@
-# TidyGen - Comprehensive Testing Guide
+# Modulyn - Comprehensive Testing Guide
 
 ## Overview
 
-TidyGen implements a multi-layer testing strategy covering all three architectural layers:
+Modulyn implements a multi-layer testing strategy covering all three architectural layers:
 
 1. **Django Backend**: Pytest with Substrate integration tests
 2. **Substrate Pallets**: Cargo tests (Rust)
@@ -346,7 +346,7 @@ Create this script:
 ```bash
 #!/bin/bash
 
-echo "🧪 TidyGen - Complete Test Suite"
+echo "🧪 Modulyn - Complete Test Suite"
 echo "=================================="
 echo ""
 

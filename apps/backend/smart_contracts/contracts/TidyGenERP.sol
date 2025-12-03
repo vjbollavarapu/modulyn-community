@@ -9,11 +9,11 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 
 /**
- * @title TidyGenERP
- * @dev Main smart contract for TidyGen ERP Web3 integration
+ * @title ModulynERP
+ * @dev Main smart contract for Modulyn ERP Web3 integration
  * @notice This contract handles invoice escrow, payment automation, and data anchoring
  */
-contract TidyGenERP is Ownable, ReentrancyGuard {
+contract ModulynERP is Ownable, ReentrancyGuard {
     using ECDSA for bytes32;
     using MessageHashUtils for bytes32;
 

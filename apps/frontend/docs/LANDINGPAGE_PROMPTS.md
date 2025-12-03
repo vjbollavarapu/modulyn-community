@@ -4,9 +4,9 @@ Here’s a **one-credit-efficient master prompt** you can drop into Cursor.AI to
 
 ---
 
-> **Task:** Build a responsive landing page for **TidyGen** with React + TailwindCSS (or Material-UI if needed).
+> **Task:** Build a responsive landing page for **Modulyn** with React + TailwindCSS (or Material-UI if needed).
 >
-> **Project Context:** TidyGen is an ERP system with two versions:
+> **Project Context:** Modulyn is an ERP system with two versions:
 > – **Community Edition (Free, Open Source, Single Tenant)** → self-host, Web3 grant-friendly.
 > – **Commercial Edition (Paid, Multi-Tenant SaaS)** → partner/reseller ready, advanced AI & integrations.
 > Revenue model: subscription (SaaS), hosting, support, training.
@@ -33,9 +33,9 @@ Here’s a **one-credit-efficient master prompt** you can drop into Cursor.AI to
 
 ## 💳 Cursor.AI Prompt – Pricing & Subscription Flow
 
-> **Task:** Build a **pricing & subscription flow** for TidyGen using **React + TypeScript + Material-UI (or TailwindCSS)** with backend integration hooks for **Stripe and PayPal**.
+> **Task:** Build a **pricing & subscription flow** for Modulyn using **React + TypeScript + Material-UI (or TailwindCSS)** with backend integration hooks for **Stripe and PayPal**.
 >
-> **Project Context:** TidyGen has two editions:
+> **Project Context:** Modulyn has two editions:
 > – **Community Edition (Free, Open Source, Single Tenant)** → download only (no payment).
 > – **Commercial SaaS Edition (Multi-Tenant)** → requires subscription.
 > Services: hosting, support, training.

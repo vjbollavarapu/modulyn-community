@@ -1,5 +1,5 @@
 """
-Finance management views for TidyGen ERP platform.
+Finance management views for Modulyn ERP platform.
 """
 from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action

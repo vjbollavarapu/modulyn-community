@@ -573,6 +573,6 @@ class PolicyAcknowledgmentAdmin(admin.ModelAdmin):
 
 
 # Customize admin site
-admin.site.site_header = "TidyGen ERP HR Management"
-admin.site.site_title = "TidyGen HR Admin"
+admin.site.site_header = "Modulyn ERP HR Management"
+admin.site.site_title = "Modulyn HR Admin"
 admin.site.index_title = "HR Management Administration"

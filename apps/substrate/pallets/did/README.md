@@ -174,7 +174,7 @@ did_doc = substrate.rpc_request('did_getDid', [account_id])
 Get account ID from DID identifier.
 
 ```javascript
-const accountId = await api.rpc.did.getAccountFromDid("did:substrate:tidygen:a1b2c3d4");
+const accountId = await api.rpc.did.getAccountFromDid("did:substrate:Modulyn:a1b2c3d4");
 ```
 
 ### did_isDidActive
@@ -255,12 +255,12 @@ DidStatusChanged {
 DIDs are automatically generated in the format:
 
 ```
-did:substrate:tidygen:{account_hash}
+did:substrate:Modulyn:{account_hash}
 ```
 
 **Example:**
 ```
-did:substrate:tidygen:a1b2c3d4e5f6a7b8
+did:substrate:Modulyn:a1b2c3d4e5f6a7b8
 ```
 
 The account hash is derived from the first 8 bytes of the Blake2-256 hash of the AccountId.
@@ -758,5 +758,5 @@ Apache-2.0
 - [W3C DID Core Specification](https://www.w3.org/TR/did-core/)
 - [Substrate Documentation](https://docs.substrate.io/)
 - [Django Integration Guide](../../backend/apps/did_auth/README.md)
-- [TidyGen Documentation](../../../README.md)
+- [Modulyn Documentation](../../../README.md)
 

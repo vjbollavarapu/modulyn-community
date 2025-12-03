@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# TidyGen Substrate - Comprehensive Test Runner
+# Modulyn Substrate - Comprehensive Test Runner
 # Runs all pallet tests and generates coverage report
 
 set -e
 
-echo "🧪 TidyGen Substrate - Comprehensive Test Suite"
+echo "🧪 Modulyn Substrate - Comprehensive Test Suite"
 echo "================================================"
 echo ""
 

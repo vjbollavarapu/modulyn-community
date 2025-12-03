@@ -5,7 +5,7 @@ Permanent deployment helper for the ink! contract.
 Usage:
   python deploy_contract.py --wasm path/to/contract.wasm --metadata path/to/metadata.json [--ws ws://127.0.0.1:9944] [--seed //Alice]
 
-Outputs the deployed contract address to stdout and writes to /tmp/tidygen_contract_address.txt
+Outputs the deployed contract address to stdout and writes to /tmp/Modulyn_contract_address.txt
 """
 import argparse
 import json
@@ -66,7 +66,7 @@ def deploy_contract(wasm_path: Path, metadata_path: Path, substrate_ws: str, sen
             "storage_deposit_limit": None,
             "code_hash": code_hash,
             "data": b"",  # no constructor args
-            "salt": b"tidygen_poc"
+            "salt": b"Modulyn_poc"
         }
     )
     extrinsic = substrate.create_signed_extrinsic(call=instantiate_call, keypair=keypair)
@@ -92,9 +92,9 @@ def deploy_contract(wasm_path: Path, metadata_path: Path, substrate_ws: str, sen
         except Exception:
             continue
 
-    # Fallback: check the file /tmp/tidygen_contract_address.txt
+    # Fallback: check the file /tmp/Modulyn_contract_address.txt
     if not contract_address:
-        temp_path = Path("/tmp/tidygen_contract_address.txt")
+        temp_path = Path("/tmp/Modulyn_contract_address.txt")
         if temp_path.exists():
             contract_address = temp_path.read_text().strip()
 
@@ -103,7 +103,7 @@ def deploy_contract(wasm_path: Path, metadata_path: Path, substrate_ws: str, sen
 
     print(f"[deploy] Contract deployed at: {contract_address}")
     # Write to tmp file for other scripts
-    Path("/tmp/tidygen_contract_address.txt").write_text(contract_address)
+    Path("/tmp/Modulyn_contract_address.txt").write_text(contract_address)
     return contract_address
 
 def main():

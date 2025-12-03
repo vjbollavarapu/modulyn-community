@@ -1,5 +1,5 @@
 """
-TidyGen Backend Services
+Modulyn Backend Services
 
 Shared services for blockchain and external integrations.
 """

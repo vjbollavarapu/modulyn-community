@@ -3,9 +3,9 @@ resolver = "2"
 members = [
     "node",
     "runtime",
-    "pallets/tidygen-ledger",
-    "pallets/tidygen-did",
-    "pallets/tidygen-dao",
+    "pallets/Modulyn-ledger",
+    "pallets/Modulyn-did",
+    "pallets/Modulyn-dao",
     "pallets/ledger",
     "pallets/did",
     "pallets/did/rpc",
@@ -14,11 +14,11 @@ members = [
 ]
 
 [workspace.package]
-authors = ["TidyGen Team"]
+authors = ["Modulyn Team"]
 edition = "2021"
 license = "Apache-2.0"
-homepage = "https://github.com/tidygen/tidygen-community"
-repository = "https://github.com/tidygen/tidygen-community"
+homepage = "https://github.com/Modulyn/Modulyn-community"
+repository = "https://github.com/Modulyn/Modulyn-community"
 
 [workspace.dependencies]
 # Substrate dependencies

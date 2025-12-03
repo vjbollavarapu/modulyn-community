@@ -1,5 +1,5 @@
 """
-Field Operations models for TidyGen ERP.
+Field Operations models for Modulyn ERP.
 Handles field service teams, dispatch, routes, and job management.
 """
 

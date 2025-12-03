@@ -1,4 +1,4 @@
-# TidyGen Benchmarks
+# Modulyn Benchmarks
 
 This document describes simple benchmarking procedures for the Service Verification contract POC.
 

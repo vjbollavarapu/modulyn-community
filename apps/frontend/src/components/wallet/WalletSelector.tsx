@@ -89,7 +89,7 @@ const WalletSelector: React.FC<WalletSelectorProps> = ({
 
         <div className="selector-content">
           <p className="selector-description">
-            Choose a wallet to connect to TidyGen ERP
+            Choose a wallet to connect to Modulyn ERP
           </p>
 
           <div className="wallet-list">

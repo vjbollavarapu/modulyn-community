@@ -219,7 +219,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
         <div className="wallet-connect-prompt">
           <div className="connect-header">
             <h3>Connect Your Wallet</h3>
-            <p>Connect your wallet to access TidyGen ERP features</p>
+            <p>Connect your wallet to access Modulyn ERP features</p>
           </div>
           
           <button

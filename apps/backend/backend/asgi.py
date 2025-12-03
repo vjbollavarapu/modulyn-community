@@ -1,5 +1,5 @@
 """
-ASGI config for TidyGen ERP project.
+ASGI config for Modulyn ERP project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

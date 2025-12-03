@@ -1,7 +1,7 @@
 /**
  * DID Management Page
  * 
- * Main page for managing Decentralized Identities in TidyGen ERP.
+ * Main page for managing Decentralized Identities in Modulyn ERP.
  */
 
 import React from 'react';
@@ -13,8 +13,8 @@ const DIDManagementPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>DID Management - TidyGen ERP</title>
-        <meta name="description" content="Manage Decentralized Identities, roles, and permissions in TidyGen ERP" />
+        <title>DID Management - Modulyn ERP</title>
+        <meta name="description" content="Manage Decentralized Identities, roles, and permissions in Modulyn ERP" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

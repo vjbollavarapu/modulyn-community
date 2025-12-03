@@ -1,12 +1,12 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-//! # TidyGen Ledger Pallet
+//! # Modulyn Ledger Pallet
 //!
 //! A pallet for managing ERP invoice and transaction ledger entries on-chain.
 //!
 //! ## Overview
 //!
-//! The TidyGen Ledger pallet provides functionality for:
+//! The Modulyn Ledger pallet provides functionality for:
 //! - Creating tamper-proof ledger entries for invoices and transactions
 //! - Updating ledger entry status
 //! - Anchoring transaction hashes on-chain for verification
@@ -304,7 +304,7 @@ mod tests {
     frame_support::construct_runtime!(
         pub enum Test {
             System: frame_system,
-            TidygenLedger: pallet,
+            ModulynLedger: pallet,
         }
     );
 
@@ -355,14 +355,14 @@ mod tests {
             let tx_type = b"invoice".to_vec();
             let data_hash = [1u8; 32];
 
-            assert_ok!(TidygenLedger::create_ledger_entry(
+            assert_ok!(ModulynLedger::create_ledger_entry(
                 RuntimeOrigin::signed(creator),
                 tx_type,
                 data_hash,
                 None
             ));
 
-            assert_eq!(TidygenLedger::entry_count(), 1);
+            assert_eq!(ModulynLedger::entry_count(), 1);
         });
     }
 }

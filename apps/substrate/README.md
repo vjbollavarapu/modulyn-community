@@ -1,14 +1,14 @@
-# TidyGen Substrate Node
+# Modulyn Substrate Node
 
-A Substrate-based blockchain node for TidyGen ERP system with custom pallets for enterprise resource planning on-chain.
+A Substrate-based blockchain node for Modulyn ERP system with custom pallets for enterprise resource planning on-chain.
 
 ## Features
 
 This Substrate node includes three custom pallets:
 
-- **pallet-tidygen-ledger**: ERP invoice and transaction ledger on-chain
-- **pallet-tidygen-did**: Decentralized identity management for users and organizations
-- **pallet-tidygen-dao**: On-chain governance for business decision-making
+- **pallet-Modulyn-ledger**: ERP invoice and transaction ledger on-chain
+- **pallet-Modulyn-did**: Decentralized identity management for users and organizations
+- **pallet-Modulyn-dao**: On-chain governance for business decision-making
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ make run
 Or manually:
 
 ```bash
-./target/release/tidygen-node --dev
+./target/release/Modulyn-node --dev
 ```
 
 The node will be available at:
@@ -82,7 +82,7 @@ cargo test --all
 
 ## Custom Pallets
 
-### TidyGen Ledger Pallet
+### Modulyn Ledger Pallet
 
 Manages on-chain ledger entries for invoices and transactions.
 
@@ -95,7 +95,7 @@ Manages on-chain ledger entries for invoices and transactions.
 - `LedgerEntries`: Map of entry ID to ledger data
 - `TransactionAnchors`: Map of transaction hash to block data
 
-### TidyGen DID Pallet
+### Modulyn DID Pallet
 
 Decentralized identity management for users and organizations.
 
@@ -109,7 +109,7 @@ Decentralized identity management for users and organizations.
 - `DIDDocuments`: Map of DID to document data
 - `VerificationMethods`: Map of DID to verification methods
 
-### TidyGen DAO Pallet
+### Modulyn DAO Pallet
 
 On-chain governance for business proposals and voting.
 
@@ -145,12 +145,12 @@ The Django backend in `apps/backend` connects to this Substrate node via:
 
 ```bash
 cargo build --release --features runtime-benchmarks
-./target/release/tidygen-node benchmark pallet \
-    --pallet=pallet_tidygen_ledger \
+./target/release/Modulyn-node benchmark pallet \
+    --pallet=pallet_Modulyn_ledger \
     --extrinsic='*' \
     --steps=50 \
     --repeat=20 \
-    --output=./pallets/tidygen-ledger/src/weights.rs
+    --output=./pallets/Modulyn-ledger/src/weights.rs
 ```
 
 ## Architecture
@@ -160,9 +160,9 @@ apps/substrate/
 ├── node/              # Node implementation (client, RPC, CLI)
 ├── runtime/           # Runtime logic and pallet configuration
 ├── pallets/           # Custom pallets
-│   ├── tidygen-ledger/
-│   ├── tidygen-did/
-│   └── tidygen-dao/
+│   ├── Modulyn-ledger/
+│   ├── Modulyn-did/
+│   └── Modulyn-dao/
 ├── Cargo.toml         # Workspace configuration
 ├── Makefile           # Build automation
 └── README.md          # This file
@@ -176,5 +176,5 @@ Apache-2.0
 
 - [Substrate Documentation](https://docs.substrate.io/)
 - [Polkadot Documentation](https://wiki.polkadot.network/)
-- [TidyGen Documentation](../../README.md)
+- [Modulyn Documentation](../../README.md)
 

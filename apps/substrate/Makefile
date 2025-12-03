@@ -2,7 +2,7 @@
 
 # Default target
 help:
-	@echo "TidyGen Substrate Node - Build Commands"
+	@echo "Modulyn Substrate Node - Build Commands"
 	@echo ""
 	@echo "Available targets:"
 	@echo "  make build        - Build the node in release mode"
@@ -17,28 +17,28 @@ help:
 
 # Build the node in release mode
 build:
-	@echo "Building TidyGen Substrate node..."
+	@echo "Building Modulyn Substrate node..."
 	cargo build --release
-	@echo "Build complete! Binary: ./target/release/tidygen-node"
+	@echo "Build complete! Binary: ./target/release/Modulyn-node"
 
 # Build in debug mode (faster compilation)
 build-dev:
-	@echo "Building TidyGen Substrate node (debug)..."
+	@echo "Building Modulyn Substrate node (debug)..."
 	cargo build
-	@echo "Build complete! Binary: ./target/debug/tidygen-node"
+	@echo "Build complete! Binary: ./target/debug/Modulyn-node"
 
 # Run the development node
 run:
-	@echo "Starting TidyGen Substrate development node..."
+	@echo "Starting Modulyn Substrate development node..."
 	@echo "WebSocket endpoint: ws://127.0.0.1:9944"
 	@echo "HTTP RPC endpoint: http://127.0.0.1:9933"
 	@echo ""
-	./target/release/tidygen-node --dev --tmp
+	./target/release/Modulyn-node --dev --tmp
 
 # Run with custom port
 run-custom:
-	@echo "Starting TidyGen Substrate node on custom ports..."
-	./target/release/tidygen-node --dev \
+	@echo "Starting Modulyn Substrate node on custom ports..."
+	./target/release/Modulyn-node --dev \
 		--ws-port 9944 \
 		--rpc-port 9933 \
 		--tmp
@@ -56,13 +56,13 @@ test-verbose:
 
 # Run tests for specific pallet
 test-ledger:
-	cargo test -p pallet-tidygen-ledger
+	cargo test -p pallet-Modulyn-ledger
 
 test-did:
-	cargo test -p pallet-tidygen-did
+	cargo test -p pallet-Modulyn-did
 
 test-dao:
-	cargo test -p pallet-tidygen-dao
+	cargo test -p pallet-Modulyn-dao
 
 # Check code without building
 check:
@@ -92,18 +92,18 @@ build-benchmarks:
 
 # Run runtime benchmarks
 benchmarks: build-benchmarks
-	@echo "Running benchmarks for TidyGen Ledger pallet..."
-	./target/release/tidygen-node benchmark pallet \
-		--pallet=pallet_tidygen_ledger \
+	@echo "Running benchmarks for Modulyn Ledger pallet..."
+	./target/release/Modulyn-node benchmark pallet \
+		--pallet=pallet_Modulyn_ledger \
 		--extrinsic='*' \
 		--steps=50 \
 		--repeat=20 \
-		--output=./pallets/tidygen-ledger/src/weights.rs
+		--output=./pallets/Modulyn-ledger/src/weights.rs
 
 # Purge chain data
 purge:
 	@echo "Purging development chain data..."
-	./target/release/tidygen-node purge-chain --dev -y
+	./target/release/Modulyn-node purge-chain --dev -y
 
 # Build and run
 all: build run
@@ -139,10 +139,10 @@ watch:
 # Run node with detailed logging
 run-debug:
 	@echo "Starting node with debug logging..."
-	RUST_LOG=debug ./target/release/tidygen-node --dev --tmp
+	RUST_LOG=debug ./target/release/Modulyn-node --dev --tmp
 
 # Try runtime for testing runtime upgrades
 try-runtime:
 	cargo build --release --features try-runtime
-	./target/release/tidygen-node try-runtime
+	./target/release/Modulyn-node try-runtime
 

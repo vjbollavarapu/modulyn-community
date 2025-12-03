@@ -22,7 +22,7 @@ export const config = {
 
   // Application
   app: {
-    name: import.meta.env.VITE_APP_NAME || 'TidyGen',
+    name: import.meta.env.VITE_APP_NAME || 'Modulyn',
     version: import.meta.env.VITE_APP_VERSION || '1.0.0',
     environment: import.meta.env.VITE_APP_ENVIRONMENT || 'development',
     isDevelopment: import.meta.env.DEV,

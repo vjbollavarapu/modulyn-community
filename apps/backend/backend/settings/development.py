@@ -1,5 +1,5 @@
 """
-Development settings for TidyGen ERP project.
+Development settings for Modulyn ERP project.
 """
 
 from .base import *

@@ -371,5 +371,5 @@ Apache-2.0
 
 - [Substrate Documentation](https://docs.substrate.io/)
 - [Django Integration Guide](../../backend/apps/ledger/README.md)
-- [TidyGen Documentation](../../../README.md)
+- [Modulyn Documentation](../../../README.md)
 

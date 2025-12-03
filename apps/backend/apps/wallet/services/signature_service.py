@@ -172,7 +172,7 @@ class SignatureService:
         Returns:
             Formatted authentication message
         """
-        domain = domain or getattr(settings, 'WALLET_AUTH_DOMAIN', 'TidyGen ERP')
+        domain = domain or getattr(settings, 'WALLET_AUTH_DOMAIN', 'Modulyn ERP')
         
         message = f"""{domain} Authentication
 
@@ -205,7 +205,7 @@ This request will not trigger a blockchain transaction or cost any gas fees."""
         Returns:
             Formatted transaction message
         """
-        domain = domain or getattr(settings, 'WALLET_AUTH_DOMAIN', 'TidyGen ERP')
+        domain = domain or getattr(settings, 'WALLET_AUTH_DOMAIN', 'Modulyn ERP')
         
         # Create a structured message
         message_parts = [

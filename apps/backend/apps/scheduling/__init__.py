@@ -1,1 +1,1 @@
-# Scheduling app for TidyGen ERP platform
+# Scheduling app for Modulyn ERP platform

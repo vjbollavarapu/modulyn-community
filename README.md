@@ -1,9 +1,9 @@
-# 🧾 TidyGen ERP - Web3-Enabled Enterprise Resource Planning
+# 🧾 Modulyn ERP - Web3-Enabled Enterprise Resource Planning
 
 <div align="center">
 
-[![CI/CD Pipeline](https://github.com/tidygen-community/tidygen-community/workflows/CI%2FCD%20Pipeline/badge.svg)](.github/workflows/ci.yml)
-[![Unit Tests](https://github.com/tidygen-community/tidygen-community/workflows/CI%2FCD%20Pipeline/badge.svg?event=push)](.github/workflows/ci.yml)
+[![CI/CD Pipeline](https://github.com/Modulyn-community/Modulyn-community/workflows/CI%2FCD%20Pipeline/badge.svg)](.github/workflows/ci.yml)
+[![Unit Tests](https://github.com/Modulyn-community/Modulyn-community/workflows/CI%2FCD%20Pipeline/badge.svg?event=push)](.github/workflows/ci.yml)
 [![Security Policy](https://img.shields.io/badge/Security-Policy-blue.svg)](./SECURITY.md)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 ![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen)
@@ -20,8 +20,8 @@
 
 ## 🚀 Quick Links
 
-- 🌐 **Live Frontend (Community Portal)**: [https://community.tidygen.com](https://community.tidygen.com)
-- ⚙️ **Live Backend (Swagger UI)**: [https://api.tidygen.com](https://api.tidygen.com)
+- 🌐 **Live Frontend (Community Portal)**: [https://community.Modulyn.com](https://community.Modulyn.com)
+- ⚙️ **Live Backend (Swagger UI)**: [https://api.Modulyn.com](https://api.Modulyn.com)
 - 📘 **Documentation**: [./docs/](./docs/)
 - 🔗 **Web3 Technical Implementation**: [./WEB3_TECHNICAL_IMPLEMENTATION.md](./WEB3_TECHNICAL_IMPLEMENTATION.md)
 - 📜 **Contracts**: [./contracts/](./contracts/)
@@ -33,7 +33,7 @@
 
 <div align="center">
 
-[🚀 Quick Start](#quick-start-local-development) • [📖 Documentation](docs/INDEX.md) • [🤝 Contributing](#contribution-guidelines) • [💬 Community](https://github.com/tidygen-community/tidygen-community/discussions)
+[🚀 Quick Start](#quick-start-local-development) • [📖 Documentation](docs/INDEX.md) • [🤝 Contributing](#contribution-guidelines) • [💬 Community](https://github.com/Modulyn-community/Modulyn-community/discussions)
 
 </div>
 
@@ -41,7 +41,7 @@
 
 ## 📋 Project Overview
 
-TidyGen ERP is a comprehensive **Web3-enabled Enterprise Resource Planning platform** specifically designed for the cleaning services industry. Built with Django REST Framework and React, it combines traditional ERP functionality with cutting-edge blockchain technology including smart contracts, decentralized identity, asset tokenization, and cross-chain interoperability. The platform addresses critical industry challenges through trustless service verification, automated payment processing, and transparent audit trails, positioning itself as the first-of-its-kind Web3 ERP solution for the $400+ billion global cleaning services market.
+Modulyn ERP is a comprehensive **Web3-enabled Enterprise Resource Planning platform** specifically designed for the cleaning services industry. Built with Django REST Framework and React, it combines traditional ERP functionality with cutting-edge blockchain technology including smart contracts, decentralized identity, asset tokenization, and cross-chain interoperability. The platform addresses critical industry challenges through trustless service verification, automated payment processing, and transparent audit trails, positioning itself as the first-of-its-kind Web3 ERP solution for the $400+ billion global cleaning services market.
 
 ---
 
@@ -77,7 +77,7 @@ The global cleaning services industry, valued at over $400 billion, faces critic
 
 ## 💡 Solution Overview
 
-TidyGen ERP revolutionizes the cleaning services industry through innovative Web3 technology:
+Modulyn ERP revolutionizes the cleaning services industry through innovative Web3 technology:
 
 ### **Trustless Service Verification**
 - **100% Service Verification**: Cryptographic proof eliminates disputes
@@ -107,7 +107,7 @@ TidyGen ERP revolutionizes the cleaning services industry through innovative Web
 
 ## ⛓️ Why Web3?
 
-TidyGen ERP leverages Web3 principles to create a truly decentralized and transparent business ecosystem:
+Modulyn ERP leverages Web3 principles to create a truly decentralized and transparent business ecosystem:
 
 ### **Decentralization**
 - **Distributed Data Storage**: IPFS for decentralized file storage
@@ -219,11 +219,11 @@ TidyGen ERP leverages Web3 principles to create a truly decentralized and transp
 
 ## 🏗️ Architecture
 
-TidyGen ERP is built with a modern, scalable architecture that seamlessly integrates Web3 technology:
+Modulyn ERP is built with a modern, scalable architecture that seamlessly integrates Web3 technology:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        TidyGen ERP Platform                      │
+│                        Modulyn ERP Platform                      │
 ├─────────────────────────────────────────────────────────────────┤
 │  Frontend (React SPA)    │    Backend (Django API)            │
 │  ┌─────────────────┐     │    ┌─────────────────┐              │
@@ -300,10 +300,10 @@ For detailed architecture information, see [docs/ARCHITECTURE.md](docs/ARCHITECT
 
 ## 📁 Project Structure
 
-The TidyGen ERP project follows a monorepo structure with clear separation of concerns:
+The Modulyn ERP project follows a monorepo structure with clear separation of concerns:
 
 ```
-tidygen-community/
+Modulyn-community/
 ├── apps/
 │   ├── backend/                 # Django REST API Backend
 │   │   ├── apps/               # Django applications
@@ -404,8 +404,8 @@ tidygen-community/
 
 ```bash
 # Clone the repository
-git clone https://github.com/tidygen-community/tidygen-community.git
-cd tidygen-community
+git clone https://github.com/Modulyn-community/Modulyn-community.git
+cd Modulyn-community
 
 # Start the application
 docker-compose up -d
@@ -482,7 +482,7 @@ Create a `.env` file in the backend directory:
 
 ```bash
 # Database
-DATABASE_URL=postgresql://user:password@localhost:5432/tidygen
+DATABASE_URL=postgresql://user:password@localhost:5432/Modulyn
 
 # Django
 SECRET_KEY=your-secret-key-here
@@ -700,7 +700,7 @@ def deploy_service_contract(service_data):
 
 ## 🗺️ Roadmap
 
-TidyGen ERP has an ambitious roadmap to revolutionize the cleaning services industry through Web3 technology:
+Modulyn ERP has an ambitious roadmap to revolutionize the cleaning services industry through Web3 technology:
 
 ### **Current Version: v1.0.0 (Foundation)**
 
@@ -776,7 +776,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ```
 MIT License
 
-Copyright (c) 2024 TidyGen ERP Community
+Copyright (c) 2024 Modulyn ERP Community
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -823,21 +823,21 @@ Comprehensive documentation is available in the `docs/` directory:
 ## 🆘 Support
 
 ### **Community Support**
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/tidygen-community/tidygen-community/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/tidygen-community/tidygen-community/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/Modulyn-community/Modulyn-community/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/Modulyn-community/Modulyn-community/discussions)
 - 📖 **Documentation**: [Read the docs](docs/INDEX.md)
-- 🌐 **Community Forum**: [Join the discussion](https://community.tidygen.io)
+- 🌐 **Community Forum**: [Join the discussion](https://community.Modulyn.io)
 
 ### **Commercial Support**
-For enterprise features, multi-tenant support, and professional support, check out our [Commercial Edition](https://www.tidygen.io).
+For enterprise features, multi-tenant support, and professional support, check out our [Commercial Edition](https://www.Modulyn.io).
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by the TidyGen ERP Community**
+**Made with ❤️ by the Modulyn ERP Community**
 
-[⭐ Star us on GitHub](https://github.com/tidygen-community/tidygen-community) • [🐦 Follow us on Twitter](https://twitter.com/tidygen_erp) • [💼 Visit our website](https://tidygen.io) • [📧 Contact us](mailto:hello@tidygen.io)
+[⭐ Star us on GitHub](https://github.com/Modulyn-community/Modulyn-community) • [🐦 Follow us on Twitter](https://twitter.com/Modulyn_erp) • [💼 Visit our website](https://Modulyn.io) • [📧 Contact us](mailto:hello@Modulyn.io)
 
 **Ready to revolutionize the cleaning services industry with Web3 technology?** 🚀
 

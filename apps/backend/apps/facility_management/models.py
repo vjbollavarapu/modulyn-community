@@ -1,5 +1,5 @@
 """
-Facility Management models for TidyGen ERP.
+Facility Management models for Modulyn ERP.
 Handles facilities, assets, equipment, vehicles, and maintenance.
 """
 

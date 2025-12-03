@@ -1,5 +1,5 @@
 """
-Core models for TidyGen ERP platform.
+Core models for Modulyn ERP platform.
 """
 
 from django.db import models
