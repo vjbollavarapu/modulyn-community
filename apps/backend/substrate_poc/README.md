@@ -112,11 +112,11 @@ apps/backend/substrate_poc/
 
 ## Integration with Contract
 
-This script works with the service verification ink! contract located at `contracts/substrate-poc/`. The contract must be compiled and deployed before using this script.
+This script works with the service verification ink! contract located at `apps/backend/contracts/substrate-poc/`. The contract must be compiled and deployed before using this script.
 
 The script expects the contract metadata to be available at:
 
-`contracts/substrate-poc/target/ink/metadata.json`
+`apps/backend/contracts/substrate-poc/target/ink/metadata.json`
 
 ## Development Notes
 
@@ -131,7 +131,7 @@ The script expects the contract metadata to be available at:
 ### Contract Metadata Not Found
 Make sure the contract is compiled:
 ```bash
-cd contracts/substrate-poc
+cd apps/backend/contracts/substrate-poc
 cargo +nightly contract build
 ```
 

@@ -12,7 +12,7 @@ if __name__ == "__main__":
     service_id = int(sys.argv[2])
     payload = sys.argv[3]
     substrate = connect()
-    metadata_path = Path("contracts/substrate-poc/target/ink/metadata.json")
+    metadata_path = Path("apps/backend/contracts/substrate-poc/target/ink/metadata.json")
     if not metadata_path.exists():
         print("Contract metadata not found. Build contract first.")
         sys.exit(1)

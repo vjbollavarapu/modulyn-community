@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Building, Eye, EyeOff, Mail, Lock, Loader2, AlertCircle } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -61,9 +61,11 @@ export default function Login() {
         {/* Logo and Branding */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-primary">
-              <Building className="h-7 w-7 text-white" />
-            </div>
+            <img 
+              src="/modulyn-logo.png" 
+              alt="Modulyn Logo" 
+              className="h-12 w-12 object-contain"
+            />
             <div>
               <h1 className="text-2xl font-bold text-foreground">Modulyn</h1>
               <p className="text-sm text-muted-foreground">ERP System</p>

@@ -5,7 +5,7 @@ const { createApi, contractInstance } = require('../dist');
 
 async function run() {
   const api = await createApi();
-  const metadata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../contracts/substrate-poc/target/ink/metadata.json'), 'utf8'));
+  const metadata = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../apps/backend/contracts/substrate-poc/target/ink/metadata.json'), 'utf8'));
   const contractAddress = process.argv[2];
   if (!contractAddress) {
     console.error('Usage: node demo.js <contractAddress>');

@@ -76,8 +76,8 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
     
     uint256 public constant VOTING_DELAY = 1 days;        // 1 day delay before voting starts
     uint256 public constant VOTING_PERIOD = 3 days;       // 3 days voting period
-    uint256 public constant PROPOSAL_THRESHOLD = 1000 * 10**18; // 1000 TGT minimum to propose
-    uint256 public constant QUORUM_THRESHOLD = 10000 * 10**18;  // 10000 TGT quorum requirement
+    uint256 public constant PROPOSAL_THRESHOLD = 1000 * 10**18; // 1000 MOD minimum to propose
+    uint256 public constant QUORUM_THRESHOLD = 10000 * 10**18;  // 10000 MOD quorum requirement
     
     uint256 public nextProposalId = 1;
     uint256 public nextTreasuryTransactionId = 1;

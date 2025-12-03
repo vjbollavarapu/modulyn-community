@@ -12,7 +12,6 @@ import {
   Calendar,
   FileText,
   ChevronDown,
-  Building,
 } from "lucide-react";
 
 import {
@@ -72,9 +71,11 @@ export function AppSidebar() {
     >
       <SidebarHeader className="border-b border-sidebar-border p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-primary">
-            <Building className="h-6 w-6 text-white" />
-          </div>
+          <img 
+            src="/modulyn-logo.png" 
+            alt="Modulyn Logo" 
+            className="h-10 w-10 object-contain"
+          />
           {!isCollapsed && (
             <div>
               <h2 className="text-lg font-bold text-sidebar-foreground">Modulyn</h2>

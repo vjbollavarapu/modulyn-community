@@ -3,7 +3,7 @@
 @@
  print_status "Building contract..."
 -bash scripts/build_contract.sh
-+if [ -f "contracts/substrate-poc/target/ink/metadata.json" ] && [ -f "contracts/substrate-poc/target/ink/service_verification_poc.contract" ]; then
++if [ -f "apps/backend/contracts/substrate-poc/target/ink/metadata.json" ] && [ -f "apps/backend/contracts/substrate-poc/target/ink/service_verification_poc.contract" ]; then
 +  print_status "Found pre-built contract artifacts; skipping build."
 +else
 +  bash scripts/build_contract.sh

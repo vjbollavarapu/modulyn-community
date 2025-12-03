@@ -18,7 +18,6 @@ import {
   Headphones, 
   BookOpen, 
   ArrowRight,
-  Building2,
   Sparkles,
   Lock,
   Server,
@@ -64,9 +63,11 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Building2 className="h-5 w-5 text-primary-foreground" />
-              </div>
+              <img 
+                src="/modulyn-logo.png" 
+                alt="Modulyn Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="text-xl font-bold">Modulyn</span>
             </div>
             

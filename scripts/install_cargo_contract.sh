@@ -40,7 +40,7 @@ echo "[install] cargo-contract installed:"
 cargo-contract --version || true
 
 echo "[install] Done. You can now build contracts with:"
-echo "  cd contracts/substrate-poc"
+echo "  cd apps/backend/contracts/substrate-poc"
 echo "  cargo +nightly contract build"
 
 # End of script

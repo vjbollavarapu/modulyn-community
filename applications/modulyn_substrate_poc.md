@@ -16,7 +16,7 @@ Milestones (concise, verifiable)
 
 Milestone 1 — POC + Quickstart (4–6 weeks) — $12,500
 Deliverables
-- contracts/substrate-poc: ink! contract implementing store/get/update/exists + unit tests.
+- apps/backend/contracts/substrate-poc: ink! contract implementing store/get/update/exists + unit tests.
 - apps/backend/substrate_poc: deploy_contract.py, submit_service.py and Django management command demo_submit.
 - scripts/quickstart.sh + scripts/docker-compose.quickstart.yml: one-command local quickstart that builds, deploys and runs demo (prints extrinsic hash).
 - tests/integration/test_substrate_poc_quickstart.py: integration test to run quickstart and assert extrinsic hash format.
@@ -57,7 +57,7 @@ Quick verification checklist for reviewers
   - bash scripts/quickstart.sh --headless
   - Expected: prints extrinsic hash (0x...)
 - Alternatively:
-  - cd contracts/substrate-poc && cargo +nightly contract build
+  - cd apps/backend/contracts/substrate-poc && cargo +nightly contract build
   - cd apps/backend && python deploy/submit helpers (see README)
   - pytest tests/integration/test_substrate_poc_quickstart.py -q
 

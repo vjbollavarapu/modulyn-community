@@ -3,8 +3,8 @@ resolver = "2"
 members = [
     "node",
     "runtime",
-    "pallets/Modulyn-ledger",
-    "pallets/Modulyn-did",
+    "pallets/modulyn-ledger",
+    "pallets/modulyn-did",
     "pallets/Modulyn-dao",
     "pallets/ledger",
     "pallets/did",

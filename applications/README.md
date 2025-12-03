@@ -47,7 +47,7 @@ This directory contains grant applications for the Modulyn Community project.
 ## Supporting Materials
 
 ### Code Artifacts
-- **Smart Contract**: `contracts/substrate-poc/`
+- **Smart Contract**: `apps/backend/contracts/substrate-poc/`
 - **Python Integration**: `apps/backend/substrate_poc/`
 - **Deployment Scripts**: `scripts/quickstart.sh`
 - **Integration Tests**: `tests/integration/test_substrate_poc_quickstart.py`

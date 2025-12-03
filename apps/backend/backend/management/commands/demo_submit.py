@@ -95,7 +95,7 @@ class Command(BaseCommand):
         except FileNotFoundError as e:
             raise CommandError(
                 f'Contract metadata not found: {e}\n'
-                'Make sure the contract is compiled and metadata.json exists in contracts/substrate-poc/target/ink/'
+                'Make sure the contract is compiled and metadata.json exists in apps/backend/contracts/substrate-poc/target/ink/'
             )
         except Exception as e:
             raise CommandError(f'Error submitting transaction: {e}')
@@ -127,9 +127,8 @@ class Command(BaseCommand):
         substrate = SubstrateInterface(url=substrate_url)
         
         # Load contract metadata
-        # Look for contract metadata in the project root
-        project_root = Path(settings.BASE_DIR).parent.parent
-        contract_path = project_root / "contracts" / "substrate-poc" / "target" / "ink"
+        # Look for contract metadata in the backend contracts directory
+        contract_path = Path(settings.BASE_DIR).parent / "contracts" / "substrate-poc" / "target" / "ink"
         metadata = self.load_contract_metadata(contract_path)
         
         # Create keypair from seed

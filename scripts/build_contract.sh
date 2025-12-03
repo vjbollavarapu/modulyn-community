@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Robust builder script for contracts/substrate-poc
+# Robust builder script for apps/backend/contracts/substrate-poc
 # Usage: bash scripts/build_contract.sh [--clean]
 set -euo pipefail
 
@@ -11,7 +11,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-CONTRACT_DIR="contracts/substrate-poc"
+CONTRACT_DIR="apps/backend/contracts/substrate-poc"
 
 if [ "$CLEAN" = true ]; then
   echo "[build] Cleaning previous target/ink..."

@@ -46,7 +46,7 @@ def submit_service_verification(
     substrate = SubstrateInterface(url=substrate_url)
     
     # Load contract metadata
-    contract_path = Path(__file__).parent.parent.parent.parent / "contracts" / "substrate-poc" / "target" / "ink"
+    contract_path = Path(__file__).parent.parent / "contracts" / "substrate-poc" / "target" / "ink"
     metadata = load_contract_metadata(contract_path)
     
     # Create keypair from seed
@@ -139,7 +139,7 @@ def main():
         
     except FileNotFoundError as e:
         print(f"Error: {e}")
-        print("Make sure the contract is compiled and metadata.json exists in contracts/substrate-poc/target/ink/")
+        print("Make sure the contract is compiled and metadata.json exists in apps/backend/contracts/substrate-poc/target/ink/")
         sys.exit(1)
     except Exception as e:
         print(f"Error submitting transaction: {e}")

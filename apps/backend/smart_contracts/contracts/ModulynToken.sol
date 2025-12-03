@@ -54,7 +54,7 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
     
     // ==================== CONSTRUCTOR ====================
     
-    constructor() ERC20("Modulyn Token", "TGT") ERC20Permit("Modulyn Token") Ownable(msg.sender) {
+    constructor() ERC20("Modulyn Token", "MOD") ERC20Permit("Modulyn Token") Ownable(msg.sender) {
         // Mint initial supply
         _mint(msg.sender, INITIAL_SUPPLY);
         

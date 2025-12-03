@@ -12,18 +12,18 @@ Reviewer Quick Verification Checklist (Level 2)
   - Copy the extrinsic hash and open polkadot.js/apps connected to ws://127.0.0.1:9944 to inspect events.
 
 3) Manual build & run (alternative)
-- cd contracts/substrate-poc
+- cd apps/backend/contracts/substrate-poc
 - cargo +nightly contract build
-- cd apps/backend
+- cd ../../..
 - python -m venv venv && source venv/bin/activate
-- pip install -r requirements-dev.txt
-- python apps/backend/substrate_poc/deploy_contract.py --wasm ../contracts/substrate-poc/target/ink/<contract>.wasm --metadata ../contracts/substrate-poc/target/ink/metadata.json
-- python manage.py demo_submit --contract <address> --service-id 1 --payload "demo"
+- pip install -r apps/backend/requirements-dev.txt
+- python apps/backend/substrate_poc/deploy_contract.py --wasm apps/backend/contracts/substrate-poc/target/ink/<contract>.wasm --metadata apps/backend/contracts/substrate-poc/target/ink/metadata.json
+- cd apps/backend && python manage.py demo_submit --contract <address> --service-id 1 --payload "demo"
 
 4) Tests
 - pytest tests/integration/test_substrate_poc_quickstart.py -q
 - Unit tests for contract:
-  - cd contracts/substrate-poc
+  - cd apps/backend/contracts/substrate-poc
   - cargo +nightly test
 
 5) CI

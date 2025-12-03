@@ -6,7 +6,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-CONTRACT_DIR="$ROOT_DIR/contracts/substrate-poc"
+CONTRACT_DIR="$ROOT_DIR/apps/backend/contracts/substrate-poc"
 BACKEND_DIR="$ROOT_DIR/apps/backend"
 DOCKER_COMPOSE_FILE="$ROOT_DIR/scripts/docker-compose.quickstart.yml"
 HEADLESS=false
