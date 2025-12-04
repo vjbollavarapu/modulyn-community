@@ -23,6 +23,7 @@ import Login from "./pages/Login";
 import Services from "./pages/Services";
 import ThemeManager from "./components/theme/ThemeManager";
 import IPFSManager from "./components/ipfs/IPFSManager";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -138,10 +139,7 @@ const App = () => (
                       <Route path="/settings" element={
                         <ProtectedRoute>
                           <MainLayout>
-                            <div className="p-8 text-center">
-                              <h1 className="text-2xl font-bold mb-4">Settings</h1>
-                              <p className="text-muted-foreground">Settings panel coming soon...</p>
-                            </div>
+                            <Settings />
                           </MainLayout>
                         </ProtectedRoute>
                       } />
