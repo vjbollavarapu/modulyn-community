@@ -116,3 +116,36 @@ class EmailVerificationToken(BaseModel):
     def is_valid(self):
         """Check if token is valid and not used."""
         return not self.is_used and not self.is_expired()
+
+
+class TOTPDevice(BaseModel):
+    """TOTP (Time-based One-Time Password) device for MFA."""
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='totp_device')
+    secret = models.CharField(max_length=32)  # Base32 encoded secret
+    is_enabled = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)  # Must verify before enabling
+    last_used = models.DateTimeField(null=True, blank=True)
+    backup_codes_generated = models.BooleanField(default=False)
+    
+    class Meta:
+        verbose_name = 'TOTP Device'
+        verbose_name_plural = 'TOTP Devices'
+    
+    def __str__(self):
+        return f"TOTP Device for {self.user.email}"
+
+
+class BackupCode(BaseModel):
+    """Backup codes for MFA recovery."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='backup_codes')
+    code = models.CharField(max_length=20)  # Hashed backup code
+    is_used = models.BooleanField(default=False)
+    used_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        verbose_name = 'Backup Code'
+        verbose_name_plural = 'Backup Codes'
+        unique_together = [['user', 'code']]
+    
+    def __str__(self):
+        return f"Backup code for {self.user.email}"

@@ -5,7 +5,7 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
-from .models import User, UserProfile, UserSession, PasswordResetToken, EmailVerificationToken
+from .models import User, UserProfile, UserSession, PasswordResetToken, EmailVerificationToken, TOTPDevice, BackupCode
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -161,6 +161,81 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
 
 class EmailVerificationSerializer(serializers.Serializer):
     """Serializer for email verification."""
+    token = serializers.CharField()
+    
+    def validate_token(self, value):
+        """Validate verification token."""
+        try:
+            token_obj = EmailVerificationToken.objects.get(token=value)
+            if not token_obj.is_valid():
+                raise serializers.ValidationError('Invalid or expired token.')
+            self.token_obj = token_obj
+        except EmailVerificationToken.DoesNotExist:
+            raise serializers.ValidationError('Invalid token.')
+        return value
+
+
+class TOTPSetupSerializer(serializers.Serializer):
+    """Serializer for TOTP setup initiation."""
+    pass  # No input required, just generates secret
+
+
+class TOTPVerifySerializer(serializers.Serializer):
+    """Serializer for TOTP verification during setup."""
+    token = serializers.CharField(min_length=6, max_length=6)
+    
+    def validate_token(self, value):
+        """Validate TOTP token format."""
+        if not value.isdigit():
+            raise serializers.ValidationError('TOTP token must be numeric.')
+        return value
+
+
+class TOTPEnableSerializer(serializers.Serializer):
+    """Serializer for enabling TOTP after verification."""
+    token = serializers.CharField(min_length=6, max_length=6)
+    
+    def validate_token(self, value):
+        """Validate TOTP token format."""
+        if not value.isdigit():
+            raise serializers.ValidationError('TOTP token must be numeric.')
+        return value
+
+
+class TOTPDisableSerializer(serializers.Serializer):
+    """Serializer for disabling TOTP."""
+    password = serializers.CharField(write_only=True)
+    
+    def validate_password(self, value):
+        """Validate user password before disabling MFA."""
+        user = self.context['request'].user
+        if not user.check_password(value):
+            raise serializers.ValidationError('Invalid password.')
+        return value
+
+
+class MFAVerifySerializer(serializers.Serializer):
+    """Serializer for MFA verification during login."""
+    email = serializers.EmailField()
+    token = serializers.CharField(min_length=6, max_length=6, required=False)
+    backup_code = serializers.CharField(required=False)
+    
+    def validate(self, attrs):
+        """Validate that either token or backup_code is provided."""
+        token = attrs.get('token')
+        backup_code = attrs.get('backup_code')
+        
+        if not token and not backup_code:
+            raise serializers.ValidationError('Either token or backup_code must be provided.')
+        if token and backup_code:
+            raise serializers.ValidationError('Provide either token or backup_code, not both.')
+        return attrs
+    
+    def validate_token(self, value):
+        """Validate TOTP token format."""
+        if value and not value.isdigit():
+            raise serializers.ValidationError('TOTP token must be numeric.')
+        return value
     token = serializers.CharField()
     
     def validate_token(self, value):

@@ -132,22 +132,36 @@ class UserRegistrationView(APIView):
 
 
 class UserLoginView(TokenObtainPairView):
-    """User login endpoint with rate limiting."""
+    """User login endpoint with rate limiting and MFA support."""
     permission_classes = [permissions.AllowAny]
     
     @ratelimit(key='ip', rate='10/h', method='POST', block=True)
     def post(self, request, *args, **kwargs):
-        """Login user and return JWT tokens."""
+        """Login user and return JWT tokens or MFA challenge."""
         try:
             serializer = UserLoginSerializer(data=request.data)
             if serializer.is_valid():
                 user = serializer.validated_data['user']
                 
-                # Generate JWT tokens
+                # Check if MFA is enabled
+                try:
+                    totp_device = user.totp_device
+                    if totp_device.is_enabled:
+                        # Return MFA challenge instead of tokens
+                        return Response({
+                            'mfa_required': True,
+                            'email': user.email,
+                            'message': 'MFA verification required. Please provide TOTP token or backup code.'
+                        }, status=status.HTTP_200_OK)
+                except TOTPDevice.DoesNotExist:
+                    pass  # MFA not enabled, proceed with normal login
+                
+                # Generate JWT tokens (MFA not enabled)
                 refresh = RefreshToken.for_user(user)
                 access = refresh.access_token
                 
                 return Response({
+                    'mfa_required': False,
                     'access': str(access),
                     'refresh': str(refresh),
                     'user': UserSerializer(user).data

@@ -9,6 +9,10 @@ from .views import (
     PasswordResetRequestView, PasswordResetConfirmView, EmailVerificationView,
     UserSessionViewSet
 )
+from .mfa_views import (
+    TOTPSetupView, TOTPVerifyView, TOTPEnableView, TOTPDisableView,
+    MFAStatusView, MFAVerifyView, BackupCodesView
+)
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -27,6 +31,15 @@ urlpatterns = [
     
     # Email verification
     path('email-verify/', EmailVerificationView.as_view(), name='email-verify'),
+    
+    # MFA / TOTP endpoints
+    path('mfa/setup/', TOTPSetupView.as_view(), name='mfa-setup'),
+    path('mfa/verify/', TOTPVerifyView.as_view(), name='mfa-verify'),
+    path('mfa/enable/', TOTPEnableView.as_view(), name='mfa-enable'),
+    path('mfa/disable/', TOTPDisableView.as_view(), name='mfa-disable'),
+    path('mfa/status/', MFAStatusView.as_view(), name='mfa-status'),
+    path('mfa/login-verify/', MFAVerifyView.as_view(), name='mfa-login-verify'),
+    path('mfa/backup-codes/', BackupCodesView.as_view(), name='mfa-backup-codes'),
     
     # User management
     path('', include(router.urls)),
