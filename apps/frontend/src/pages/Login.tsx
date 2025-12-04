@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useAuth } from "@/contexts/EnhancedAuthContext";
 import { Web3Login } from "@/components/auth/Web3Login";
+import { MFAVerify } from "@/components/auth/MFAVerify";
+import apiClient from "@/services/api";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +18,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [mfaRequired, setMfaRequired] = useState(false);
+  const [mfaEmail, setMfaEmail] = useState("");
   
   const { login, isAuthenticated, isLoading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -35,6 +39,17 @@ export default function Login() {
     setIsLoading(true);
 
     try {
+      const response = await apiClient.login({ email, password });
+      
+      // Check if MFA is required
+      if (response.data.mfa_required) {
+        setMfaRequired(true);
+        setMfaEmail(response.data.email || email);
+        setIsLoading(false);
+        return;
+      }
+      
+      // Normal login flow
       await login({ email, password });
       // Navigation will be handled by useEffect
     } catch (err: any) {
@@ -44,12 +59,37 @@ export default function Login() {
     }
   };
 
+  const handleMFASuccess = (tokens: { access: string; refresh: string; user: any }) => {
+    // Set tokens manually
+    localStorage.setItem('access_token', tokens.access);
+    localStorage.setItem('refresh_token', tokens.refresh);
+    
+    // Navigate to dashboard
+    const from = location.state?.from?.pathname || "/dashboard";
+    navigate(from, { replace: true });
+  };
+
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
           <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show MFA verification if required
+  if (mfaRequired) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
+        <div className="w-full max-w-md">
+          <MFAVerify
+            email={mfaEmail}
+            onSuccess={handleMFASuccess}
+            onError={(error) => setError(error)}
+          />
         </div>
       </div>
     );

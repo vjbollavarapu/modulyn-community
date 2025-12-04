@@ -66,9 +66,37 @@ export interface LoginCredentials {
 }
 
 export interface LoginResponse {
-  access: string;
-  refresh: string;
-  user: User;
+  access?: string;
+  refresh?: string;
+  user?: User;
+  mfa_required?: boolean;
+  email?: string;
+  message?: string;
+}
+
+export interface MFASetupResponse {
+  secret: string;
+  qr_code: string;
+  provisioning_uri: string;
+  message: string;
+}
+
+export interface MFAStatus {
+  mfa_enabled: boolean;
+  mfa_verified: boolean;
+  backup_codes_count: number;
+  last_used: string | null;
+}
+
+export interface MFAVerifyRequest {
+  email: string;
+  token?: string;
+  backup_code?: string;
+}
+
+export interface BackupCodesResponse {
+  backup_codes: string[];
+  warning: string;
 }
 
 export interface RefreshTokenResponse {
@@ -417,8 +445,10 @@ class ApiClient {
   // Authentication methods
   async login(credentials: LoginCredentials): Promise<ApiResponse<LoginResponse>> {
     const response = await this.post<LoginResponse>('/auth/login/', credentials);
-    const { access, refresh, user } = response.data;
-    this.setTokens(access, refresh);
+    // Only set tokens if MFA is not required
+    if (!response.data.mfa_required && response.data.access && response.data.refresh) {
+      this.setTokens(response.data.access, response.data.refresh);
+    }
     return response;
   }
 
