@@ -440,19 +440,50 @@ class AuditLogListView(generics.ListAPIView):
 
 
 @api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
+@permission_classes([permissions.AllowAny])  # Public endpoint for health checks
+@ratelimit(key='ip', rate='100/h', method='GET')  # Allow frequent health checks
 @extend_schema(
     summary="Health check",
-    description="Check system health status.",
-    responses={200: {"description": "System is healthy"}},
+    description="Check system health status. Public endpoint for monitoring and load balancers.",
+    responses={200: {"description": "System is healthy"}, 503: {"description": "System is unhealthy"}},
     tags=["System"]
 )
 def health_check(request):
     """
     System health check endpoint.
+    Public endpoint for monitoring and load balancers.
+    Checks database and cache connectivity.
     """
-    return Response({
+    from django.db import connection
+    from django.core.cache import cache
+    
+    health_status = {
         "status": "healthy",
         "timestamp": timezone.now().isoformat(),
-        "version": "1.0.0"
-    })
+        "version": "1.0.0",
+        "checks": {}
+    }
+    
+    # Database check
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            health_status["checks"]["database"] = "ok"
+    except Exception as e:
+        health_status["checks"]["database"] = f"error: {str(e)}"
+        health_status["status"] = "unhealthy"
+    
+    # Cache/Redis check
+    try:
+        cache.set("health_check", "ok", 10)
+        if cache.get("health_check") == "ok":
+            health_status["checks"]["cache"] = "ok"
+        else:
+            health_status["checks"]["cache"] = "error: cache not working"
+            health_status["status"] = "degraded"
+    except Exception as e:
+        health_status["checks"]["cache"] = f"error: {str(e)}"
+        health_status["status"] = "degraded"
+    
+    status_code = 200 if health_status["status"] == "healthy" else 503
+    return Response(health_status, status=status_code)

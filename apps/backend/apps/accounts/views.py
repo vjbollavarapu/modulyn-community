@@ -2,13 +2,17 @@
 User and authentication views.
 """
 from rest_framework import viewsets, status, permissions
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import login, logout
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+from django_ratelimit.decorators import ratelimit
 from datetime import timedelta
 import secrets
 import string
@@ -128,9 +132,10 @@ class UserRegistrationView(APIView):
 
 
 class UserLoginView(TokenObtainPairView):
-    """User login endpoint."""
+    """User login endpoint with rate limiting."""
     permission_classes = [permissions.AllowAny]
     
+    @ratelimit(key='ip', rate='10/h', method='POST', block=True)
     def post(self, request, *args, **kwargs):
         """Login user and return JWT tokens."""
         try:
@@ -186,6 +191,7 @@ class PasswordResetRequestView(APIView):
     """Password reset request endpoint."""
     permission_classes = [permissions.AllowAny]
     
+    @ratelimit(key='ip', rate='5/h', method='POST', block=True)
     def post(self, request):
         """Request password reset."""
         serializer = PasswordResetRequestSerializer(data=request.data)
@@ -201,11 +207,47 @@ class PasswordResetRequestView(APIView):
                 expires_at=timezone.now() + timedelta(hours=1)
             )
             
-            # TODO: Send reset email
+            # Send reset email
+            self.send_reset_email(user, token)
             
             return Response({
-                'message': 'Password reset email sent successfully.'
+                'message': 'Password reset email sent successfully. Please check your email.'
             })
+    
+    def send_reset_email(self, user, token):
+        """Send password reset email to user."""
+        reset_url = f"{settings.FRONTEND_URL or 'http://localhost:3000'}/reset-password?token={token}"
+        
+        subject = 'Password Reset Request - Modulyn ERP'
+        message = f"""
+Hello {user.get_full_name() or user.email},
+
+You requested a password reset for your Modulyn ERP account.
+
+Click the link below to reset your password:
+{reset_url}
+
+This link will expire in 1 hour.
+
+If you did not request this password reset, please ignore this email.
+
+Best regards,
+Modulyn ERP Team
+        """
+        
+        try:
+            send_mail(
+                subject=subject,
+                message=message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            # Log error but don't expose it to user (security best practice)
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Failed to send password reset email: {str(e)}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def generate_token(self):
