@@ -86,6 +86,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'axes.middleware.AxesMiddleware',
     'django_ratelimit.middleware.RatelimitMiddleware',  # Rate limiting middleware
+    'apps.core.middleware.APIRateLimitMiddleware',  # Custom API rate limiting (1000/h per user)
 ]
 
 ROOT_URLCONF = 'backend.urls'

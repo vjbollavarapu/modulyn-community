@@ -38,6 +38,12 @@ class Product(BaseModel):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
         ordering = ['name']
+        indexes = [
+            models.Index(fields=['sku']),  # SKU lookups (already unique, but explicit index)
+            models.Index(fields=['is_active']),  # Active product filtering
+            models.Index(fields=['category']),  # Category filtering
+            models.Index(fields=['current_stock']),  # Stock level queries
+        ]
     
     def __str__(self):
         return f"{self.name} ({self.sku})"

@@ -57,6 +57,12 @@ class User(AbstractUser, BaseModel):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
         db_table = 'core_users'
+        indexes = [
+            models.Index(fields=['email']),  # Email lookups
+            models.Index(fields=['is_active']),  # Active user filtering
+            models.Index(fields=['is_verified']),  # Verified user filtering
+            models.Index(fields=['-created']),  # Recent users first
+        ]
     
     def __str__(self):
         return f"{self.get_full_name()} ({self.email})"

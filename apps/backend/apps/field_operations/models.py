@@ -295,6 +295,15 @@ class FieldJob(BaseModel):
         verbose_name = _('Field Job')
         verbose_name_plural = _('Field Jobs')
         ordering = ['-scheduled_date', 'scheduled_start_time']
+        indexes = [
+            models.Index(fields=['status']),  # Status filtering
+            models.Index(fields=['job_type']),  # Job type filtering
+            models.Index(fields=['priority']),  # Priority filtering
+            models.Index(fields=['client', 'status']),  # Client's jobs by status
+            models.Index(fields=['assigned_team', 'status']),  # Team's jobs by status
+            models.Index(fields=['scheduled_date', 'status']),  # Date and status queries
+            models.Index(fields=['-scheduled_date']),  # Recent jobs first
+        ]
     
     def __str__(self):
         return f"{self.job_number} - {self.title}"
