@@ -334,5 +334,16 @@ Now that you're set up, explore:
 3. **Substrate Node**: http://localhost:9944
 4. **Tutorials**: See other tutorials in `docs/TUTORIALS/`
 
+---
+
+## 📚 Related Documentation
+
+For comprehensive onboarding, see:
+- **[Developer Onboarding Guide](../DEVELOPER_ONBOARDING.md)** - Complete onboarding guide with learning path
+- **[Architecture Documentation](../ARCHITECTURE.md)** - System architecture overview
+- **[Integrating Modulyn Components](./INTEGRATING_MODULYN_COMPONENTS.md)** - Component reuse guide
+
+---
+
 **Happy Coding! 🚀**
 

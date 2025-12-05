@@ -309,4 +309,15 @@ did:ens      - ENS DID
 
 ---
 
-*Quick reference for Modulyn Community Edition Web3 features. For detailed documentation, see WEB3_FEATURES_DOCUMENTATION.md*
+---
+
+## 📚 Related Documentation
+
+For comprehensive documentation, see:
+- **[Web3 Features Documentation](./WEB3_FEATURES_DOCUMENTATION.md)** - Complete feature overview
+- **[Web3 Technical Implementation](./WEB3_TECHNICAL_IMPLEMENTATION.md)** - Technical specifications
+- **[Polkadot Ecosystem Alignment](./POLKADOT_ECOSYSTEM.md)** - Polkadot integration details
+
+---
+
+*Quick reference for Modulyn Community Edition Web3 features. For detailed documentation, see the related documents above.*
