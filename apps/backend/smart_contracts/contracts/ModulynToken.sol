@@ -15,6 +15,23 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
  */
 contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, ReentrancyGuard, ERC20Votes {
     
+    // ==================== CUSTOM ERRORS ====================
+    
+    error InvalidBeneficiary();
+    error InvalidAmount();
+    error InvalidDuration();
+    error VestingAlreadySetUp();
+    error NoTokensToClaim();
+    error StakeDurationTooShort();
+    error StakeDurationTooLong();
+    error InsufficientBalance();
+    error InvalidStakeIndex();
+    error StakeNotMature();
+    error ArraysLengthMismatch();
+    error InvalidRecipient();
+    error RateTooHigh();
+    error ExceedsMaxSupply();
+    
     // ==================== STATE VARIABLES ====================
     
     uint256 public constant MAX_SUPPLY = 1_000_000_000 * 10**18; // 1 billion tokens
@@ -54,7 +71,7 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
     
     // ==================== CONSTRUCTOR ====================
     
-    constructor() ERC20("Modulyn Token", "MOD") ERC20Permit("Modulyn Token") Ownable(msg.sender) {
+    constructor() ERC20("Modulyn Token", "MOD") ERC20Permit("Modulyn Token") Ownable() {
         // Mint initial supply
         _mint(msg.sender, INITIAL_SUPPLY);
         
@@ -71,10 +88,10 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
      * @param duration Vesting duration in seconds
      */
     function setupVesting(address beneficiary, uint256 amount, uint256 duration) external onlyOwner {
-        require(beneficiary != address(0), "Invalid beneficiary");
-        require(amount > 0, "Amount must be greater than 0");
-        require(duration > 0, "Duration must be greater than 0");
-        require(vestingAmount[beneficiary] == 0, "Vesting already set up");
+        if (beneficiary == address(0)) revert InvalidBeneficiary();
+        if (amount == 0) revert InvalidAmount();
+        if (duration == 0) revert InvalidDuration();
+        if (vestingAmount[beneficiary] != 0) revert VestingAlreadySetUp();
         
         _setupVesting(beneficiary, amount, duration);
     }
@@ -93,7 +110,7 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
      */
     function claimVested() external nonReentrant {
         uint256 claimable = getClaimableAmount(msg.sender);
-        require(claimable > 0, "No tokens to claim");
+        if (claimable == 0) revert NoTokensToClaim();
         
         vestingClaimed[msg.sender] += claimable;
         _transfer(owner(), msg.sender, claimable);
@@ -126,10 +143,10 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
      * @param duration Staking duration in seconds
      */
     function stake(uint256 amount, uint256 duration) external nonReentrant {
-        require(amount > 0, "Amount must be greater than 0");
-        require(duration >= MIN_STAKE_DURATION, "Stake duration too short");
-        require(duration <= MAX_STAKE_DURATION, "Stake duration too long");
-        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+        if (amount == 0) revert InvalidAmount();
+        if (duration < MIN_STAKE_DURATION) revert StakeDurationTooShort();
+        if (duration > MAX_STAKE_DURATION) revert StakeDurationTooLong();
+        if (balanceOf(msg.sender) < amount) revert InsufficientBalance();
         
         // Transfer tokens to contract
         _transfer(msg.sender, address(this), amount);
@@ -153,21 +170,27 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
      * @param stakeIndex Index of the stake to unlock
      */
     function unlockStake(uint256 stakeIndex) external nonReentrant {
-        require(stakeIndex < stakes[msg.sender].length, "Invalid stake index");
+        if (stakeIndex >= stakes[msg.sender].length) revert InvalidStakeIndex();
         
         Stake storage stakeInfo = stakes[msg.sender][stakeIndex];
-        require(block.timestamp >= stakeInfo.startTime + stakeInfo.duration, "Stake not mature");
+        if (block.timestamp < stakeInfo.startTime + stakeInfo.duration) revert StakeNotMature();
         
-        uint256 totalAmount = stakeInfo.amount + stakeInfo.rewards;
+        uint256 stakeAmount = stakeInfo.amount;
+        uint256 stakeRewards = stakeInfo.rewards;
         
         // Remove stake
         stakes[msg.sender][stakeIndex] = stakes[msg.sender][stakes[msg.sender].length - 1];
         stakes[msg.sender].pop();
         
-        // Transfer tokens back
-        _transfer(address(this), msg.sender, totalAmount);
+        // Transfer staked tokens back
+        _transfer(address(this), msg.sender, stakeAmount);
         
-        emit StakeUnlocked(msg.sender, stakeIndex, stakeInfo.amount, stakeInfo.rewards);
+        // Mint rewards
+        if (stakeRewards > 0) {
+            _mint(msg.sender, stakeRewards);
+        }
+        
+        emit StakeUnlocked(msg.sender, stakeIndex, stakeAmount, stakeRewards);
     }
     
     /**
@@ -192,14 +215,21 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
         uint256[] calldata amounts,
         string calldata reason
     ) external onlyOwner {
-        require(recipients.length == amounts.length, "Arrays length mismatch");
+        uint256 length = recipients.length; // Cache array length
+        if (length != amounts.length) revert ArraysLengthMismatch();
         
-        for (uint256 i = 0; i < recipients.length; i++) {
-            require(recipients[i] != address(0), "Invalid recipient");
-            require(amounts[i] > 0, "Amount must be greater than 0");
+        for (uint256 i = 0; i < length;) {
+            address recipient = recipients[i]; // Cache calldata read
+            uint256 amount = amounts[i]; // Cache calldata read
+            if (recipient == address(0)) revert InvalidRecipient();
+            if (amount == 0) revert InvalidAmount();
             
-            _mint(recipients[i], amounts[i]);
-            emit RewardsDistributed(recipients[i], amounts[i], reason);
+            _mint(recipient, amount);
+            emit RewardsDistributed(recipient, amount, reason);
+            
+            unchecked {
+                i++;
+            }
         }
     }
     
@@ -208,38 +238,53 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
      * @param newRate New reward rate (percentage)
      */
     function setStakingRewardRate(uint256 newRate) external onlyOwner {
-        require(newRate <= 100, "Rate too high");
+        if (newRate > 100) revert RateTooHigh();
         stakingRewardRate = newRate;
     }
 
     // ==================== OVERRIDES ====================
     
-    function _update(address from, address to, uint256 value)
+    function _beforeTokenTransfer(address from, address to, uint256 amount)
         internal
-        override(ERC20, ERC20Pausable, ERC20Votes)
+        override(ERC20, ERC20Pausable)
     {
-        super._update(from, to, value);
+        super._beforeTokenTransfer(from, to, amount);
     }
     
-    function nonces(address owner)
-        public
-        view
-        override(ERC20Permit, Nonces)
-        returns (uint256)
+    function _afterTokenTransfer(address from, address to, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes)
     {
-        return super.nonces(owner);
+        super._afterTokenTransfer(from, to, amount);
     }
     
-    function pause() public onlyOwner {
+    function _mint(address account, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes)
+    {
+        super._mint(account, amount);
+    }
+    
+    function _burn(address account, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes)
+    {
+        super._burn(account, amount);
+    }
+    
+    // Note: ERC20Votes includes nonces functionality
+    // No override needed as it's provided by ERC20Votes
+    
+    function pause() external onlyOwner {
         _pause();
     }
     
-    function unpause() public onlyOwner {
+    function unpause() external onlyOwner {
         _unpause();
     }
     
-    function mint(address to, uint256 amount) public onlyOwner {
-        require(totalSupply() + amount <= MAX_SUPPLY, "Exceeds max supply");
+    function mint(address to, uint256 amount) external onlyOwner {
+        if (totalSupply() + amount > MAX_SUPPLY) revert ExceedsMaxSupply();
         _mint(to, amount);
     }
 
@@ -247,18 +292,18 @@ contract ModulynToken is ERC20, ERC20Burnable, ERC20Pausable, Ownable, Reentranc
     
     /**
      * @dev Get token information
-     * @return name Token name
-     * @return symbol Token symbol
-     * @return decimals Token decimals
-     * @return totalSupply Total supply
-     * @return maxSupply Maximum supply
+     * @return tokenName Token name
+     * @return tokenSymbol Token symbol
+     * @return tokenDecimals Token decimals
+     * @return tokenTotalSupply Total supply
+     * @return tokenMaxSupply Maximum supply
      */
     function getTokenInfo() external view returns (
-        string memory name,
-        string memory symbol,
-        uint8 decimals,
-        uint256 totalSupply,
-        uint256 maxSupply
+        string memory tokenName,
+        string memory tokenSymbol,
+        uint8 tokenDecimals,
+        uint256 tokenTotalSupply,
+        uint256 tokenMaxSupply
     ) {
         return (
             name(),

@@ -14,6 +14,37 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
  */
 contract FieldOperations is ReentrancyGuard, Ownable {
     
+    // ==================== CUSTOM ERRORS ====================
+    
+    error TeamNotRegisteredOrInactive();
+    error ClientNotRegisteredOrInactive();
+    error InvalidJobId();
+    error JobNotAssigned();
+    error NotAssignedToThisJob();
+    error JobNotInProgress();
+    error JobNotCompleted();
+    error PaymentAlreadyReleased();
+    error JobNotCancellable();
+    error InvalidAmount();
+    error InsufficientBalance();
+    error TransferFailed();
+    error InvalidRating();
+    error InvalidFeePercentage();
+    error InvalidWallet();
+    error NoFundsToWithdraw();
+    error WithdrawalFailed();
+    error TeamAlreadyRegistered();
+    error ClientAlreadyRegistered();
+    error PaymentMustBeGreaterThanZero();
+    error ScheduledTimeMustBeInFuture();
+    error InsufficientTokenAllowance();
+    error JobNotAvailableForAssignment();
+    error TeamNotActive();
+    error NotAuthorized();
+    error RatingOutOfRange();
+    error FeeExceedsMaximum();
+    error InvalidWalletAddress();
+    
     // Events
     event JobCreated(uint256 indexed jobId, address indexed client, uint256 amount);
     event JobAssigned(uint256 indexed jobId, address indexed team, uint256 timestamp);
@@ -86,17 +117,17 @@ contract FieldOperations is ReentrancyGuard, Ownable {
     
     // Modifiers
     modifier onlyRegisteredTeam() {
-        require(teams[msg.sender].isActive, "Team not registered or inactive");
+        if (!teams[msg.sender].isActive) revert TeamNotRegisteredOrInactive();
         _;
     }
     
     modifier onlyRegisteredClient() {
-        require(clients[msg.sender].isActive, "Client not registered or inactive");
+        if (!clients[msg.sender].isActive) revert ClientNotRegisteredOrInactive();
         _;
     }
     
     modifier validJob(uint256 _jobId) {
-        require(_jobId > 0 && _jobId < nextJobId, "Invalid job ID");
+        if (_jobId == 0 || _jobId >= nextJobId) revert InvalidJobId();
         _;
     }
     
@@ -110,8 +141,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _name Team name
      * @param _teamType Type of team (cleaning, maintenance, etc.)
      */
-    function registerTeam(string memory _name, string memory _teamType) external {
-        require(!teams[msg.sender].isActive, "Team already registered");
+    function registerTeam(string calldata _name, string calldata _teamType) external {
+        if (teams[msg.sender].isActive) revert TeamAlreadyRegistered();
         
         teams[msg.sender] = Team({
             teamAddress: msg.sender,
@@ -132,8 +163,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _name Client name
      * @param _contactInfo Contact information
      */
-    function registerClient(string memory _name, string memory _contactInfo) external {
-        require(!clients[msg.sender].isActive, "Client already registered");
+    function registerClient(string calldata _name, string calldata _contactInfo) external {
+        if (clients[msg.sender].isActive) revert ClientAlreadyRegistered();
         
         clients[msg.sender] = Client({
             clientAddress: msg.sender,
@@ -165,14 +196,13 @@ contract FieldOperations is ReentrancyGuard, Ownable {
         uint256 _estimatedDuration,
         uint256 _payment
     ) external onlyRegisteredClient {
-        require(_payment > 0, "Payment must be greater than 0");
-        require(_scheduledTime > block.timestamp, "Scheduled time must be in the future");
+        if (_payment == 0) revert PaymentMustBeGreaterThanZero();
+        if (_scheduledTime <= block.timestamp) revert ScheduledTimeMustBeInFuture();
         
         // Transfer payment to contract (escrow)
-        require(
-            paymentToken.transferFrom(msg.sender, address(this), _payment),
-            "Payment transfer failed"
-        );
+        if (!paymentToken.transferFrom(msg.sender, address(this), _payment)) {
+            revert TransferFailed();
+        }
         
         uint256 jobId = nextJobId++;
         
@@ -205,8 +235,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      */
     function assignJob(uint256 _jobId, address _team) external validJob(_jobId) {
         Job storage job = jobs[_jobId];
-        require(job.status == JobStatus.Created, "Job not available for assignment");
-        require(teams[_team].isActive, "Team not active");
+        if (job.status != JobStatus.Created) revert JobNotAvailableForAssignment();
+        if (!teams[_team].isActive) revert TeamNotActive();
         
         job.team = _team;
         job.status = JobStatus.Assigned;
@@ -223,8 +253,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      */
     function startJob(uint256 _jobId) external validJob(_jobId) onlyRegisteredTeam {
         Job storage job = jobs[_jobId];
-        require(job.team == msg.sender, "Not assigned to this job");
-        require(job.status == JobStatus.Assigned, "Job not assigned");
+        if (job.team != msg.sender) revert NotAssignedToThisJob();
+        if (job.status != JobStatus.Assigned) revert JobNotAssigned();
         
         job.status = JobStatus.InProgress;
         
@@ -236,14 +266,14 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _jobId Job ID
      * @param _completionPhotos IPFS hash of completion photos
      */
-    function completeJob(uint256 _jobId, string memory _completionPhotos) 
+    function completeJob(uint256 _jobId, string calldata _completionPhotos) 
         external 
         validJob(_jobId) 
         onlyRegisteredTeam 
     {
         Job storage job = jobs[_jobId];
-        require(job.team == msg.sender, "Not assigned to this job");
-        require(job.status == JobStatus.InProgress, "Job not in progress");
+        if (job.team != msg.sender) revert NotAssignedToThisJob();
+        if (job.status != JobStatus.InProgress) revert JobNotInProgress();
         
         job.status = JobStatus.Completed;
         job.completedAt = block.timestamp;
@@ -260,9 +290,9 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      */
     function releasePayment(uint256 _jobId) external validJob(_jobId) {
         Job storage job = jobs[_jobId];
-        require(job.status == JobStatus.Completed, "Job not completed");
-        require(!job.paymentReleased, "Payment already released");
-        require(job.client == msg.sender || msg.sender == owner(), "Not authorized");
+        if (job.status != JobStatus.Completed) revert JobNotCompleted();
+        if (job.paymentReleased) revert PaymentAlreadyReleased();
+        if (job.client != msg.sender && msg.sender != owner()) revert NotAuthorized();
         
         job.paymentReleased = true;
         
@@ -271,17 +301,15 @@ contract FieldOperations is ReentrancyGuard, Ownable {
         uint256 teamPayment = job.payment - platformFee;
         
         // Transfer payment to team
-        require(
-            paymentToken.transfer(job.team, teamPayment),
-            "Team payment transfer failed"
-        );
+        if (!paymentToken.transfer(job.team, teamPayment)) {
+            revert TransferFailed();
+        }
         
         // Transfer platform fee
         if (platformFee > 0) {
-            require(
-                paymentToken.transfer(platformWallet, platformFee),
-                "Platform fee transfer failed"
-            );
+            if (!paymentToken.transfer(platformWallet, platformFee)) {
+                revert TransferFailed();
+            }
         }
         
         // Update client total spent
@@ -296,22 +324,19 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      */
     function cancelJob(uint256 _jobId) external validJob(_jobId) {
         Job storage job = jobs[_jobId];
-        require(
-            job.client == msg.sender || msg.sender == owner(),
-            "Not authorized to cancel"
-        );
-        require(
-            job.status == JobStatus.Created || job.status == JobStatus.Assigned,
-            "Cannot cancel job in progress or completed"
-        );
+        if (job.client != msg.sender && msg.sender != owner()) {
+            revert NotAuthorized();
+        }
+        if (job.status != JobStatus.Created && job.status != JobStatus.Assigned) {
+            revert JobNotCancellable();
+        }
         
         job.status = JobStatus.Cancelled;
         
         // Refund payment to client
-        require(
-            paymentToken.transfer(job.client, job.payment),
-            "Refund transfer failed"
-        );
+        if (!paymentToken.transfer(job.client, job.payment)) {
+            revert TransferFailed();
+        }
     }
     
     /**
@@ -320,8 +345,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _rating New rating (1-5)
      */
     function updateTeamRating(address _team, uint256 _rating) external onlyOwner {
-        require(_rating >= 1 && _rating <= 5, "Rating must be between 1 and 5");
-        require(teams[_team].isActive, "Team not active");
+        if (_rating < 1 || _rating > 5) revert RatingOutOfRange();
+        if (!teams[_team].isActive) revert TeamNotActive();
         
         // Calculate new average rating
         uint256 totalRating = teams[_team].rating * teams[_team].completedJobs;
@@ -379,7 +404,7 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _newFeePercentage New fee percentage
      */
     function updatePlatformFee(uint256 _newFeePercentage) external onlyOwner {
-        require(_newFeePercentage <= 20, "Fee cannot exceed 20%");
+        if (_newFeePercentage > 20) revert FeeExceedsMaximum();
         platformFeePercentage = _newFeePercentage;
     }
     
@@ -388,7 +413,7 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _newWallet New platform wallet address
      */
     function updatePlatformWallet(address _newWallet) external onlyOwner {
-        require(_newWallet != address(0), "Invalid wallet address");
+        if (_newWallet == address(0)) revert InvalidWalletAddress();
         platformWallet = _newWallet;
     }
     
@@ -397,9 +422,8 @@ contract FieldOperations is ReentrancyGuard, Ownable {
      * @param _amount Amount to withdraw
      */
     function emergencyWithdraw(uint256 _amount) external onlyOwner {
-        require(
-            paymentToken.transfer(owner(), _amount),
-            "Emergency withdraw failed"
-        );
+        if (!paymentToken.transfer(owner(), _amount)) {
+            revert WithdrawalFailed();
+        }
     }
 }

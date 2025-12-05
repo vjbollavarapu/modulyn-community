@@ -15,6 +15,35 @@ import "./ModulynToken.sol";
 contract ModulynDAO is Ownable, ReentrancyGuard {
     using ECDSA for bytes32;
 
+    // ==================== CUSTOM ERRORS ====================
+    
+    error NotTheProposer();
+    error InvalidProposalId();
+    error ProposalDoesNotExist();
+    error InsufficientVotingPowerToPropose();
+    error VotingNotStarted();
+    error VotingEnded();
+    error InvalidProposalStatus();
+    error InvalidVoteValue();
+    error AlreadyVoted();
+    error NoVotingPower();
+    error VotingNotEnded();
+    error ProposalNotActive();
+    error ProposalAlreadyExecuted();
+    error ProposalIsCancelled();
+    error QuorumNotMet();
+    error ProposalNotPassed();
+    error VotingAlreadyStarted();
+    error ProposalAlreadyCancelled();
+    error InvalidRecipient();
+    error InvalidAmount();
+    error TransactionAlreadyExecuted();
+    error InsufficientETHBalance();
+    error ETHTransferFailed();
+    error InsufficientTokenBalance();
+    error TokenTransferFailed();
+    error IncorrectETHAmount();
+
     // ==================== STRUCTS ====================
     
     struct Proposal {
@@ -123,23 +152,23 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
     // ==================== MODIFIERS ====================
     
     modifier onlyProposer(uint256 proposalId) {
-        require(proposals[proposalId].proposer == msg.sender, "Not the proposer");
+        if (proposals[proposalId].proposer != msg.sender) revert NotTheProposer();
         _;
     }
     
     modifier validProposal(uint256 proposalId) {
-        require(proposalId > 0 && proposalId < nextProposalId, "Invalid proposal ID");
+        if (proposalId == 0 || proposalId >= nextProposalId) revert InvalidProposalId();
         _;
     }
     
     modifier proposalExists(uint256 proposalId) {
-        require(proposals[proposalId].id != 0, "Proposal does not exist");
+        if (proposals[proposalId].id == 0) revert ProposalDoesNotExist();
         _;
     }
 
     // ==================== CONSTRUCTOR ====================
     
-    constructor(address _token) Ownable(msg.sender) {
+    constructor(address _token) Ownable() {
         token = ModulynToken(_token);
     }
 
@@ -158,7 +187,7 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         ProposalType proposalType,
         bytes32 executionHash
     ) external returns (uint256) {
-        require(token.balanceOf(msg.sender) >= PROPOSAL_THRESHOLD, "Insufficient voting power to propose");
+        if (token.balanceOf(msg.sender) < PROPOSAL_THRESHOLD) revert InsufficientVotingPowerToPropose();
         
         uint256 proposalId = nextProposalId++;
         uint256 startTime = block.timestamp + VOTING_DELAY;
@@ -198,17 +227,21 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         string calldata reason
     ) external validProposal(proposalId) proposalExists(proposalId) {
         Proposal storage proposal = proposals[proposalId];
-        require(block.timestamp >= proposal.startTime, "Voting not started");
-        require(block.timestamp <= proposal.endTime, "Voting ended");
-        require(proposal.status == ProposalStatus.Pending || proposal.status == ProposalStatus.Active, "Invalid proposal status");
-        require(support <= 2, "Invalid vote value");
-        require(!votes[proposalId][msg.sender].hasVoted, "Already voted");
+        uint256 _startTime = proposal.startTime; // Cache storage read
+        uint256 _endTime = proposal.endTime; // Cache storage read
+        ProposalStatus _status = proposal.status; // Cache storage read
+        
+        if (block.timestamp < _startTime) revert VotingNotStarted();
+        if (block.timestamp > _endTime) revert VotingEnded();
+        if (_status != ProposalStatus.Pending && _status != ProposalStatus.Active) revert InvalidProposalStatus();
+        if (support > 2) revert InvalidVoteValue();
+        if (votes[proposalId][msg.sender].hasVoted) revert AlreadyVoted();
         
         uint256 votingPower = token.getVotes(msg.sender);
-        require(votingPower > 0, "No voting power");
+        if (votingPower == 0) revert NoVotingPower();
         
         // Update proposal status to active if it's the first vote
-        if (proposal.status == ProposalStatus.Pending) {
+        if (_status == ProposalStatus.Pending) {
             proposal.status = ProposalStatus.Active;
         }
         
@@ -242,15 +275,22 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         nonReentrant 
     {
         Proposal storage proposal = proposals[proposalId];
-        require(block.timestamp > proposal.endTime, "Voting not ended");
-        require(proposal.status == ProposalStatus.Active, "Proposal not active");
-        require(!proposal.executed, "Proposal already executed");
-        require(!proposal.cancelled, "Proposal cancelled");
+        uint256 _endTime = proposal.endTime; // Cache storage read
+        ProposalStatus _status = proposal.status; // Cache storage read
+        bool _executed = proposal.executed; // Cache storage read
+        bool _cancelled = proposal.cancelled; // Cache storage read
+        uint256 _votesFor = proposal.votesFor; // Cache storage read
+        uint256 _votesAgainst = proposal.votesAgainst; // Cache storage read
+        
+        if (block.timestamp <= _endTime) revert VotingNotEnded();
+        if (_status != ProposalStatus.Active) revert ProposalNotActive();
+        if (_executed) revert ProposalAlreadyExecuted();
+        if (_cancelled) revert ProposalIsCancelled();
         
         // Check if proposal passed
-        uint256 totalVotes = proposal.votesFor + proposal.votesAgainst + proposal.votesAbstain;
-        require(totalVotes >= QUORUM_THRESHOLD, "Quorum not met");
-        require(proposal.votesFor > proposal.votesAgainst, "Proposal not passed");
+        uint256 totalVotes = _votesFor + proposal.votesAbstain + _votesAgainst;
+        if (totalVotes < QUORUM_THRESHOLD) revert QuorumNotMet();
+        if (_votesFor <= _votesAgainst) revert ProposalNotPassed();
         
         proposal.status = ProposalStatus.Succeeded;
         proposal.executed = true;
@@ -275,8 +315,8 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         onlyProposer(proposalId) 
     {
         Proposal storage proposal = proposals[proposalId];
-        require(block.timestamp < proposal.startTime, "Voting already started");
-        require(!proposal.cancelled, "Proposal already cancelled");
+        if (block.timestamp >= proposal.startTime) revert VotingAlreadyStarted();
+        if (proposal.cancelled) revert ProposalAlreadyCancelled();
         
         proposal.status = ProposalStatus.Cancelled;
         proposal.cancelled = true;
@@ -299,8 +339,8 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         address tokenAddress,
         string calldata description
     ) external returns (uint256) {
-        require(to != address(0), "Invalid recipient");
-        require(amount > 0, "Amount must be greater than 0");
+        if (to == address(0)) revert InvalidRecipient();
+        if (amount == 0) revert InvalidAmount();
         
         // Create proposal
         bytes32 executionHash = keccak256(abi.encodePacked(
@@ -311,12 +351,31 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
             block.timestamp
         ));
         
-        uint256 proposalId = propose(
-            "Treasury Transaction",
-            description,
-            ProposalType.Treasury,
-            executionHash
-        );
+        // Create proposal directly (inline the propose logic)
+        if (token.balanceOf(msg.sender) < PROPOSAL_THRESHOLD) revert InsufficientVotingPowerToPropose();
+        
+        uint256 proposalId = nextProposalId++;
+        uint256 startTime = block.timestamp + VOTING_DELAY;
+        uint256 endTime = startTime + VOTING_PERIOD;
+        
+        proposals[proposalId] = Proposal({
+            id: proposalId,
+            proposer: msg.sender,
+            title: "Treasury Transaction",
+            description: description,
+            startTime: startTime,
+            endTime: endTime,
+            votesFor: 0,
+            votesAgainst: 0,
+            votesAbstain: 0,
+            executed: false,
+            cancelled: false,
+            executionHash: executionHash,
+            proposalType: ProposalType.Treasury,
+            status: ProposalStatus.Pending
+        });
+        
+        emit ProposalCreated(proposalId, msg.sender, "Treasury Transaction", ProposalType.Treasury, startTime, endTime);
         
         // Create treasury transaction
         uint256 transactionId = nextTreasuryTransactionId++;
@@ -342,18 +401,18 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
      */
     function _executeTreasuryProposal(uint256 transactionId) internal {
         TreasuryTransaction storage transaction = treasuryTransactions[transactionId];
-        require(!transaction.executed, "Transaction already executed");
+        if (transaction.executed) revert TransactionAlreadyExecuted();
         
         if (transaction.token == address(0)) {
             // ETH transfer
-            require(address(this).balance >= transaction.amount, "Insufficient ETH balance");
+            if (address(this).balance < transaction.amount) revert InsufficientETHBalance();
             (bool success, ) = transaction.to.call{value: transaction.amount}("");
-            require(success, "ETH transfer failed");
+            if (!success) revert ETHTransferFailed();
         } else {
             // ERC20 transfer
             IERC20 token = IERC20(transaction.token);
-            require(token.balanceOf(address(this)) >= transaction.amount, "Insufficient token balance");
-            require(token.transfer(transaction.to, transaction.amount), "Token transfer failed");
+            if (token.balanceOf(address(this)) < transaction.amount) revert InsufficientTokenBalance();
+            if (!token.transfer(transaction.to, transaction.amount)) revert TokenTransferFailed();
         }
         
         transaction.executed = true;
@@ -367,11 +426,11 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
      */
     function depositToTreasury(address tokenAddress, uint256 amount) external payable {
         if (tokenAddress == address(0)) {
-            require(msg.value == amount, "Incorrect ETH amount");
+            if (msg.value != amount) revert IncorrectETHAmount();
             treasuryBalances[address(0)] += amount;
         } else {
             IERC20 token = IERC20(tokenAddress);
-            require(token.transferFrom(msg.sender, address(this), amount), "Token transfer failed");
+            if (!token.transferFrom(msg.sender, address(this), amount)) revert TokenTransferFailed();
             treasuryBalances[tokenAddress] += amount;
         }
     }
@@ -433,14 +492,20 @@ contract ModulynDAO is Ownable, ReentrancyGuard {
         uint256 executedProposals,
         uint256 totalTreasuryTransactions
     ) {
-        totalProposals = nextProposalId - 1;
+        uint256 _nextProposalId = nextProposalId; // Cache storage read
+        totalProposals = _nextProposalId - 1;
         totalTreasuryTransactions = nextTreasuryTransactionId - 1;
         
-        for (uint256 i = 1; i < nextProposalId; i++) {
-            if (proposals[i].status == ProposalStatus.Active) {
+        // Optimize loop with unchecked increment and cached storage reads
+        for (uint256 i = 1; i < _nextProposalId;) {
+            Proposal storage proposal = proposals[i]; // Cache storage read
+            if (proposal.status == ProposalStatus.Active) {
                 activeProposals++;
-            } else if (proposals[i].executed) {
+            } else if (proposal.executed) {
                 executedProposals++;
+            }
+            unchecked {
+                i++;
             }
         }
     }

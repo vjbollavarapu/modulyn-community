@@ -15,6 +15,18 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     
+    // ==================== CUSTOM ERRORS ====================
+    
+    error InvalidAssetType();
+    error NotAssetOwner();
+    error InvalidRecipientAddress();
+    error AssetValueMustBeGreaterThanZero();
+    error SerialNumberRequired();
+    error SerialNumberAlreadyExists();
+    error AssetIsNotActive();
+    error AssetDoesNotExist();
+    error AssetAlreadyRetired();
+    
     // Events
     event AssetMinted(uint256 indexed tokenId, address indexed owner, string assetType, uint256 value);
     event AssetTransferred(uint256 indexed tokenId, address indexed from, address indexed to);
@@ -55,13 +67,13 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
     mapping(string => bool) public validAssetTypes;
     
     // Modifiers
-    modifier validAssetType(string memory _assetType) {
-        require(validAssetTypes[_assetType], "Invalid asset type");
+    modifier validAssetType(string calldata _assetType) {
+        if (!validAssetTypes[_assetType]) revert InvalidAssetType();
         _;
     }
     
     modifier onlyAssetOwner(uint256 _tokenId) {
-        require(ownerOf(_tokenId) == msg.sender || msg.sender == owner(), "Not asset owner");
+        if (ownerOf(_tokenId) != msg.sender && msg.sender != owner()) revert NotAssetOwner();
         _;
     }
     
@@ -87,20 +99,20 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      */
     function mintAsset(
         address _to,
-        string memory _assetType,
-        string memory _serialNumber,
-        string memory _model,
-        string memory _manufacturer,
+        string calldata _assetType,
+        string calldata _serialNumber,
+        string calldata _model,
+        string calldata _manufacturer,
         uint256 _value,
         uint256 _purchaseDate,
-        string memory _metadataURI
+        string calldata _metadataURI
     ) external onlyOwner validAssetType(_assetType) {
-        require(_to != address(0), "Invalid recipient address");
-        require(_value > 0, "Asset value must be greater than 0");
-        require(bytes(_serialNumber).length > 0, "Serial number required");
+        if (_to == address(0)) revert InvalidRecipientAddress();
+        if (_value == 0) revert AssetValueMustBeGreaterThanZero();
+        if (bytes(_serialNumber).length == 0) revert SerialNumberRequired();
         
         // Check if serial number already exists
-        require(serialNumberToTokenId[_serialNumber] == 0, "Serial number already exists");
+        if (serialNumberToTokenId[_serialNumber] != 0) revert SerialNumberAlreadyExists();
         
         _tokenIdCounter.increment();
         uint256 tokenId = _tokenIdCounter.current();
@@ -140,8 +152,8 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         onlyAssetOwner(_tokenId) 
         nonReentrant 
     {
-        require(_to != address(0), "Invalid recipient address");
-        require(assets[_tokenId].isActive, "Asset is not active");
+        if (_to == address(0)) revert InvalidRecipientAddress();
+        if (!assets[_tokenId].isActive) revert AssetIsNotActive();
         
         address from = ownerOf(_tokenId);
         
@@ -170,8 +182,8 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         string memory _performedBy,
         string memory _location
     ) external onlyAssetOwner(_tokenId) {
-        require(_exists(_tokenId), "Asset does not exist");
-        require(assets[_tokenId].isActive, "Asset is not active");
+        if (!_exists(_tokenId)) revert AssetDoesNotExist();
+        if (!assets[_tokenId].isActive) revert AssetIsNotActive();
         
         MaintenanceRecord memory record = MaintenanceRecord({
             timestamp: block.timestamp,
@@ -196,8 +208,8 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         external 
         onlyAssetOwner(_tokenId) 
     {
-        require(_exists(_tokenId), "Asset does not exist");
-        require(_newValue > 0, "Asset value must be greater than 0");
+        if (!_exists(_tokenId)) revert AssetDoesNotExist();
+        if (_newValue == 0) revert AssetValueMustBeGreaterThanZero();
         
         uint256 oldValue = assets[_tokenId].value;
         assets[_tokenId].value = _newValue;
@@ -210,12 +222,12 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      * @param _tokenId Token ID of the asset
      * @param _reason Reason for retirement
      */
-    function retireAsset(uint256 _tokenId, string memory _reason) 
+    function retireAsset(uint256 _tokenId, string calldata _reason) 
         external 
         onlyAssetOwner(_tokenId) 
     {
-        require(_exists(_tokenId), "Asset does not exist");
-        require(assets[_tokenId].isActive, "Asset already retired");
+        if (!_exists(_tokenId)) revert AssetDoesNotExist();
+        if (!assets[_tokenId].isActive) revert AssetAlreadyRetired();
         
         assets[_tokenId].isActive = false;
         
@@ -228,7 +240,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      * @return Asset struct
      */
     function getAsset(uint256 _tokenId) external view returns (Asset memory) {
-        require(_exists(_tokenId), "Asset does not exist");
+        if (!_exists(_tokenId)) revert AssetDoesNotExist();
         return assets[_tokenId];
     }
     
@@ -242,7 +254,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         view 
         returns (MaintenanceRecord[] memory) 
     {
-        require(_exists(_tokenId), "Asset does not exist");
+        if (!_exists(_tokenId)) revert AssetDoesNotExist();
         return maintenanceHistory[_tokenId];
     }
     
@@ -260,7 +272,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      * @param _serialNumber Serial number
      * @return Token ID
      */
-    function getAssetBySerialNumber(string memory _serialNumber) 
+    function getAssetBySerialNumber(string calldata _serialNumber) 
         external 
         view 
         returns (uint256) 
@@ -272,7 +284,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      * @dev Add new asset type (only owner)
      * @param _assetType New asset type
      */
-    function addAssetType(string memory _assetType) external onlyOwner {
+    function addAssetType(string calldata _assetType) external onlyOwner {
         validAssetTypes[_assetType] = true;
     }
     
@@ -280,7 +292,7 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      * @dev Remove asset type (only owner)
      * @param _assetType Asset type to remove
      */
-    function removeAssetType(string memory _assetType) external onlyOwner {
+    function removeAssetType(string calldata _assetType) external onlyOwner {
         validAssetTypes[_assetType] = false;
     }
     
@@ -298,9 +310,13 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      */
     function getActiveAssetsCount() external view returns (uint256) {
         uint256 count = 0;
-        for (uint256 i = 1; i <= _tokenIdCounter.current(); i++) {
+        uint256 totalAssets = _tokenIdCounter.current(); // Cache storage read
+        for (uint256 i = 1; i <= totalAssets;) {
             if (assets[i].isActive) {
                 count++;
+            }
+            unchecked {
+                i++;
             }
         }
         return count;
@@ -312,9 +328,14 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
      */
     function getTotalAssetsValue() external view returns (uint256) {
         uint256 totalValue = 0;
-        for (uint256 i = 1; i <= _tokenIdCounter.current(); i++) {
-            if (assets[i].isActive) {
-                totalValue += assets[i].value;
+        uint256 totalAssets = _tokenIdCounter.current(); // Cache storage read
+        for (uint256 i = 1; i <= totalAssets;) {
+            Asset storage asset = assets[i]; // Cache storage read
+            if (asset.isActive) {
+                totalValue += asset.value;
+            }
+            unchecked {
+                i++;
             }
         }
         return totalValue;
@@ -334,14 +355,27 @@ contract AssetTokenization is ERC721, ERC721URIStorage, Ownable, ReentrancyGuard
         return super.tokenURI(tokenId);
     }
     
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
+    
     // Helper function to remove from owner assets array
     function _removeFromOwnerAssets(address _owner, uint256 _tokenId) internal {
-        uint256[] storage assets = ownerAssets[_owner];
-        for (uint256 i = 0; i < assets.length; i++) {
-            if (assets[i] == _tokenId) {
-                assets[i] = assets[assets.length - 1];
-                assets.pop();
+        uint256[] storage _ownerAssets = ownerAssets[_owner];
+        uint256 length = _ownerAssets.length; // Cache array length
+        for (uint256 i = 0; i < length;) {
+            if (_ownerAssets[i] == _tokenId) {
+                _ownerAssets[i] = _ownerAssets[length - 1];
+                _ownerAssets.pop();
                 break;
+            }
+            unchecked {
+                i++;
             }
         }
     }

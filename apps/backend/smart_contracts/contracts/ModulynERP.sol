@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
-
 /**
  * @title ModulynERP
  * @dev Main smart contract for Modulyn ERP Web3 integration
@@ -15,8 +13,49 @@ import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
  */
 contract ModulynERP is Ownable, ReentrancyGuard {
     using ECDSA for bytes32;
-    using MessageHashUtils for bytes32;
-
+    
+    // ==================== CUSTOM ERRORS ====================
+    
+    error InvalidClient();
+    error InvalidVendor();
+    error InvalidAmount();
+    error InvalidDueDate();
+    error InvoiceNotFound();
+    error InvoiceNotSent();
+    error InvoiceAlreadyPaid();
+    error InvoiceAlreadySent();
+    error OnlyClientCanPay();
+    error NotAuthorizedForInvoice();
+    error InsufficientBalance();
+    error PaymentFailed();
+    error InvalidProposalId();
+    error ProposalNotActive();
+    error AlreadyVoted();
+    error ProposalNotExecutable();
+    error InvalidDataHash();
+    error DataNotAnchored();
+    error InvalidVotingPower();
+    error InvalidRecipient();
+    error InvalidInvoiceId();
+    error InvoiceNotReadyForPayment();
+    error IncorrectETHAmount();
+    error InsufficientContractBalance();
+    error ETHTransferFailed();
+    error TokenTransferFailed();
+    error TokenTransferToVendorFailed();
+    error OnlyVendorCanSend();
+    error NoVotingPower();
+    error InvalidVotingDuration();
+    error VotingNotStarted();
+    error VotingEnded();
+    error VotingNotEnded();
+    error ProposalNotPassed();
+    error InsufficientVotingPower();
+    error NoETHToWithdraw();
+    error ETHWithdrawalFailed();
+    error TokenWithdrawalFailed();
+    error InvalidPaymentId();
+    
     // ==================== STRUCTS ====================
     
     struct Invoice {
@@ -125,26 +164,25 @@ contract ModulynERP is Ownable, ReentrancyGuard {
     
     modifier onlyInvoiceParticipant(uint256 invoiceId) {
         Invoice storage invoice = invoices[invoiceId];
-        require(
-            msg.sender == invoice.client || msg.sender == invoice.vendor,
-            "Not authorized for this invoice"
-        );
+        if (msg.sender != invoice.client && msg.sender != invoice.vendor) {
+            revert NotAuthorizedForInvoice();
+        }
         _;
     }
     
     modifier validInvoice(uint256 invoiceId) {
-        require(invoiceId > 0 && invoiceId < nextInvoiceId, "Invalid invoice ID");
+        if (invoiceId == 0 || invoiceId >= nextInvoiceId) revert InvalidInvoiceId();
         _;
     }
     
     modifier validProposal(uint256 proposalId) {
-        require(proposalId > 0 && proposalId < nextProposalId, "Invalid proposal ID");
+        if (proposalId == 0 || proposalId >= nextProposalId) revert InvalidProposalId();
         _;
     }
 
     // ==================== CONSTRUCTOR ====================
     
-    constructor() Ownable(msg.sender) {}
+    constructor() Ownable() {}
 
     // ==================== INVOICE MANAGEMENT ====================
     
@@ -165,9 +203,9 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         uint256 dueDate,
         bytes32 dataHash
     ) external returns (uint256) {
-        require(client != address(0), "Invalid client address");
-        require(amount > 0, "Amount must be greater than 0");
-        require(dueDate > block.timestamp, "Due date must be in the future");
+        if (client == address(0)) revert InvalidClient();
+        if (amount == 0) revert InvalidAmount();
+        if (dueDate <= block.timestamp) revert InvalidDueDate();
         
         uint256 invoiceId = nextInvoiceId++;
         
@@ -205,24 +243,24 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         onlyInvoiceParticipant(invoiceId) 
     {
         Invoice storage invoice = invoices[invoiceId];
-        require(invoice.status == InvoiceStatus.Sent, "Invoice not ready for payment");
-        require(msg.sender == invoice.client, "Only client can pay invoice");
+        if (invoice.status != InvoiceStatus.Sent) revert InvoiceNotReadyForPayment();
+        if (msg.sender != invoice.client) revert OnlyClientCanPay();
         
         uint256 paymentId = nextPaymentId++;
         
         if (invoice.tokenAddress == address(0)) {
             // ETH payment
-            require(msg.value == invoice.amount, "Incorrect ETH amount");
-            require(address(this).balance >= invoice.amount, "Insufficient contract balance");
+            if (msg.value != invoice.amount) revert IncorrectETHAmount();
+            if (address(this).balance < invoice.amount) revert InsufficientContractBalance();
             
             // Transfer ETH to vendor
             (bool success, ) = invoice.vendor.call{value: invoice.amount}("");
-            require(success, "ETH transfer failed");
+            if (!success) revert ETHTransferFailed();
         } else {
             // ERC20 payment
             IERC20 token = IERC20(invoice.tokenAddress);
-            require(token.transferFrom(msg.sender, address(this), invoice.amount), "Token transfer failed");
-            require(token.transfer(invoice.vendor, invoice.amount), "Token transfer to vendor failed");
+            if (!token.transferFrom(msg.sender, address(this), invoice.amount)) revert TokenTransferFailed();
+            if (!token.transfer(invoice.vendor, invoice.amount)) revert TokenTransferToVendorFailed();
         }
         
         // Update invoice status
@@ -267,8 +305,8 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         onlyInvoiceParticipant(invoiceId) 
     {
         Invoice storage invoice = invoices[invoiceId];
-        require(invoice.status == InvoiceStatus.Draft, "Invoice already sent");
-        require(msg.sender == invoice.vendor, "Only vendor can send invoice");
+        if (invoice.status != InvoiceStatus.Draft) revert InvoiceAlreadySent();
+        if (msg.sender != invoice.vendor) revert OnlyVendorCanSend();
         
         invoice.status = InvoiceStatus.Sent;
     }
@@ -321,8 +359,8 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         uint256 votingDuration,
         bytes32 executionHash
     ) external returns (uint256) {
-        require(votingPower[msg.sender] > 0, "No voting power");
-        require(votingDuration > 0, "Invalid voting duration");
+        if (votingPower[msg.sender] == 0) revert NoVotingPower();
+        if (votingDuration == 0) revert InvalidVotingDuration();
         
         uint256 proposalId = nextProposalId++;
         
@@ -355,11 +393,11 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         validProposal(proposalId) 
     {
         GovernanceProposal storage proposal = proposals[proposalId];
-        require(proposal.status == ProposalStatus.Active, "Proposal not active");
-        require(block.timestamp >= proposal.votingStart, "Voting not started");
-        require(block.timestamp <= proposal.votingEnd, "Voting ended");
-        require(!hasVoted[proposalId][msg.sender], "Already voted");
-        require(votingPower[msg.sender] > 0, "No voting power");
+        if (proposal.status != ProposalStatus.Active) revert ProposalNotActive();
+        if (block.timestamp < proposal.votingStart) revert VotingNotStarted();
+        if (block.timestamp > proposal.votingEnd) revert VotingEnded();
+        if (hasVoted[proposalId][msg.sender]) revert AlreadyVoted();
+        if (votingPower[msg.sender] == 0) revert NoVotingPower();
         
         hasVoted[proposalId][msg.sender] = true;
         
@@ -381,10 +419,10 @@ contract ModulynERP is Ownable, ReentrancyGuard {
         validProposal(proposalId) 
     {
         GovernanceProposal storage proposal = proposals[proposalId];
-        require(proposal.status == ProposalStatus.Active, "Proposal not active");
-        require(block.timestamp > proposal.votingEnd, "Voting not ended");
-        require(proposal.votesFor > proposal.votesAgainst, "Proposal not passed");
-        require(proposal.votesFor >= proposal.votingPowerRequired, "Insufficient voting power");
+        if (proposal.status != ProposalStatus.Active) revert ProposalNotActive();
+        if (block.timestamp <= proposal.votingEnd) revert VotingNotEnded();
+        if (proposal.votesFor <= proposal.votesAgainst) revert ProposalNotPassed();
+        if (proposal.votesFor < proposal.votingPowerRequired) revert InsufficientVotingPower();
         
         proposal.status = ProposalStatus.Executed;
         
@@ -407,10 +445,10 @@ contract ModulynERP is Ownable, ReentrancyGuard {
      */
     function withdrawETH() external onlyOwner {
         uint256 balance = address(this).balance;
-        require(balance > 0, "No ETH to withdraw");
+        if (balance == 0) revert NoETHToWithdraw();
         
         (bool success, ) = owner().call{value: balance}("");
-        require(success, "ETH withdrawal failed");
+        if (!success) revert ETHWithdrawalFailed();
     }
     
     /**
@@ -420,7 +458,7 @@ contract ModulynERP is Ownable, ReentrancyGuard {
      */
     function withdrawToken(address tokenAddress, uint256 amount) external onlyOwner {
         IERC20 token = IERC20(tokenAddress);
-        require(token.transfer(owner(), amount), "Token withdrawal failed");
+        if (!token.transfer(owner(), amount)) revert TokenWithdrawalFailed();
     }
 
     // ==================== VIEW FUNCTIONS ====================
@@ -440,7 +478,7 @@ contract ModulynERP is Ownable, ReentrancyGuard {
      * @return Payment struct
      */
     function getPayment(uint256 paymentId) external view returns (Payment memory) {
-        require(paymentId > 0 && paymentId < nextPaymentId, "Invalid payment ID");
+        if (paymentId == 0 || paymentId >= nextPaymentId) revert InvalidPaymentId();
         return payments[paymentId];
     }
     
