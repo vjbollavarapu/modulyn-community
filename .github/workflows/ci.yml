@@ -174,49 +174,9 @@ jobs:
         working-directory: apps/frontend
         run: npm audit --audit-level=moderate || true
 
-  smart-contracts:
-    name: Smart Contracts Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      
-      - name: Install dependencies
-        working-directory: apps/backend/smart_contracts
-        run: npm install
-      
-      - name: Run Solidity tests
-        working-directory: apps/backend/smart_contracts
-        run: |
-          npx hardhat test || echo "Hardhat tests skipped if not configured"
-      
-      - name: Set up Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          components: rustfmt, clippy
-          override: true
-      
-      - name: Install cargo-contract
-        run: |
-          cargo install cargo-contract --force --locked
-      
-      - name: Check ink! contracts
-        working-directory: apps/backend/contracts
-        run: |
-          for dir in escrow-sla substrate-poc; do
-            if [ -f "$dir/Cargo.toml" ]; then
-              cd "$dir"
-              cargo +nightly contract check || echo "Contract check skipped"
-              cd ..
-            fi
-          done
+  # Note: Smart contracts testing moved to Milestone 2 CI workflow
+  # This job is kept for backward compatibility but can be removed
+  # if smart contracts have their own dedicated workflow
 
   integration-tests:
     name: Integration Tests
