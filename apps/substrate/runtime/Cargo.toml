@@ -1,0 +1,119 @@
+[package]
+name = "modulyn-runtime"
+version = "1.0.0"
+authors = ["Modulyn Team"]
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://github.com/Modulyn/Modulyn-community"
+repository = "https://github.com/Modulyn/Modulyn-community"
+description = "Modulyn Substrate Runtime with custom pallets"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { workspace = true }
+scale-info = { workspace = true }
+
+# Substrate FRAME
+frame-benchmarking = { workspace = true, optional = true }
+frame-executive = { workspace = true }
+frame-support = { workspace = true }
+frame-system = { workspace = true }
+frame-system-benchmarking = { workspace = true, optional = true }
+frame-try-runtime = { workspace = true, optional = true }
+
+# Substrate primitives
+sp-api = { workspace = true }
+sp-block-builder = { workspace = true }
+sp-consensus-aura = { workspace = true }
+sp-consensus-grandpa = { workspace = true }
+sp-core = { workspace = true }
+sp-inherents = { workspace = true }
+sp-offchain = { workspace = true, optional = true }
+sp-runtime = { workspace = true }
+sp-session = { workspace = true }
+sp-std = { workspace = true }
+sp-timestamp = { workspace = true }
+sp-transaction-pool = { workspace = true }
+sp-version = { workspace = true }
+
+# Substrate FRAME pallets
+pallet-aura = { workspace = true }
+pallet-balances = { workspace = true }
+pallet-grandpa = { workspace = true }
+pallet-sudo = { workspace = true }
+pallet-timestamp = { workspace = true }
+pallet-transaction-payment = { workspace = true }
+pallet-transaction-payment-rpc-runtime-api = { workspace = true }
+
+# Modulyn custom pallets
+pallet-ledger = { path = "../pallets/ledger", default-features = false }
+pallet-did = { path = "../pallets/did", default-features = false }
+pallet-dao = { path = "../pallets/dao", default-features = false }
+
+[dev-dependencies]
+sp-core = { workspace = true }
+sp-io = { workspace = true }
+sp-runtime = { workspace = true }
+
+[features]
+default = ["std"]
+no-wasm-binary = []
+std = [
+    "codec/std",
+    "frame-benchmarking?/std",
+    "frame-executive/std",
+    "frame-support/std",
+    "frame-system/std",
+    "frame-system-benchmarking?/std",
+    "frame-try-runtime?/std",
+    "pallet-aura/std",
+    "pallet-balances/std",
+    "pallet-grandpa/std",
+    "pallet-ledger/std",
+    "pallet-did/std",
+    "pallet-dao/std",
+    "pallet-sudo/std",
+    "pallet-timestamp/std",
+    "pallet-transaction-payment/std",
+    "pallet-transaction-payment-rpc-runtime-api/std",
+    "scale-info/std",
+    "sp-api/std",
+    "sp-block-builder/std",
+    "sp-consensus-aura/std",
+    "sp-consensus-grandpa/std",
+    "sp-core/std",
+    "sp-inherents/std",
+    "sp-offchain?/std",
+    "sp-runtime/std",
+    "sp-session/std",
+    "sp-std/std",
+    "sp-timestamp/std",
+    "sp-transaction-pool/std",
+    "sp-version/std",
+]
+runtime-benchmarks = [
+    "frame-benchmarking/runtime-benchmarks",
+    "frame-support/runtime-benchmarks",
+    "frame-system/runtime-benchmarks",
+    "frame-system-benchmarking/runtime-benchmarks",
+    "pallet-balances/runtime-benchmarks",
+    "pallet-ledger/runtime-benchmarks",
+    "pallet-did/runtime-benchmarks",
+    "pallet-dao/runtime-benchmarks",
+    "pallet-timestamp/runtime-benchmarks",
+]
+try-runtime = [
+    "frame-executive/try-runtime",
+    "frame-support/try-runtime",
+    "frame-system/try-runtime",
+    "frame-try-runtime",
+    "pallet-balances/try-runtime",
+    "pallet-ledger/try-runtime",
+    "pallet-did/try-runtime",
+    "pallet-dao/try-runtime",
+    "pallet-timestamp/try-runtime",
+    "sp-runtime/try-runtime",
+]
+
