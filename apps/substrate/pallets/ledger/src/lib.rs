@@ -33,9 +33,7 @@ pub mod pallet {
         traits::{Currency, Get},
     };
     use frame_system::pallet_prelude::*;
-    use sp_core::H256;
     use sp_io::hashing::sha2_256;
-    use sp_runtime::traits::Hash;
     use sp_std::vec::Vec;
 
     type BalanceOf<T> =
@@ -205,7 +203,7 @@ pub mod pallet {
             let current_block = frame_system::Pallet::<T>::block_number();
 
             // Create invoice struct
-            let mut invoice = Invoice {
+            let mut invoice: Invoice<T> = Invoice {
                 id: invoice_id,
                 client: client.clone(),
                 amount,
@@ -217,14 +215,24 @@ pub mod pallet {
 
             // Calculate SHA256 hash of invoice details
             let invoice_hash = invoice.calculate_hash();
-            invoice.invoice_hash = invoice_hash;
+            
+            // Create final invoice with hash
+            let final_invoice = Invoice {
+                id: invoice.id,
+                client: invoice.client,
+                amount: invoice.amount,
+                metadata: invoice.metadata,
+                timestamp: invoice.timestamp,
+                invoice_hash,
+                created_by: invoice.created_by,
+            };
 
             // Get or create invoice list for client
             let mut client_invoices = Invoices::<T>::get(&client);
 
-            // Check if we can add more invoices
+            // Check if we can add more invoices (move invoice into vector)
             client_invoices
-                .try_push(invoice.clone())
+                .try_push(final_invoice)
                 .map_err(|_| Error::<T>::TooManyInvoices)?;
 
             // Store updated invoice list

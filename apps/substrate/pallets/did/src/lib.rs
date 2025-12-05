@@ -49,7 +49,6 @@ pub mod pallet {
         traits::Get,
     };
     use frame_system::pallet_prelude::*;
-    use sp_core::H256;
     use sp_io::hashing::blake2_256;
     use sp_std::vec::Vec;
 
@@ -57,7 +56,7 @@ pub mod pallet {
     pub struct Pallet<T>(_);
 
     /// DID Document status
-    #[derive(Clone, Encode, Decode, Eq, PartialEq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
+    #[derive(Clone, Encode, Decode, DecodeWithMemTracking, Eq, PartialEq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
     pub enum DidStatus {
         /// DID is active and valid
         Active,

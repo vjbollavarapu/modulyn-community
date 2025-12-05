@@ -39,6 +39,7 @@ pub mod pallet {
     use frame_system::pallet_prelude::*;
     use sp_runtime::traits::Saturating;
     use sp_std::vec::Vec;
+    use codec::DecodeWithMemTracking;
 
     type BalanceOf<T> =
         <<T as Config>::Currency as Currency<<T as frame_system::Config>::AccountId>>::Balance;
@@ -47,7 +48,7 @@ pub mod pallet {
     pub struct Pallet<T>(_);
 
     /// Proposal status
-    #[derive(Clone, Encode, Decode, Eq, PartialEq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
+    #[derive(Clone, Encode, Decode, DecodeWithMemTracking, Eq, PartialEq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
     pub enum ProposalStatus {
         /// Proposal is active and accepting votes
         Active,
