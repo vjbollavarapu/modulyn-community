@@ -323,4 +323,11 @@ KYC_KYB_GUIDE.md
 DOCUMENTATION_ORGANIZATION_SUMMARY.md
 DOCUMENTATION_REORGANIZATION_SUMMARY.md
 INTERNAL_FILES_ORGANIZATION_SUMMARY.md
-MODULES_DOCUMENTATION_ORGANIZATION_SUMMARY.md
+MODULES_DOCUMENTATION_ORGANIZATION_SUMMARY.md# Build artifacts and cache
+apps/backend/smart_contracts/artifacts/
+apps/backend/smart_contracts/cache/
+apps/backend/smart_contracts/coverage.json
+apps/substrate/target/
+
+# Temporary/old files
+CODE_OF_CONDUCT_OLD.md
